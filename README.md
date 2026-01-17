@@ -347,7 +347,7 @@ Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 - 🌐 Portfolio: [https://jersson14.github.io/Portafolio-Jersson](https://jersson14.github.io/Portafolio-Jersson)
 - 💼 LinkedIn: [linkedin.com/in/jersson-corilla](https://linkedin.com/in/jersson-corilla)
 - 🐙 GitHub: [@jersson14](https://github.com/jersson14)
-- 📧 Email: jersson.corilla@example.com
+- 📧 Email: jersson14071996@gmail.com
 
 ---
 
