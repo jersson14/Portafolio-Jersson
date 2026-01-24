@@ -1,7 +1,7 @@
 import { 
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs, FaBootstrap, 
   FaPhp, FaNodeJs, FaPython, FaJava,
-  FaDatabase, FaAws, FaDocker, FaGitAlt, FaGithub, FaCloud, FaChartBar, FaMicrosoft
+  FaDatabase, FaAws, FaDocker, FaGitAlt, FaGithub, FaGitlab, FaCloud, FaChartBar, FaMicrosoft
 } from 'react-icons/fa';
 import { 
   SiTailwindcss, SiMysql, SiPostgresql, SiMongodb, 
@@ -49,6 +49,7 @@ export const techStackData = {
       { name: "Docker", icon: FaDocker, color: "#2496ED" },
       { name: "Git", icon: FaGitAlt, color: "#F05032" },
       { name: "GitHub", icon: FaGithub, color: "#FFFFFF" },
+      { name: "GitLab", icon: FaGitlab, color: "#FC6D26" },
     ]
   },
   data: {
