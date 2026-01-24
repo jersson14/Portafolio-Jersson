@@ -95,10 +95,10 @@ function App() {
       </AnimatePresence>
 
       {/* Navigation - STRIKING GLASS HEADER */}
-      <nav className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pointer-events-none">
+      <nav className="fixed top-2 md:top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pointer-events-none">
         <div className="max-w-7xl mx-auto">
           <div className="bg-dark-950/70 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg shadow-primary-500/10 pointer-events-auto transition-all duration-300">
-            <div className="flex items-center justify-between h-16 px-6">
+            <div className="flex items-center justify-between h-16 px-4 md:px-6">
               {/* Logo */}
               <motion.a
                 href="#home"

@@ -103,7 +103,7 @@ export const translations = {
       }
     },
     tech_stack: {
-        title: 'Tech Stack',
+        title: 'Stack Tecnológico',
         subtitle: 'Tecnologías y herramientas que domino',
         learning_text: 'Y siempre aprendiendo nuevas tecnologías para mantenerme actualizado con las últimas tendencias'
     },

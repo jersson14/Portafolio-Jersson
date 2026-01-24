@@ -81,7 +81,7 @@ const Hero = () => {
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="text-4xl md:text-5xl lg:text-7xl font-bold font-display mb-6 leading-tight drop-shadow-xl"
+                            className="text-3xl xs:text-4xl md:text-5xl lg:text-7xl font-bold font-display mb-6 leading-tight drop-shadow-xl"
                         >
                             <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">Jersson Jorge</span>
                             <br />
@@ -148,8 +148,8 @@ const Hero = () => {
                             transition={{ duration: 4, repeat: Infinity }}
                         ></motion.div>
 
-                        {/* Floating Icons Container */}
-                        <div className="absolute inset-0 w-full h-full z-20">
+                        {/* Floating Icons Container - Hidden on very small screens */}
+                        <div className="hidden sm:block absolute inset-0 w-full h-full z-20">
                             <FloatingIcon icon={FaReact} x="0%" y="20%" delay={0} size="text-6xl" glowColor="rgba(97, 218, 251, 0.6)" />
                             <FloatingIcon icon={FaPython} x="85%" y="10%" delay={1.5} size="text-7xl" glowColor="rgba(55, 118, 171, 0.6)" />
                             <FloatingIcon icon={FaAws} x="5%" y="75%" delay={2} size="text-6xl" glowColor="rgba(255, 153, 0, 0.6)" />

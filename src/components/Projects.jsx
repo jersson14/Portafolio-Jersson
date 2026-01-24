@@ -69,7 +69,7 @@ const Projects = () => {
                                     </div>
 
                                     {/* Project Image with Hover Overlay */}
-                                    <div className="relative h-72 overflow-hidden">
+                                    <div className="relative h-48 xs:h-56 md:h-72 overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={project.title[language]}
@@ -101,7 +101,7 @@ const Projects = () => {
                                     </div>
 
                                     {/* Project Content */}
-                                    <div className="p-6 flex flex-col flex-grow">
+                                    <div className="p-4 xs:p-5 md:p-6 flex flex-col flex-grow">
                                         {/* Project Title */}
                                         <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300 mb-3">
                                             {project.title[language]}
@@ -225,7 +225,7 @@ const Projects = () => {
                                     className="glass-card-hover overflow-hidden flex flex-col h-full group"
                                 >
                                     {/* Project Image with Hover Overlay */}
-                                    <div className="relative h-64 overflow-hidden">
+                                    <div className="relative h-48 xs:h-56 md:h-64 overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={project.title[language]}
@@ -257,7 +257,7 @@ const Projects = () => {
                                     </div>
 
                                     {/* Project Content */}
-                                    <div className="p-6 flex flex-col flex-grow">
+                                    <div className="p-4 xs:p-5 md:p-6 flex flex-col flex-grow">
                                         {/* Project Title */}
                                         <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300 mb-3">
                                             {project.title[language]}

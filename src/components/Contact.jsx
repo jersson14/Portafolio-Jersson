@@ -103,14 +103,14 @@ const Contact = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                     {/* Contact Form */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <div className="glass-card p-8">
+                        <div className="glass-card p-5 xs:p-6 md:p-8">
                             <h3 className="text-2xl font-bold text-white mb-6">
                                 {t('contact.form_title')}
                             </h3>
@@ -126,7 +126,7 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-dark-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300"
+                                        className="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white text-base placeholder-dark-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300"
                                         placeholder={t('contact.placeholders.name')}
                                     />
                                 </div>
@@ -158,7 +158,7 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         rows="5"
-                                        className="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-dark-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 resize-none"
+                                        className="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white text-base placeholder-dark-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 resize-none"
                                         placeholder={t('contact.placeholders.message')}
                                     />
                                 </div>
@@ -236,7 +236,7 @@ const Contact = () => {
                             <h3 className="text-xl font-bold text-white mb-6">
                                 {t('contact.social_title')}
                             </h3>
-                            <div className="flex gap-4">
+                            <div className="flex justify-center gap-4">
                                 {socialLinks.map((social, index) => (
                                     <motion.a
                                         key={index}
