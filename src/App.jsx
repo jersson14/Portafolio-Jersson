@@ -13,11 +13,16 @@ const Experience = lazy(() => import('./components/Experience'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Services = lazy(() => import('./components/Services'));
 const Contact = lazy(() => import('./components/Contact'));
+const ProjectCaseStudy = lazy(() => import('./components/ProjectCaseStudy'));
 
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [showCaseStudy, setShowCaseStudy] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
+
+  // ... (maintain existing navLinks and scroll logic) ...
 
   const navLinks = [
     { id: 'home', label: 'Inicio' },
@@ -66,9 +71,25 @@ function App() {
     }
   };
 
+  // Setup Event Listener for "Open Case Study" button click
+  useEffect(() => {
+    const handleOpenCaseStudy = (e) => {
+      setSelectedProjectId(e.detail?.projectId || 2); // Default to 2 for backward compatibility
+      setShowCaseStudy(true);
+    };
+    window.addEventListener('openCaseStudy', handleOpenCaseStudy);
+    return () => window.removeEventListener('openCaseStudy', handleOpenCaseStudy);
+  }, []);
+
   return (
     <div className="min-h-screen gradient-bg relative">
       <AnimatedBackground />
+
+      <AnimatePresence>
+        {showCaseStudy && (
+          <ProjectCaseStudy projectId={selectedProjectId} onClose={() => setShowCaseStudy(false)} />
+        )}
+      </AnimatePresence>
 
       {/* Navigation - STRIKING GLASS HEADER */}
       <nav className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pointer-events-none">

@@ -13,13 +13,19 @@ export const projectsData = [
   {
     id: 2,
     title: "Sistema Web de Trámite Documentario",
-    description: "Plataforma web para la gestión, seguimiento y control de documentos administrativos, integrada con la API de RENIEC para la validación de identidad, mejorando la trazabilidad y seguridad de los procesos.",
-    technologies: ["PHP", "MySQL", "Bootstrap", "AJAX", "API RENIEC"],
+    description: "Plataforma web para la gestión, seguimiento y control de documentos administrativos con chatbot inteligente basado en RAG para consultas en tiempo real. Integrada con la API de RENIEC para validación de identidad, mejorando la trazabilidad y seguridad de los procesos.",
+    technologies: ["PHP", "MySQL", "Bootstrap", "AJAX", "API RENIEC", "RAG", "IA"],
     demoUrl: "https://rosybrown-panther-444340.hostingersite.com/",
     githubUrl: "#",
     status: "private",
     category: "Full Stack",
-    image: "/tramite_documentario.png"
+    image: "/tramite_documentario.png",
+    featured: true,
+    metrics: [
+      { value: "60%", label: "Reducción de Tiempo" },
+      { value: "500+", label: "Consultas/Mes Auto." },
+      { value: "4.8/5", label: "Satisfacción Usuario" }
+    ]
   },
   {
     id: 3,
@@ -63,7 +69,13 @@ export const projectsData = [
     githubUrl: "#",
     status: "private",
     category: "FinTech",
-    image: "/facturacion.png"
+    image: "/facturacion.png",
+    featured: true,
+    metrics: [
+      { value: "+10k", label: "Facturas Procesadas" },
+      { value: "99.9%", label: "Uptime del Sistema" },
+      { value: "<3s", label: "Tiempo de Emisión" }
+    ]
   },
   {
     id: 7,
