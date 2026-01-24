@@ -15,24 +15,27 @@ const Services = lazy(() => import('./components/Services'));
 const Contact = lazy(() => import('./components/Contact'));
 const ProjectCaseStudy = lazy(() => import('./components/ProjectCaseStudy'));
 
+import { useLanguage } from './context/LanguageContext';
+
 function App() {
+  const { t, language, toggleLanguage } = useLanguage();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [showCaseStudy, setShowCaseStudy] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
-  // ... (maintain existing navLinks and scroll logic) ...
+  // ... (maintain existing scroll logic) ...
 
   const navLinks = [
-    { id: 'home', label: 'Inicio' },
-    { id: 'about', label: 'Sobre Mí' },
-    { id: 'tech-stack', label: 'Tecnologías' },
-    { id: 'projects', label: 'Proyectos' },
-    { id: 'experience', label: 'Experiencia' },
-    { id: 'certifications', label: 'Certificaciones' },
-    { id: 'services', label: 'Servicios' },
-    { id: 'contact', label: 'Contacto' },
+    { id: 'home', label: t('nav.home') },
+    { id: 'about', label: t('nav.about') },
+    { id: 'tech-stack', label: t('nav.tech_stack') },
+    { id: 'projects', label: t('nav.projects') },
+    { id: 'experience', label: t('nav.experience') },
+    { id: 'certifications', label: t('nav.certifications') },
+    { id: 'services', label: t('nav.services') },
+    { id: 'contact', label: t('nav.contact') },
   ];
 
   // Handle scroll events
@@ -57,7 +60,7 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navLinks]); // Added navLinks dependency for safety although ids are stable
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -135,6 +138,14 @@ function App() {
                   </a>
                 ))}
 
+                {/* Language Toggle */}
+                <button
+                  onClick={toggleLanguage}
+                  className="ml-4 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-white text-xs font-bold hover:bg-white/10 transition-all"
+                >
+                  {language === 'es' ? 'EN' : 'ES'}
+                </button>
+
                 {/* CV Download Button */}
                 <a
                   href="/cv_jersson.pdf"
@@ -142,16 +153,24 @@ function App() {
                   className="ml-2 px-5 py-2 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 flex items-center gap-2"
                 >
                   <FaArrowUp className="text-base rotate-90" />
-                  Descargar CV
+                  CV
                 </a>
               </div>
 
               {/* Right Side: Mobile Menu */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 lg:hidden">
+                {/* Mobile Language Toggle */}
+                <button
+                  onClick={toggleLanguage}
+                  className="px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-white text-xs font-bold hover:bg-white/10 transition-all"
+                >
+                  {language === 'es' ? 'EN' : 'ES'}
+                </button>
+
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors duration-300"
+                  className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors duration-300"
                 >
                   {mobileMenuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
                 </button>

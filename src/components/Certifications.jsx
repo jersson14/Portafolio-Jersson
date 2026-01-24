@@ -3,8 +3,10 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { certificationsData } from '../data/certifications';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const Certifications = () => {
+    const { t, language } = useLanguage();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -18,9 +20,9 @@ const Certifications = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="section-title">Certificaciones</h2>
+                    <h2 className="section-title">{t('certifications.title')}</h2>
                     <p className="section-subtitle">
-                        Formación continua y certificaciones profesionales
+                        {t('certifications.subtitle')}
                     </p>
                 </motion.div>
 
@@ -53,14 +55,14 @@ const Certifications = () => {
                             {/* Content */}
                             <div className="flex-grow">
                                 <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary-400 transition-colors duration-300">
-                                    {cert.title}
+                                    {cert.title[language]}
                                 </h3>
                                 <p className="text-dark-400 text-sm mb-2">
-                                    {cert.issuer}
+                                    {cert.issuer[language]}
                                 </p>
                                 {cert.description && (
                                     <p className="text-dark-500 text-xs mb-3 italic">
-                                        {cert.description}
+                                        {cert.description[language]}
                                     </p>
                                 )}
                             </div>

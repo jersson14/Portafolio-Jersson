@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaArrowLeft, FaServer, FaDatabase, FaRobot, FaIdCard, FaFileSignature, FaDocker, FaFileInvoiceDollar, FaChartLine } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const caseStudiesData = {
     2: { // Trámite Documentario
@@ -123,6 +124,7 @@ const caseStudiesData = {
 };
 
 const ProjectCaseStudy = ({ projectId, onClose }) => {
+    const { t } = useLanguage();
     const data = caseStudiesData[projectId];
 
     if (!data) return null;
@@ -141,7 +143,7 @@ const ProjectCaseStudy = ({ projectId, onClose }) => {
                         onClick={onClose}
                         className="flex items-center gap-2 text-dark-300 hover:text-white transition-colors"
                     >
-                        <FaArrowLeft /> Volver al Portafolio
+                        <FaArrowLeft /> {t('case_study.back')}
                     </button>
                     <span className="text-sm font-mono text-primary-400 uppercase">CASE STUDY: {data.highlight}</span>
                 </div>
@@ -155,7 +157,7 @@ const ProjectCaseStudy = ({ projectId, onClose }) => {
                     >
                         <div className="flex justify-center gap-2 mb-6">
                             {data.badges.map((badge, idx) => (
-                                <span key={idx} className="inline-block px-4 py-1 rounded-full bg-primary-500/10 border border-primary-500/30 text-primary-400 text-sm font-medium">
+                                <span key={idx} className="inline-block px-4 py-1 rounded-full bg-primary-500/10 border border-primary-500/30 text-primary-400                       text-sm font-medium">
                                     {badge}
                                 </span>
                             ))}
@@ -210,7 +212,7 @@ const ProjectCaseStudy = ({ projectId, onClose }) => {
                     <section>
                         <h2 className="text-3xl font-bold text-white mb-12 flex items-center gap-3 justify-center">
                             <span className="w-8 h-1 bg-green-500 rounded-full block"></span>
-                            La Solución Tecnológica
+                            {t('case_study.solution_title')}
                             <span className="w-8 h-1 bg-green-500 rounded-full block"></span>
                         </h2>
 
@@ -274,7 +276,7 @@ const ProjectCaseStudy = ({ projectId, onClose }) => {
 
                     {/* Impact & Results */}
                     <section>
-                        <h2 className="text-3xl font-bold text-white mb-10 text-center">Resultados e Impacto</h2>
+                        <h2 className="text-3xl font-bold text-white mb-10 text-center">{t('case_study.results')}</h2>
                         <div className="grid md:grid-cols-3 gap-8">
                             {data.results.map((result, idx) => (
                                 <div key={idx} className="text-center">

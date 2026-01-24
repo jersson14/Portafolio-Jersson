@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FaWhatsapp, FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCopy, FaCheck } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
+    const { t } = useLanguage();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     const [copied, setCopied] = useState(false);
@@ -58,7 +60,7 @@ const Contact = () => {
         },
         {
             icon: FaMapMarkerAlt,
-            label: "Ubicación",
+            label: t('contact.labels.location') || "Ubicación",
             value: "Perú",
             link: null
         }
@@ -95,9 +97,9 @@ const Contact = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="section-title">Contacto</h2>
+                    <h2 className="section-title">{t('contact.title')}</h2>
                     <p className="section-subtitle">
-                        ¿Tienes un proyecto en mente? ¡Hablemos!
+                        {t('contact.subtitle')}
                     </p>
                 </motion.div>
 
@@ -110,12 +112,12 @@ const Contact = () => {
                     >
                         <div className="glass-card p-8">
                             <h3 className="text-2xl font-bold text-white mb-6">
-                                Envíame un mensaje
+                                {t('contact.form_title')}
                             </h3>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
                                     <label htmlFor="name" className="block text-dark-300 mb-2 text-sm font-medium">
-                                        Nombre completo
+                                        {t('contact.labels.name')}
                                     </label>
                                     <input
                                         type="text"
@@ -125,13 +127,13 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-dark-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300"
-                                        placeholder="Tu nombre"
+                                        placeholder={t('contact.placeholders.name')}
                                     />
                                 </div>
 
                                 <div>
                                     <label htmlFor="email" className="block text-dark-300 mb-2 text-sm font-medium">
-                                        Email
+                                        {t('contact.labels.email')}
                                     </label>
                                     <input
                                         type="email"
@@ -141,13 +143,13 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-dark-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300"
-                                        placeholder="tu@email.com"
+                                        placeholder={t('contact.placeholders.email')}
                                     />
                                 </div>
 
                                 <div>
                                     <label htmlFor="message" className="block text-dark-300 mb-2 text-sm font-medium">
-                                        Mensaje
+                                        {t('contact.labels.message')}
                                     </label>
                                     <textarea
                                         id="message"
@@ -157,7 +159,7 @@ const Contact = () => {
                                         required
                                         rows="5"
                                         className="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-dark-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 resize-none"
-                                        placeholder="Cuéntame sobre tu proyecto..."
+                                        placeholder={t('contact.placeholders.message')}
                                     />
                                 </div>
 
@@ -166,7 +168,7 @@ const Contact = () => {
                                     className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:scale-105 transition-all duration-300"
                                 >
                                     <FaWhatsapp className="text-xl" />
-                                    Enviar por WhatsApp
+                                    {t('contact.button_whatsapp')}
                                 </button>
                             </form>
                         </div>
@@ -182,7 +184,7 @@ const Contact = () => {
                         {/* Contact Details */}
                         <div className="glass-card p-8">
                             <h3 className="text-2xl font-bold text-white mb-6">
-                                Información de contacto
+                                {t('contact.info_title')}
                             </h3>
                             <div className="space-y-4">
                                 {contactInfo.map((info, index) => (
@@ -232,7 +234,7 @@ const Contact = () => {
                         {/* Social Links */}
                         <div className="glass-card p-8">
                             <h3 className="text-xl font-bold text-white mb-6">
-                                Sígueme en redes
+                                {t('contact.social_title')}
                             </h3>
                             <div className="flex gap-4">
                                 {socialLinks.map((social, index) => (
@@ -272,8 +274,8 @@ const Contact = () => {
                             className="block glass-card p-6 text-center hover:bg-green-500/10 hover:border-green-500/30 transition-all duration-300 group"
                         >
                             <FaWhatsapp className="text-5xl text-green-500 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-                            <p className="text-white font-semibold mb-1">¿Prefieres WhatsApp?</p>
-                            <p className="text-dark-400 text-sm">Haz clic aquí para chatear directamente</p>
+                            <p className="text-white font-semibold mb-1">{t('contact.whatsapp_card.title')}</p>
+                            <p className="text-dark-400 text-sm">{t('contact.whatsapp_card.subtitle')}</p>
                         </motion.a>
                     </motion.div>
                 </div>

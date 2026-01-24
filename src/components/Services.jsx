@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { servicesData } from '../data/services';
+import { useLanguage } from '../context/LanguageContext';
 
 const Services = () => {
+    const { t, language } = useLanguage();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -17,9 +19,9 @@ const Services = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="section-title">Servicios</h2>
+                    <h2 className="section-title">{t('services.title')}</h2>
                     <p className="section-subtitle">
-                        Soluciones tecnológicas profesionales para tu negocio
+                        {t('services.subtitle')}
                     </p>
                 </motion.div>
 
@@ -57,10 +59,10 @@ const Services = () => {
 
                             {/* Content */}
                             <h3 className="text-xl font-bold text-white mb-4 group-hover:text-primary-400 transition-colors duration-300">
-                                {service.title}
+                                {service.title[language]}
                             </h3>
                             <p className="text-dark-300 leading-relaxed">
-                                {service.description}
+                                {service.description[language]}
                             </p>
                         </motion.div>
                     ))}
@@ -74,10 +76,10 @@ const Services = () => {
                     className="mt-16 text-center"
                 >
                     <p className="text-dark-400 text-lg mb-6">
-                        ¿Tienes un proyecto en mente? Trabajemos juntos para hacerlo realidad
+                        {t('contact.subtitle')}
                     </p>
                     <a href="#contact" className="btn-primary inline-block">
-                        Iniciar Proyecto
+                        {t('nav.contact')}
                     </a>
                 </motion.div>
             </div>

@@ -3,8 +3,10 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { experienceData } from '../data/experience';
 import { FaBriefcase, FaCalendar } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const Experience = () => {
+    const { t, language } = useLanguage();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -18,9 +20,9 @@ const Experience = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="section-title">Experiencia Profesional</h2>
+                    <h2 className="section-title">{t('experience.title')}</h2>
                     <p className="section-subtitle">
-                        Mi trayectoria en el desarrollo de software y tecnología
+                        {t('experience.subtitle')}
                     </p>
                 </motion.div>
 
@@ -47,7 +49,7 @@ const Experience = () => {
                                     <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                                         <div className="flex-1">
                                             <h3 className="text-xl font-bold text-white mb-2">
-                                                {exp.position}
+                                                {exp.position[language]}
                                             </h3>
                                             <div className="flex items-center gap-2 text-primary-400 font-semibold mb-2">
                                                 <FaBriefcase className="text-sm" />
@@ -56,10 +58,10 @@ const Experience = () => {
                                         </div>
                                         <div className="flex items-center gap-2 text-dark-400 mt-2 md:mt-0">
                                             <FaCalendar className="text-sm" />
-                                            <span className="text-sm">{exp.period}</span>
+                                            <span className="text-sm">{exp.period[language]}</span>
                                             {exp.current && (
                                                 <span className="ml-2 px-2 py-1 bg-green-500/20 border border-green-500/30 text-green-400 text-xs rounded-full">
-                                                    Actual
+                                                    {t('experience.current_badge')}
                                                 </span>
                                             )}
                                         </div>
@@ -67,7 +69,7 @@ const Experience = () => {
 
                                     {/* Responsibilities */}
                                     <ul className="space-y-2 mb-4">
-                                        {exp.responsibilities.map((resp, respIndex) => (
+                                        {exp.responsibilities[language].map((resp, respIndex) => (
                                             <li key={respIndex} className="flex items-start gap-2 text-dark-300 text-sm">
                                                 <span className="text-primary-400 mt-1">▹</span>
                                                 <span>{resp}</span>

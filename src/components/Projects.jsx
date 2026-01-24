@@ -3,8 +3,10 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { projectsData } from '../data/projects';
 import { FaExternalLinkAlt, FaGithub, FaLock, FaStar } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const Projects = () => {
+    const { t, language } = useLanguage();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -22,9 +24,9 @@ const Projects = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="section-title">Mis Proyectos</h2>
+                    <h2 className="section-title">{t('projects.title')}</h2>
                     <p className="section-subtitle">
-                        Soluciones empresariales desarrolladas con tecnologías modernas y mejores prácticas
+                        {t('projects.subtitle')}
                     </p>
                 </motion.div>
 
@@ -39,9 +41,9 @@ const Projects = () => {
                         >
                             <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
                                 <FaStar className="text-primary-400" />
-                                Proyectos Destacados
+                                {t('projects.featured_title')}
                             </h3>
-                            <p className="text-dark-300">Soluciones innovadoras con tecnologías de vanguardia</p>
+                            <p className="text-dark-300">{t('projects.featured_subtitle')}</p>
                         </motion.div>
 
                         {/* Featured Projects Grid - 2 columns on desktop, 1 on mobile */}
@@ -62,7 +64,7 @@ const Projects = () => {
                                     <div className="absolute top-4 left-4 z-10">
                                         <div className="flex items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-600 px-3 py-1.5 rounded-full shadow-lg">
                                             <FaStar className="text-white text-xs" />
-                                            <span className="text-white text-xs font-bold">DESTACADO</span>
+                                            <span className="text-white text-xs font-bold">{t('projects.badge_featured')}</span>
                                         </div>
                                     </div>
 
@@ -70,14 +72,14 @@ const Projects = () => {
                                     <div className="relative h-72 overflow-hidden">
                                         <img
                                             src={project.image}
-                                            alt={project.title}
+                                            alt={project.title[language]}
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
 
                                         {/* Hover Overlay with Description - Desktop Only */}
                                         <div className="hidden lg:flex absolute inset-0 bg-gradient-to-t from-dark-950/95 via-dark-950/80 to-dark-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center p-6">
                                             <p className="text-white text-sm leading-relaxed text-center">
-                                                {project.description}
+                                                {project.description[language]}
                                             </p>
                                         </div>
 
@@ -102,12 +104,12 @@ const Projects = () => {
                                     <div className="p-6 flex flex-col flex-grow">
                                         {/* Project Title */}
                                         <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300 mb-3">
-                                            {project.title}
+                                            {project.title[language]}
                                         </h3>
 
                                         {/* Description - Mobile Only */}
                                         <p className="lg:hidden text-dark-300 text-sm leading-relaxed mb-4">
-                                            {project.description}
+                                            {project.description[language]}
                                         </p>
 
                                         {/* Impact Metrics - Featured Only */}
@@ -148,7 +150,7 @@ const Projects = () => {
                                                     className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-3 py-2.5 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-semibold rounded-lg hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
                                                 >
                                                     <FaStar className="text-xs" />
-                                                    Ver Caso de Estudio
+                                                    {t('projects.buttons.case_study')}
                                                 </button>
                                             )}
 
@@ -160,19 +162,19 @@ const Projects = () => {
                                                     className="flex-1 min-w-[120px] flex items-center justify-center gap-2 px-3 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-xs font-semibold rounded-lg hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300"
                                                 >
                                                     <FaExternalLinkAlt className="text-xs" />
-                                                    Ver Demo
+                                                    {t('projects.buttons.demo')}
                                                 </a>
                                             ) : (
                                                 <div className="flex-1 min-w-[120px] flex items-center justify-center gap-2 px-3 py-2.5 bg-dark-800 text-dark-500 text-xs font-semibold rounded-lg cursor-not-allowed">
                                                     <FaExternalLinkAlt className="text-xs" />
-                                                    Demo en preparación
+                                                    {t('projects.buttons.demo_wip')}
                                                 </div>
                                             )}
 
                                             {project.status === 'private' ? (
                                                 <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 glass-card text-dark-500 text-sm font-semibold cursor-not-allowed">
                                                     <FaGithub className="text-base" />
-                                                    Privado
+                                                    {t('projects.buttons.private')}
                                                 </div>
                                             ) : project.githubUrl ? (
                                                 <a
@@ -183,12 +185,12 @@ const Projects = () => {
                                                     className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 glass-card text-white text-sm font-semibold hover:bg-white/10 transition-all duration-300 ${project.githubUrl === '#' ? 'cursor-default opacity-80' : ''}`}
                                                 >
                                                     <FaGithub className="text-base" />
-                                                    GitHub
+                                                    {t('projects.buttons.github')}
                                                 </a>
                                             ) : (
                                                 <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 glass-card text-dark-500 text-sm font-semibold cursor-not-allowed">
                                                     <FaGithub className="text-base" />
-                                                    Próximamente
+                                                    {t('projects.buttons.coming_soon')}
                                                 </div>
                                             )}
                                         </div>
@@ -208,8 +210,8 @@ const Projects = () => {
                             transition={{ duration: 0.5, delay: 0.5 }}
                             className="mb-10"
                         >
-                            <h3 className="text-2xl font-bold text-white mb-2">Otros Proyectos</h3>
-                            <p className="text-dark-300">Más soluciones empresariales desarrolladas</p>
+                            <h3 className="text-2xl font-bold text-white mb-2">{t('projects.other_title')}</h3>
+                            <p className="text-dark-300">{t('projects.other_subtitle')}</p>
                         </motion.div>
 
                         {/* Regular Projects Grid */}
@@ -226,14 +228,14 @@ const Projects = () => {
                                     <div className="relative h-64 overflow-hidden">
                                         <img
                                             src={project.image}
-                                            alt={project.title}
+                                            alt={project.title[language]}
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
 
                                         {/* Hover Overlay with Description - Desktop Only */}
                                         <div className="hidden lg:flex absolute inset-0 bg-gradient-to-t from-dark-950/95 via-dark-950/80 to-dark-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center p-6">
                                             <p className="text-white text-sm leading-relaxed text-center">
-                                                {project.description}
+                                                {project.description[language]}
                                             </p>
                                         </div>
 
@@ -258,12 +260,12 @@ const Projects = () => {
                                     <div className="p-6 flex flex-col flex-grow">
                                         {/* Project Title */}
                                         <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300 mb-3">
-                                            {project.title}
+                                            {project.title[language]}
                                         </h3>
 
                                         {/* Description - Mobile Only */}
                                         <p className="lg:hidden text-dark-300 text-sm leading-relaxed mb-4">
-                                            {project.description}
+                                            {project.description[language]}
                                         </p>
 
                                         {/* Technologies */}
@@ -290,19 +292,19 @@ const Projects = () => {
                                                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300"
                                                 >
                                                     <FaExternalLinkAlt className="text-xs" />
-                                                    Ver Demo
+                                                    {t('projects.buttons.demo')}
                                                 </a>
                                             ) : (
                                                 <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-dark-800 text-dark-500 text-sm font-semibold rounded-lg cursor-not-allowed">
                                                     <FaExternalLinkAlt className="text-xs" />
-                                                    Demo en preparación
+                                                    {t('projects.buttons.demo_wip')}
                                                 </div>
                                             )}
 
                                             {project.status === 'private' ? (
                                                 <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2 glass-card text-dark-500 text-sm font-semibold cursor-not-allowed">
                                                     <FaGithub className="text-base" />
-                                                    Privado
+                                                    {t('projects.buttons.private')}
                                                 </div>
                                             ) : project.githubUrl ? (
                                                 <a
@@ -313,12 +315,12 @@ const Projects = () => {
                                                     className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 glass-card text-white text-sm font-semibold hover:bg-white/10 transition-all duration-300 ${project.githubUrl === '#' ? 'cursor-default opacity-80' : ''}`}
                                                 >
                                                     <FaGithub className="text-base" />
-                                                    GitHub
+                                                    {t('projects.buttons.github')}
                                                 </a>
                                             ) : (
                                                 <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2 glass-card text-dark-500 text-sm font-semibold cursor-not-allowed">
                                                     <FaGithub className="text-base" />
-                                                    Próximamente
+                                                    {t('projects.buttons.coming_soon')}
                                                 </div>
                                             )}
                                         </div>
@@ -337,9 +339,7 @@ const Projects = () => {
                     className="mt-12 text-center glass-card p-6"
                 >
                     <p className="text-dark-400">
-                        Cada proyecto fue desarrollado con <span className="text-primary-400 font-semibold">código limpio</span>,
-                        <span className="text-primary-400 font-semibold"> arquitectura escalable</span> y
-                        <span className="text-primary-400 font-semibold"> mejores prácticas</span> de la industria.
+                        {t('projects.note')}
                     </p>
                 </motion.div>
             </div>

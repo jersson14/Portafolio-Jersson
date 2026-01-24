@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaWhatsapp, FaReact, FaPython, FaNodeJs, FaAws, FaDocker, FaDatabase, FaFileDownload, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const FloatingIcon = ({ icon: Icon, delay, x, y, duration = 4, size = "text-5xl", glowColor = "rgba(14,165,233,0.5)" }) => (
     <motion.div
@@ -26,6 +27,8 @@ const FloatingIcon = ({ icon: Icon, delay, x, y, duration = 4, size = "text-5xl"
 );
 
 const Hero = () => {
+    const { t } = useLanguage();
+
     return (
         <section id="home" className="min-h-screen flex items-center relative overflow-hidden gradient-bg pt-20 md:pt-0">
             {/* Animated Background Elements - ENHANCED LUMINOSITY */}
@@ -70,7 +73,7 @@ const Hero = () => {
                             className="mb-4"
                         >
                             <span className="inline-block py-1 px-3 rounded-full bg-primary-500/10 border border-primary-500/30 text-primary-300 font-semibold text-sm md:text-base backdrop-blur-md shadow-[0_0_15px_rgba(14,165,233,0.3)]">
-                                👋 Hola, bienvenido a mi portafolio
+                                {t('hero.greeting')}
                             </span>
                         </motion.div>
 
@@ -92,7 +95,7 @@ const Hero = () => {
                             className="mb-8"
                         >
                             <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-primary-100/90 tracking-wide">
-                                Software Engineer | Full Stack | Cloud Solutions
+                                {t('hero.role')}
                             </h2>
                         </motion.div>
 
@@ -102,9 +105,8 @@ const Hero = () => {
                             transition={{ duration: 0.6, delay: 0.6 }}
                             className="text-lg text-dark-200 max-w-xl mb-10 leading-relaxed font-light"
                         >
-                            Especialista en <span className="text-primary-400 font-semibold">Ingeniería y Desarrollo de Software</span> con
-                            <span className="text-white font-semibold"> más de 5 años de experiencia</span> en el diseño, desarrollo y despliegue de aplicaciones web empresariales de nivel enterprise.
-                            Combino ingeniería de software avanzada con inteligencia artificial y cloud computing.
+                            {t('hero.description_prefix')} <span className="text-primary-400 font-semibold">{t('hero.description_highlight_1')}</span> {t('hero.description_connector')}
+                            <span className="text-white font-semibold"> {t('hero.description_highlight_2')}</span> {t('hero.description_suffix')}
                         </motion.p>
 
                         <motion.div
@@ -114,13 +116,13 @@ const Hero = () => {
                             className="flex flex-wrap gap-4 mb-12"
                         >
                             <a href="#projects" className="btn-primary flex items-center gap-2 shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)]">
-                                <FaProjectDiagram /> Ver Proyectos
+                                <FaProjectDiagram /> {t('hero.buttons.projects')}
                             </a>
                             <a href="#contact" className="btn-secondary flex items-center gap-2 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                                <FaEnvelope /> Contactar
+                                <FaEnvelope /> {t('hero.buttons.contact')}
                             </a>
                             <a href="/cv_jersson.pdf" download="CV_Jersson_Corilla.pdf" className="px-8 py-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:scale-105">
-                                <FaFileDownload className="text-lg" /> Descargar CV
+                                <FaFileDownload className="text-lg" /> {t('hero.buttons.cv')}
                             </a>
                         </motion.div>
 

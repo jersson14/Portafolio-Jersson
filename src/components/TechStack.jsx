@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { techStackData } from '../data/techStack';
+import { useLanguage } from '../context/LanguageContext';
 
 const TechStack = () => {
+    const { t } = useLanguage();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -19,9 +21,9 @@ const TechStack = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="section-title">Stack Tecnológico</h2>
+                    <h2 className="section-title">{t('tech_stack.title')}</h2>
                     <p className="section-subtitle">
-                        Tecnologías y herramientas que domino para crear soluciones robustas
+                        {t('tech_stack.subtitle')}
                     </p>
                 </motion.div>
 
@@ -77,7 +79,7 @@ const TechStack = () => {
                     className="mt-12 text-center"
                 >
                     <p className="text-dark-400 text-lg">
-                        Y siempre aprendiendo nuevas tecnologías para mantenerme actualizado con las últimas tendencias
+                        {t('tech_stack.learning_text')}
                     </p>
                 </motion.div>
             </div>
