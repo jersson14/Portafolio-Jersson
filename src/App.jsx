@@ -138,12 +138,23 @@ function App() {
                   </a>
                 ))}
 
-                {/* Language Toggle */}
+                {/* Language Toggle - Modern Switch */}
                 <button
                   onClick={toggleLanguage}
-                  className="ml-4 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-white text-xs font-bold hover:bg-white/10 transition-all"
+                  className="ml-4 relative w-16 h-8 rounded-full bg-gradient-to-r from-primary-500/20 to-primary-600/20 border border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20"
+                  aria-label="Toggle Language"
                 >
-                  {language === 'es' ? 'EN' : 'ES'}
+                  {/* Sliding Background */}
+                  <motion.div
+                    className="absolute top-0.5 left-0.5 w-7 h-7 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 shadow-lg"
+                    animate={{ x: language === 'es' ? 0 : 32 }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  />
+                  {/* Labels */}
+                  <div className="absolute inset-0 flex items-center justify-between px-2 text-[10px] font-bold">
+                    <span className={`transition-all duration-300 ${language === 'es' ? 'text-white' : 'text-primary-300'}`}>ES</span>
+                    <span className={`transition-all duration-300 ${language === 'en' ? 'text-white' : 'text-primary-300'}`}>EN</span>
+                  </div>
                 </button>
 
                 {/* CV Download Button */}
@@ -159,12 +170,23 @@ function App() {
 
               {/* Right Side: Mobile Menu */}
               <div className="flex items-center gap-4 lg:hidden">
-                {/* Mobile Language Toggle */}
+                {/* Mobile Language Toggle - Modern Switch */}
                 <button
                   onClick={toggleLanguage}
-                  className="px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-white text-xs font-bold hover:bg-white/10 transition-all"
+                  className="relative w-16 h-8 rounded-full bg-gradient-to-r from-primary-500/20 to-primary-600/20 border border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20"
+                  aria-label="Toggle Language"
                 >
-                  {language === 'es' ? 'EN' : 'ES'}
+                  {/* Sliding Background */}
+                  <motion.div
+                    className="absolute top-0.5 left-0.5 w-7 h-7 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 shadow-lg"
+                    animate={{ x: language === 'es' ? 0 : 32 }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  />
+                  {/* Labels */}
+                  <div className="absolute inset-0 flex items-center justify-between px-2 text-[10px] font-bold">
+                    <span className={`transition-all duration-300 ${language === 'es' ? 'text-white' : 'text-primary-300'}`}>ES</span>
+                    <span className={`transition-all duration-300 ${language === 'en' ? 'text-white' : 'text-primary-300'}`}>EN</span>
+                  </div>
                 </button>
 
                 {/* Mobile Menu Button */}
