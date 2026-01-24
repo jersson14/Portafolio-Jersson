@@ -116,7 +116,7 @@ export const projectsData = [
   {
     id: 7,
     title: {
-      es: "Sistema Básico de Gestión de Grifos",
+      es: "Sistema Básico de Gestión de Grifos y Lecturas",
       en: "Basic Gas Station Management System"
     },
     description: {
