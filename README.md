@@ -1,429 +1,236 @@
-# 💼 Portafolio Profesional - Jersson Jorge Corilla Miranda
+<div align="center">
 
-[![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-7.2.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.19-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.26.2-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+# Jersson Corilla Miranda — Portfolio
 
-Portafolio web profesional y moderno desarrollado con React, Vite y Tailwind CSS. Diseñado para destacar proyectos, experiencia y habilidades técnicas con una interfaz premium, animaciones fluidas y diseño completamente responsivo.
+**Software Engineer · Full Stack · Cloud Solutions**
 
----
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=white)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38BDF8?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-00C4B4?style=flat&logo=framer&logoColor=white)](https://www.framer.com/motion)
+[![License](https://img.shields.io/badge/License-MIT-a855f7?style=flat)](#)
 
-## 🌟 Características Principales
+Portafolio personal construido con React 19 + Vite 7. Diseño dark neon con paleta cyan/violeta, animaciones fluidas con Framer Motion, soporte bilingüe ES/EN y carga optimizada mediante lazy loading por sección.
 
-### ✨ Diseño y UX
-- **Diseño Premium**: Interfaz moderna con glassmorphism, gradientes vibrantes y efectos visuales sofisticados
-- **Totalmente Responsivo**: Optimizado para desktop, tablet y móvil con breakpoints adaptativos
-- **Animaciones Fluidas**: Transiciones y efectos implementados con Framer Motion
-- **Modo Oscuro**: Esquema de colores oscuro profesional con acentos en azul y verde
-
-### 🎯 Secciones Implementadas
-1. **Hero** - Presentación principal con CTA destacados
-2. **Sobre Mí** - Perfil profesional y propuesta de valor
-3. **Experiencia** - Timeline de experiencia laboral
-4. **Proyectos** - Galería de proyectos con efectos hover interactivos
-5. **Servicios** - Servicios profesionales ofrecidos
-6. **Stack Tecnológico** - Tecnologías y herramientas dominadas
-7. **Certificaciones** - Certificaciones y cursos completados
-8. **Contacto** - Formulario y enlaces a redes sociales
-9. **Footer** - Información adicional y enlaces
-
-### 🚀 Funcionalidades Destacadas
-
-#### Proyectos con Efectos Hover
-- **Desktop**: Overlay con descripción al pasar el mouse
-- **Móvil**: Descripciones siempre visibles para mejor UX
-- **Imágenes**: Efecto zoom suave (scale 110%)
-- **Badges**: Categoría y estado (privado/público)
-
-#### Descarga de CV
-- **Header**: Botón verde prominente siempre visible
-- **Hero**: CTA principal con gradiente destacado
-- **Descarga Directa**: Archivo PDF con nombre personalizado
-
-#### Optimización Móvil
-- **Navegación Responsive**: Menú hamburguesa en móvil
-- **Contenido Adaptativo**: Layout optimizado para pantallas pequeñas
-- **Touch-Friendly**: Botones y elementos con tamaño adecuado para táctil
+</div>
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Arquitectura del proyecto
+
+```mermaid
+graph TD
+    subgraph Browser["🌐 Navegador"]
+        Entry["index.html"]
+    end
+
+    subgraph Core["⚛️ Core — React 19 + Vite 7"]
+        Main["main.jsx\n(ReactDOM.createRoot)"]
+        Context["LanguageContext\n(i18n ES / EN)"]
+        App["App.jsx\n(Shell principal)"]
+    end
+
+    subgraph Layout["🎨 Layout & UX Global"]
+        Cursor["Custom Cursor\ncyan ↔ violet on hover"]
+        NavBar["Navbar flotante\nGlassmorphism + scroll spy"]
+        BG["AnimatedBackground\nAurora canvas animado"]
+        ScrollTop["Scroll-to-top\nAnimated FAB"]
+        Footer["Footer"]
+    end
+
+    subgraph Sections["📄 Secciones — React.lazy + Suspense"]
+        Hero["Hero\nTítulo + typewriter + CTA"]
+        About["About\nPerfil + skill cards"]
+        TechStack["TechStack\nGrid de tecnologías"]
+        Projects["Projects\nTarjetas con hover overlay"]
+        Experience["Experience\nTimeline laboral"]
+        Certs["Certifications\nBadges de certificados"]
+        Services["Services\nServicios ofrecidos"]
+        Contact["Contact\nFormulario + WhatsApp"]
+        CaseStudy["ProjectCaseStudy\nModal de detalle"]
+    end
+
+    subgraph Data["🗄️ Datos estáticos"]
+        T["translations.js\nStrings ES / EN"]
+        P["projects.js"]
+        TS["techStack.js"]
+        EX["experience.js"]
+        CE["certifications.js"]
+        SE["services.js"]
+    end
+
+    subgraph Libs["📦 Dependencias clave"]
+        FM["Framer Motion 12\nAnimaciones y transiciones"]
+        RI["React Icons 5\nIconografía SVG"]
+        TW["Tailwind CSS 3\nUtility-first + tema neon"]
+    end
+
+    Entry --> Main
+    Main --> Context
+    Main --> App
+    App --> Layout
+    App --> Sections
+    Context --> T
+    Sections --> Data
+    Layout --> Libs
+    Sections --> Libs
+```
+
+---
+
+## Características
+
+| Característica | Detalle |
+|---|---|
+| **Bilingüe ES/EN** | Toggle en navbar via `LanguageContext` + `translations.js` |
+| **Dark neon design** | Cyan `#06b6d4` + violeta `#a855f7`, glassmorphism, box-shadow neon |
+| **Lazy loading** | Cada sección cargada con `React.lazy` + `Suspense` |
+| **Custom cursor** | Cursor neon que cambia cyan→violeta al hover en interactivos |
+| **Scroll spy** | Navbar resalta la sección activa en tiempo real |
+| **Animaciones** | Framer Motion: entradas, hover, transiciones de layout |
+| **Aurora background** | Fondo generativo animado en canvas |
+| **CV descargable** | PDF directo desde navbar y sección Hero |
+| **Responsive** | Mobile-first, breakpoints xs (475px) → 2xl |
+
+---
+
+## Stack tecnológico
 
 ### Frontend
-- **React 19.2.0** - Biblioteca de UI con hooks modernos
-- **Vite 7.2.4** - Build tool ultrarrápido con HMR
-- **Tailwind CSS 3.4.19** - Framework CSS utility-first
-- **Framer Motion 12.26.2** - Biblioteca de animaciones
+- **React 19** — Concurrent features, `React.lazy`, `Suspense`
+- **Vite 7** — Build ultrarrápido con HMR
+- **Tailwind CSS 3** — Tema extendido: paleta neon, tipografías, keyframes personalizados
+- **Framer Motion 12** — Animaciones declarativas, `AnimatePresence`, `layoutId`
 
-### Herramientas y Librerías
-- **React Icons 5.5.0** - Iconos vectoriales
-- **PostCSS 8.5.6** - Procesador CSS
-- **Autoprefixer 10.4.23** - Prefijos CSS automáticos
-- **ESLint 9.39.1** - Linter para código limpio
+### Diseño
+- **Tipografías**: `Syne` (display/títulos) · `DM Sans` (cuerpo) · `JetBrains Mono` (código) · `Rajdhani` (hero)
+- **Paleta**: `primary` cyan · `accent` violeta · `gold` · `dark`
+- **Efectos**: glassmorphism · shimmer text · box-shadow neon · aurora canvas
+
+### Dev tooling
+- ESLint 9 · Autoprefixer · PostCSS
 
 ---
 
-## 📦 Instalación y Configuración
+## Estructura del proyecto
 
-### Prerrequisitos
-- Node.js 18.x o superior
-- npm o yarn
+```
+portafolio/
+├── public/
+│   └── CV_jersson_corilla_miranda.pdf
+├── src/
+│   ├── components/
+│   │   ├── AnimatedBackground.jsx   # Canvas aurora animado
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── TechStack.jsx
+│   │   ├── Projects.jsx
+│   │   ├── ProjectCaseStudy.jsx     # Modal de detalle de proyecto
+│   │   ├── Experience.jsx
+│   │   ├── Certifications.jsx
+│   │   ├── Services.jsx
+│   │   ├── Contact.jsx
+│   │   └── Footer.jsx
+│   ├── context/
+│   │   └── LanguageContext.jsx      # Proveedor i18n ES/EN
+│   ├── data/
+│   │   ├── translations.js          # Todos los strings del sitio
+│   │   ├── projects.js
+│   │   ├── techStack.js
+│   │   ├── experience.js
+│   │   ├── certifications.js
+│   │   └── services.js
+│   ├── App.jsx                      # Shell: navbar, cursor, scroll, layout
+│   ├── main.jsx
+│   └── index.css
+├── tailwind.config.js
+├── vite.config.js
+└── package.json
+```
 
-### Instalación
+---
+
+## Inicio rápido
+
+**Requisitos previos**: Node.js 18+
 
 ```bash
-# Clonar el repositorio
+# Clonar
 git clone https://github.com/jersson14/Portafolio-Jersson.git
-
-# Navegar al directorio
 cd Portafolio-Jersson
 
 # Instalar dependencias
 npm install
-```
 
-### Comandos Disponibles
-
-```bash
-# Iniciar servidor de desarrollo (http://localhost:5173)
+# Desarrollo (http://localhost:5173)
 npm run dev
 
-# Compilar para producción
+# Build de producción
 npm run build
 
-# Previsualizar build de producción
+# Preview del build
 npm run preview
-
-# Ejecutar linter
-npm run lint
 ```
 
 ---
 
-## 📁 Estructura del Proyecto
+## Despliegue
 
-```
-Portafolio-Jersson/
-├── public/                      # Archivos estáticos
-│   ├── about-bg.png            # Imagen de fondo sección About
-│   ├── cv_jersson.pdf          # CV en formato PDF
-│   ├── hero-image.png          # Imagen principal Hero
-│   ├── profile.png             # Foto de perfil
-│   ├── colegio.png             # Proyecto: Sistema Educativo
-│   ├── facturacion.png         # Proyecto: Facturación
-│   ├── grados_y_titulos.png    # Proyecto: Diplomas
-│   ├── grifo.png               # Proyecto: Gestión de Grifos
-│   ├── odontologia.png         # Proyecto: Historias Clínicas
-│   ├── recuperos.png           # Proyecto: Recuperos
-│   ├── saneamiento_titulos.png # Proyecto: Saneamiento
-│   └── tramite_documentario.png # Proyecto: Trámite Documentario
-│
-├── src/
-│   ├── components/             # Componentes React
-│   │   ├── About.jsx           # Sección Sobre Mí
-│   │   ├── AnimatedBackground.jsx # Fondo animado
-│   │   ├── Certifications.jsx  # Certificaciones
-│   │   ├── Contact.jsx         # Formulario de contacto
-│   │   ├── Experience.jsx      # Experiencia laboral
-│   │   ├── Footer.jsx          # Pie de página
-│   │   ├── Hero.jsx            # Sección principal
-│   │   ├── Projects.jsx        # Galería de proyectos
-│   │   ├── Services.jsx        # Servicios ofrecidos
-│   │   └── TechStack.jsx       # Stack tecnológico
-│   │
-│   ├── data/                   # Datos del portafolio
-│   │   ├── certifications.js   # Lista de certificaciones
-│   │   ├── experience.js       # Experiencia laboral
-│   │   ├── projects.js         # Proyectos destacados
-│   │   ├── services.js         # Servicios profesionales
-│   │   └── techStack.js        # Tecnologías dominadas
-│   │
-│   ├── App.jsx                 # Componente principal
-│   ├── App.css                 # Estilos del App
-│   ├── index.css               # Estilos globales y Tailwind
-│   └── main.jsx                # Punto de entrada
-│
-├── .gitignore                  # Archivos ignorados por Git
-├── eslint.config.js            # Configuración ESLint
-├── index.html                  # HTML principal
-├── package.json                # Dependencias y scripts
-├── postcss.config.js           # Configuración PostCSS
-├── tailwind.config.js          # Configuración Tailwind
-├── vite.config.js              # Configuración Vite
-└── README.md                   # Este archivo
-```
-
----
-
-## 🎨 Personalización
-
-### Modificar Información Personal
-
-#### 1. Datos de Proyectos
-Edita `src/data/projects.js`:
-```javascript
-export const projectsData = [
-  {
-    id: 1,
-    title: "Tu Proyecto",
-    description: "Descripción del proyecto",
-    image: "/tu-imagen.png",
-    technologies: ["React", "Node.js"],
-    category: "Full Stack",
-    status: "public", // o "private"
-    demoUrl: "https://demo.com",
-    githubUrl: "https://github.com/usuario/repo"
-  }
-];
-```
-
-#### 2. Experiencia Laboral
-Edita `src/data/experience.js`:
-```javascript
-export const experienceData = [
-  {
-    id: 1,
-    title: "Tu Puesto",
-    company: "Empresa",
-    period: "2020 - Presente",
-    description: "Descripción del rol",
-    achievements: ["Logro 1", "Logro 2"]
-  }
-];
-```
-
-#### 3. Stack Tecnológico
-Edita `src/data/techStack.js` para agregar/modificar tecnologías.
-
-#### 4. Certificaciones
-Edita `src/data/certifications.js` para actualizar certificaciones.
-
-### Cambiar Colores del Tema
-
-Edita `tailwind.config.js`:
-```javascript
-theme: {
-  extend: {
-    colors: {
-      primary: {
-        400: '#60A5FA', // Azul claro
-        500: '#3B82F6', // Azul principal
-        600: '#2563EB', // Azul oscuro
-      },
-      dark: {
-        950: '#0A0E1A', // Fondo principal
-        900: '#0F172A', // Fondo secundario
-      }
-    }
-  }
-}
-```
-
-### Reemplazar CV
-
-1. Coloca tu CV en `public/cv_jersson.pdf`
-2. O actualiza la ruta en `src/App.jsx` y `src/components/Hero.jsx`
-
----
-
-## 🚀 Despliegue
-
-### Vercel (Recomendado)
+### Vercel (recomendado)
 
 ```bash
-# Instalar Vercel CLI
 npm i -g vercel
-
-# Desplegar
 vercel
 ```
 
 ### Netlify
 
 ```bash
-# Build
 npm run build
-
-# Desplegar carpeta dist/
 netlify deploy --prod --dir=dist
 ```
 
 ### GitHub Pages
 
-```bash
-# Instalar gh-pages
-npm install --save-dev gh-pages
-
-# Agregar scripts en package.json
+Agrega en `package.json`:
+```json
 "homepage": "https://jersson14.github.io/Portafolio-Jersson",
 "predeploy": "npm run build",
 "deploy": "gh-pages -d dist"
-
-# Desplegar
+```
+```bash
+npm install --save-dev gh-pages
 npm run deploy
 ```
 
 ---
 
-## 📱 Responsive Breakpoints
+## Personalización rápida
 
-```css
-/* Móvil: < 768px */
-/* Tablet: 768px - 1023px */
-/* Desktop: ≥ 1024px */
-```
-
-El diseño utiliza los breakpoints estándar de Tailwind:
-- `sm`: 640px
-- `md`: 768px
-- `lg`: 1024px
-- `xl`: 1280px
-- `2xl`: 1536px
+**Proyectos** → `src/data/projects.js`  
+**Experiencia** → `src/data/experience.js`  
+**Tecnologías** → `src/data/techStack.js`  
+**Certificaciones** → `src/data/certifications.js`  
+**Servicios** → `src/data/services.js`  
+**Textos ES/EN** → `src/data/translations.js`  
+**Colores/fuentes** → `tailwind.config.js`  
+**CV** → reemplazar `/public/CV_jersson_corilla_miranda.pdf`
 
 ---
 
-## 🎯 Optimizaciones Implementadas
+## Autor
 
-### Performance
-- ✅ Lazy loading de imágenes
-- ✅ Code splitting automático (Vite)
-- ✅ Minificación de CSS y JS
-- ✅ Compresión de assets
+**Jersson Corilla Miranda** — Software Engineer · Full Stack · Cloud Solutions
 
-### SEO
-- ✅ Meta tags optimizados
-- ✅ Títulos descriptivos
-- ✅ Estructura semántica HTML5
-- ✅ IDs únicos para navegación
+> 5+ años de experiencia en diseño, desarrollo y despliegue de aplicaciones web empresariales.
+> Especialidad en AWS/Azure, Business Intelligence y automatización con IA.
 
-### Accesibilidad
-- ✅ Contraste de colores adecuado
-- ✅ Navegación por teclado
-- ✅ Atributos ARIA donde necesario
-- ✅ Textos alternativos en imágenes
-
----
-
-## 🐛 Solución de Problemas
-
-### El servidor de desarrollo no inicia
-```bash
-# Limpiar caché y reinstalar
-rm -rf node_modules package-lock.json
-npm install
-npm run dev
-```
-
-### Errores de Tailwind
-```bash
-# Verificar configuración de PostCSS
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-
-### Build falla
-```bash
-# Verificar versión de Node
-node --version  # Debe ser ≥ 18.x
-
-# Limpiar y rebuildar
-npm run lint
-npm run build
-```
-
----
-
-## 📄 Licencia
-
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
-
----
-
-## 👤 Autor
-
-**Jersson Jorge Corilla Miranda**
-
-- 🌐 Portfolio: [https://jersson14.github.io/Portafolio-Jersson](https://jersson14.github.io/Portafolio-Jersson)
-- 💼 LinkedIn: [linkedin.com/in/jersson-corilla](https://linkedin.com/in/jersson-corilla)
-- 🐙 GitHub: [@jersson14](https://github.com/jersson14)
-- 📧 Email: jersson14071996@gmail.com
-
----
-
-## 🙏 Agradecimientos
-
-- **React Team** - Por la increíble biblioteca
-- **Vite Team** - Por la herramienta de build ultrarrápida
-- **Tailwind Labs** - Por el framework CSS
-- **Framer** - Por la biblioteca de animaciones
-
----
-
-## 📝 Changelog
-
-### v1.0.0 (2026-01-24) 🎉
-
-**Lanzamiento Oficial - Versión Producción**
-
-#### ✨ Características Principales
-- ✅ Portafolio completo con 8 proyectos profesionales
-- ✅ Diseño premium con glassmorphism y animaciones fluidas
-- ✅ Sistema bilingüe (Español/Inglés) completamente funcional
-- ✅ Sección Hero con iconos flotantes animados
-- ✅ Galería de proyectos con efectos hover interactivos
-- ✅ 2 proyectos destacados con métricas de impacto
-- ✅ Timeline de experiencia laboral (8 posiciones)
-- ✅ Stack tecnológico completo (Frontend, Backend, Cloud, Data, IA)
-- ✅ 8 certificaciones profesionales
-- ✅ 6 servicios profesionales detallados
-- ✅ Formulario de contacto integrado con WhatsApp
-- ✅ Botones de descarga de CV en header y hero
-- ✅ Navegación suave entre secciones
-- ✅ Footer con enlaces a redes sociales
-
-#### 📱 Optimizaciones Mobile
-- ✅ Diseño completamente responsivo (móvil, tablet, desktop)
-- ✅ Viewport optimizado para dispositivos de alta densidad
-- ✅ Breakpoint `xs` (475px) para pantallas muy pequeñas
-- ✅ Iconos flotantes ocultos en móvil para mejor UX
-- ✅ Inputs de formulario con fuente 16px (evita zoom automático)
-- ✅ Botones táctiles con tamaño mínimo 44px
-- ✅ Padding reducido en móvil para maximizar contenido visible
-- ✅ Navegación optimizada para Samsung A15 y similares
-
-#### 🚀 Performance
-- ✅ Lazy loading de componentes con React.lazy
-- ✅ Code splitting automático con Vite
-- ✅ Animaciones optimizadas con Framer Motion
-- ✅ Imágenes optimizadas en formato PNG
-
-#### 🎨 Diseño
-- ✅ Esquema de colores oscuro profesional
-- ✅ Gradientes vibrantes (azul y verde)
-- ✅ Efectos glassmorphism en tarjetas
-- ✅ Transiciones suaves en todos los elementos
-- ✅ Scrollbar personalizado
-
-#### 🔧 SEO y Accesibilidad
-- ✅ Meta tags completos (Open Graph, Twitter Cards)
-- ✅ Títulos descriptivos y semánticos
-- ✅ Estructura HTML5 semántica
-- ✅ Contraste de colores adecuado
-- ✅ Navegación por teclado funcional
-
----
-
-### Versiones Anteriores
-
-#### v0.1.0 (2026-01-17)
-- 🎨 Implementación inicial del diseño
-- 📦 Configuración de Vite + React + Tailwind
-- 🖼️ Primeras 8 imágenes de proyectos agregadas
+- LinkedIn: [linkedin.com/in/jersson-corilla](https://linkedin.com/in/jersson-corilla)
+- GitHub: [@jersson14](https://github.com/jersson14)
+- Email: jersson1407miranda@gmail.com
 
 ---
 
 <div align="center">
-  <p>Desarrollado con ❤️ por Jersson Corilla</p>
-  <p>⭐ Si te gusta este proyecto, dale una estrella en GitHub!</p>
+Hecho con React + Vite · Diseñado en Perú
 </div>

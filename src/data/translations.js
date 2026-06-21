@@ -51,6 +51,7 @@ export const translations = {
     projects: {
       title: 'Mis Proyectos',
       subtitle: 'Soluciones empresariales desarrolladas con tecnologías modernas y mejores prácticas',
+      top_title: 'Proyecto Principal',
       featured_title: 'Proyectos Destacados',
       featured_subtitle: 'Soluciones innovadoras con tecnologías de vanguardia',
       other_title: 'Otros Proyectos',
@@ -169,6 +170,7 @@ export const translations = {
     projects: {
       title: 'My Projects',
       subtitle: 'Enterprise solutions developed with modern technologies and best practices',
+      top_title: 'Main Project',
       featured_title: 'Featured Projects',
       featured_subtitle: 'Innovative solutions with cutting-edge technologies',
       other_title: 'Other Projects',

@@ -1,10 +1,9 @@
-import { useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect, Suspense, lazy, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowUp, FaBars, FaTimes } from 'react-icons/fa';
+import { FaArrowUp, FaBars, FaTimes, FaDownload } from 'react-icons/fa';
 import AnimatedBackground from './components/AnimatedBackground';
 import Footer from './components/Footer';
 
-// Lazy loading components
 const Hero = lazy(() => import('./components/Hero'));
 const About = lazy(() => import('./components/About'));
 const TechStack = lazy(() => import('./components/TechStack'));
@@ -24,8 +23,10 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [showCaseStudy, setShowCaseStudy] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
 
-  // ... (maintain existing scroll logic) ...
+  const cursorRef = useRef(null);
+  const cursorRingRef = useRef(null);
 
   const navLinks = [
     { id: 'home', label: t('nav.home') },
@@ -38,18 +39,62 @@ function App() {
     { id: 'contact', label: t('nav.contact') },
   ];
 
-  // Handle scroll events
+  /* Custom cursor */
+  useEffect(() => {
+    const cursor = cursorRef.current;
+    const ring = cursorRingRef.current;
+    if (!cursor || !ring) return;
+
+    const move = (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      ring.style.left = `${e.clientX}px`;
+      ring.style.top = `${e.clientY}px`;
+    };
+
+    const onEnter = () => {
+      cursor.style.width = '16px';
+      cursor.style.height = '16px';
+      cursor.style.background = '#a855f7';
+      cursor.style.boxShadow = '0 0 16px #a855f7, 0 0 32px rgba(168,85,247,0.5)';
+      ring.style.width = '50px';
+      ring.style.height = '50px';
+      ring.style.borderColor = 'rgba(168,85,247,0.5)';
+    };
+
+    const onLeave = () => {
+      cursor.style.width = '10px';
+      cursor.style.height = '10px';
+      cursor.style.background = '#22d3ee';
+      cursor.style.boxShadow = '0 0 12px #22d3ee, 0 0 28px rgba(34,211,238,0.5)';
+      ring.style.width = '38px';
+      ring.style.height = '38px';
+      ring.style.borderColor = 'rgba(34,211,238,0.45)';
+    };
+
+    window.addEventListener('mousemove', move);
+    document.querySelectorAll('a, button, [role="button"]').forEach((el) => {
+      el.addEventListener('mouseenter', onEnter);
+      el.addEventListener('mouseleave', onLeave);
+    });
+
+    return () => {
+      window.removeEventListener('mousemove', move);
+    };
+  }, []);
+
+  /* Scroll handler */
   useEffect(() => {
     const handleScroll = () => {
-      // Show/hide scroll to top button
-      setShowScrollTop(window.scrollY > 500);
+      const y = window.scrollY;
+      setShowScrollTop(y > 500);
+      setScrolled(y > 20);
 
-      // Update active section
-      const sections = navLinks.map(link => link.id);
+      const sections = navLinks.map((l) => l.id);
       for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
           if (rect.top <= 100 && rect.bottom >= 100) {
             setActiveSection(section);
             break;
@@ -60,32 +105,57 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [navLinks]); // Added navLinks dependency for safety although ids are stable
+  }, [navLinks]);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const handleNavClick = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false);
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
   };
 
-  // Setup Event Listener for "Open Case Study" button click
   useEffect(() => {
-    const handleOpenCaseStudy = (e) => {
-      setSelectedProjectId(e.detail?.projectId || 2); // Default to 2 for backward compatibility
+    const open = (e) => {
+      setSelectedProjectId(e.detail?.projectId || 2);
       setShowCaseStudy(true);
     };
-    window.addEventListener('openCaseStudy', handleOpenCaseStudy);
-    return () => window.removeEventListener('openCaseStudy', handleOpenCaseStudy);
+    window.addEventListener('openCaseStudy', open);
+    return () => window.removeEventListener('openCaseStudy', open);
   }, []);
+
+  const LanguageSwitch = () => (
+    <button
+      onClick={toggleLanguage}
+      className="relative w-16 h-8 rounded-full transition-all duration-300"
+      style={{
+        background: 'rgba(6,182,212,0.1)',
+        border: '1px solid rgba(6,182,212,0.3)',
+      }}
+      aria-label="Toggle Language"
+    >
+      <motion.div
+        className="absolute top-0.5 left-0.5 w-7 h-7 rounded-full"
+        style={{
+          background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
+          boxShadow: '0 0 10px rgba(6,182,212,0.5)',
+        }}
+        animate={{ x: language === 'es' ? 0 : 32 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      />
+      <div className="absolute inset-0 flex items-center justify-between px-2 text-[10px] font-bold font-mono">
+        <span className={`transition-all duration-300 ${language === 'es' ? 'text-white' : 'text-primary-400'}`}>ES</span>
+        <span className={`transition-all duration-300 ${language === 'en' ? 'text-white' : 'text-primary-400'}`}>EN</span>
+      </div>
+    </button>
+  );
 
   return (
     <div className="min-h-screen gradient-bg relative">
+
+      {/* Custom Cursor */}
+      <div ref={cursorRef} className="custom-cursor" />
+      <div ref={cursorRingRef} className="custom-cursor-ring" />
+
       <AnimatedBackground />
 
       <AnimatePresence>
@@ -94,135 +164,137 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Navigation - STRIKING GLASS HEADER */}
+      {/* ── NAV ── */}
       <nav className="fixed top-2 md:top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pointer-events-none">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-dark-950/70 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg shadow-primary-500/10 pointer-events-auto transition-all duration-300">
+          <motion.div
+            className="pointer-events-auto rounded-2xl transition-all duration-500"
+            style={{
+              background: scrolled
+                ? 'rgba(2, 4, 15, 0.85)'
+                : 'rgba(2, 4, 15, 0.6)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(6,182,212,0.15)',
+              boxShadow: scrolled
+                ? '0 4px 30px rgba(0,0,0,0.5), 0 0 20px rgba(6,182,212,0.08)'
+                : '0 4px 20px rgba(0,0,0,0.3)',
+            }}
+          >
+            {/* Bottom neon line on scroll */}
+            {scrolled && (
+              <div
+                className="absolute bottom-0 left-4 right-4 rounded-b-full"
+                style={{
+                  height: '1px',
+                  background: 'linear-gradient(90deg, transparent, rgba(6,182,212,0.5), rgba(168,85,247,0.5), transparent)',
+                }}
+              />
+            )}
+
             <div className="flex items-center justify-between h-16 px-4 md:px-6">
               {/* Logo */}
               <motion.a
                 href="#home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('home');
+                onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
+                className="font-display font-bold text-2xl"
+                style={{
+                  background: 'linear-gradient(135deg, #22d3ee, #c084fc)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                 }}
-                className="text-2xl font-bold font-display gradient-text"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.07 }}
               >
                 JCM
               </motion.a>
 
-              {/* Desktop Navigation */}
-              <div className="hidden lg:flex items-center gap-1">
+              {/* Desktop Nav */}
+              <div className="hidden lg:flex items-center gap-0.5">
                 {navLinks.map((link) => (
                   <a
                     key={link.id}
                     href={`#${link.id}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.id);
-                    }}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group ${activeSection === link.id
-                      ? 'text-primary-400'
-                      : 'text-gray-300 hover:text-white'
-                      }`}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.id); }}
+                    className="relative px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+                    style={{ color: activeSection === link.id ? '#22d3ee' : '#94a3b8' }}
                   >
-                    {link.label}
                     {activeSection === link.id && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute inset-0 bg-primary-500/10 rounded-lg -z-10"
+                        className="absolute inset-0 rounded-lg -z-10"
+                        style={{ background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)' }}
                         transition={{ duration: 0.3 }}
                       />
                     )}
+                    <span className="hover:text-white transition-colors duration-200">{link.label}</span>
                   </a>
                 ))}
-
-                {/* Language Toggle - Modern Switch */}
-                <button
-                  onClick={toggleLanguage}
-                  className="ml-4 relative w-16 h-8 rounded-full bg-gradient-to-r from-primary-500/20 to-primary-600/20 border border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20"
-                  aria-label="Toggle Language"
-                >
-                  {/* Sliding Background */}
-                  <motion.div
-                    className="absolute top-0.5 left-0.5 w-7 h-7 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 shadow-lg"
-                    animate={{ x: language === 'es' ? 0 : 32 }}
-                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  />
-                  {/* Labels */}
-                  <div className="absolute inset-0 flex items-center justify-between px-2 text-[10px] font-bold">
-                    <span className={`transition-all duration-300 ${language === 'es' ? 'text-white' : 'text-primary-300'}`}>ES</span>
-                    <span className={`transition-all duration-300 ${language === 'en' ? 'text-white' : 'text-primary-300'}`}>EN</span>
-                  </div>
-                </button>
-
-                {/* CV Download Button */}
-                <a
-                  href="/cv_jersson.pdf"
-                  download="CV_Jersson_Corilla.pdf"
-                  className="ml-2 px-5 py-2 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 flex items-center gap-2"
-                >
-                  <FaArrowUp className="text-base rotate-90" />
-                  CV
-                </a>
               </div>
 
-              {/* Right Side: Mobile Menu */}
-              <div className="flex items-center gap-4 lg:hidden">
-                {/* Mobile Language Toggle - Modern Switch */}
-                <button
-                  onClick={toggleLanguage}
-                  className="relative w-16 h-8 rounded-full bg-gradient-to-r from-primary-500/20 to-primary-600/20 border border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20"
-                  aria-label="Toggle Language"
+              {/* Right Controls */}
+              <div className="hidden lg:flex items-center gap-3">
+                <LanguageSwitch />
+                <motion.a
+                  href="/CV_jersson_corilla_miranda.pdf"
+                  download="CV_Jersson_Corilla.pdf"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold"
+                  style={{
+                    background: 'linear-gradient(135deg, #059669, #047857)',
+                    boxShadow: '0 0 14px rgba(5,150,105,0.35)',
+                  }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(5,150,105,0.6)' }}
                 >
-                  {/* Sliding Background */}
-                  <motion.div
-                    className="absolute top-0.5 left-0.5 w-7 h-7 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 shadow-lg"
-                    animate={{ x: language === 'es' ? 0 : 32 }}
-                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  />
-                  {/* Labels */}
-                  <div className="absolute inset-0 flex items-center justify-between px-2 text-[10px] font-bold">
-                    <span className={`transition-all duration-300 ${language === 'es' ? 'text-white' : 'text-primary-300'}`}>ES</span>
-                    <span className={`transition-all duration-300 ${language === 'en' ? 'text-white' : 'text-primary-300'}`}>EN</span>
-                  </div>
-                </button>
+                  <FaDownload size={12} />
+                  CV
+                </motion.a>
+              </div>
 
-                {/* Mobile Menu Button */}
+              {/* Mobile controls */}
+              <div className="flex items-center gap-3 lg:hidden">
+                <LanguageSwitch />
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors duration-300"
+                  className="p-2 rounded-lg transition-colors duration-200"
+                  style={{ color: '#94a3b8' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(6,182,212,0.1)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = '#94a3b8'; e.currentTarget.style.background = 'transparent'; }}
                 >
-                  {mobileMenuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
+                  {mobileMenuOpen ? <FaTimes size={18} /> : <FaBars size={18} />}
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Mobile Navigation Dropdown */}
+        {/* Mobile Dropdown */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.25 }}
               className="mt-2 mx-auto max-w-7xl pointer-events-auto"
             >
-              <div className="bg-dark-950/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl overflow-hidden p-2">
+              <div
+                className="rounded-2xl overflow-hidden p-2"
+                style={{
+                  background: 'rgba(2,4,15,0.95)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(6,182,212,0.15)',
+                  boxShadow: '0 8px 30px rgba(0,0,0,0.5)',
+                }}
+              >
                 {navLinks.map((link) => (
                   <a
                     key={link.id}
                     href={`#${link.id}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.id);
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.id); }}
+                    className="block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200"
+                    style={{
+                      color: activeSection === link.id ? '#22d3ee' : '#94a3b8',
+                      background: activeSection === link.id ? 'rgba(6,182,212,0.1)' : 'transparent',
                     }}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${activeSection === link.id
-                      ? 'bg-primary-500/20 text-primary-400'
-                      : 'text-gray-300 hover:bg-white/5'
-                      }`}
                   >
                     {link.label}
                   </a>
@@ -233,13 +305,18 @@ function App() {
         </AnimatePresence>
       </nav>
 
-      {/* Main Content */}
+      {/* ── MAIN CONTENT ── */}
       <main className="pt-16 relative z-10">
-        <Suspense fallback={
-          <div className="min-h-screen flex items-center justify-center">
-            <div className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        }>
+        <Suspense
+          fallback={
+            <div className="min-h-screen flex items-center justify-center">
+              <div
+                className="w-12 h-12 rounded-full border-2 border-t-transparent animate-spin"
+                style={{ borderColor: 'rgba(6,182,212,0.3)', borderTopColor: '#06b6d4' }}
+              />
+            </div>
+          }
+        >
           <Hero />
           <About />
           <TechStack />
@@ -251,22 +328,29 @@ function App() {
         </Suspense>
       </main>
 
-      {/* Footer */}
       <Footer />
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            exit={{ opacity: 0, scale: 0.7 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-full shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 hover:scale-110 transition-all duration-300 z-40"
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.5 }}
+            className="fixed bottom-8 right-8 p-4 rounded-2xl text-white z-40"
+            style={{
+              background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
+              boxShadow: '0 0 20px rgba(6,182,212,0.4)',
+            }}
+            whileHover={{
+              scale: 1.1,
+              boxShadow: '0 0 35px rgba(6,182,212,0.7)',
+              rotate: 360,
+            }}
+            transition={{ duration: 0.4 }}
           >
-            <FaArrowUp className="text-xl" />
+            <FaArrowUp size={18} />
           </motion.button>
         )}
       </AnimatePresence>
