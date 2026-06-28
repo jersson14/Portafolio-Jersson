@@ -28,9 +28,9 @@ export const translations = {
       title: 'Sobre Mí',
       subtitle: 'Ingeniero de Software con pasión por crear soluciones tecnológicas de alto impacto',
       card_title: 'Ingeniero de Sistemas e Informática',
-      description_1: 'Especialista en Ingeniería y Desarrollo de Software con más de 5 años de experiencia en el diseño, desarrollo y despliegue de aplicaciones web empresariales de nivel enterprise.',
-      description_2: 'Mi enfoque se centra en crear soluciones escalables y seguras que optimizan procesos de negocio, utilizando tecnologías modernas y mejores prácticas de la industria.',
-      description_3: 'Experiencia comprobada en Cloud Computing (AWS y Azure), Business Intelligence (Power BI, QuickSight), y aplicación de Inteligencia Artificial en automatización y desarrollo de software.',
+      description_1: 'Ingeniero de Sistemas con estudios de Maestría en Ingeniería de Software y experiencia en Arquitectura Cloud (AWS/Azure) e Inteligencia Artificial Aplicada mediante estructuras RAG (Generación Recuperada por Aumentación para optimización de datos).',
+      description_2: 'Destacado por un fuerte pensamiento crítico orientado al análisis complejo, gestión de proyectos y el liderazgo en entornos de alta exigencia tecnológica. Trayectoria como Solo Founder de una plataforma SaaS en el sector LegalTech con tracción comercial, y como desarrollador principal de infraestructura central universitaria coordinando con equipos bajo metodologías ágiles.',
+      description_3: 'Experto en la automatización de procesos mediante Python y la implementación de inteligencia de negocios con Power BI para optimizar la toma de decisiones estratégicas.',
       mentorship_title: 'Docencia y Mentoria',
       mentorship_desc: 'Docente e instructor en tecnologías de programación, Python, Power BI y SQL, compartiendo conocimiento y formando a la próxima generación de profesionales tech.',
       skills: {
@@ -74,7 +74,11 @@ export const translations = {
     },
     certifications: {
         title: 'Certificaciones',
-        subtitle: 'Validación de conocimientos y competencias técnicas'
+        subtitle: 'Validación de conocimientos y competencias técnicas',
+        languages_title: 'Idiomas',
+        more_title: 'Más Cursos y Certificaciones',
+        view_credential: 'Ver credencial',
+        badge: 'Certificado'
     },
     services: {
         title: 'Mis Servicios',
@@ -115,7 +119,8 @@ export const translations = {
     case_study: {
       back: 'Volver al Portafolio',
       solution_title: 'La Solución Tecnológica',
-      results: 'Resultados e Impacto'
+      results: 'Resultados e Impacto',
+      gallery: 'Galería del Proyecto'
     }
   },
   en: {
@@ -147,9 +152,9 @@ export const translations = {
       title: 'About Me',
       subtitle: 'Software Engineer with a passion for creating high-impact technological solutions',
       card_title: 'Systems & Informatics Engineer',
-      description_1: 'Specialist in Software Engineering and Development with over 5 years of experience in designing, developing, and deploying enterprise-level web applications.',
-      description_2: 'My focus is on creating scalable and secure solutions that optimize business processes, using modern technologies and industry best practices.',
-      description_3: 'Proven experience in Cloud Computing (AWS and Azure), Business Intelligence (Power BI, QuickSight), and applying Artificial Intelligence in automation and software development.',
+      description_1: 'Systems Engineer with a Master\'s in Software Engineering and experience in Cloud Architecture (AWS/Azure) and Applied Artificial Intelligence through RAG (Retrieval-Augmented Generation) structures for data optimization.',
+      description_2: 'Distinguished by strong critical thinking oriented toward complex analysis, project management, and leadership in high-demand technological environments. Track record as Solo Founder of a SaaS platform in the LegalTech sector with commercial traction, and as lead developer of core university infrastructure coordinating with teams under agile methodologies.',
+      description_3: 'Expert in process automation through Python and the implementation of business intelligence with Power BI to optimize strategic decision-making.',
       mentorship_title: 'Teaching & Mentorship',
       mentorship_desc: 'Professor and instructor in programming technologies, Python, Power BI, and SQL, sharing knowledge and training the next generation of tech professionals.',
       skills: {
@@ -193,7 +198,11 @@ export const translations = {
     },
     certifications: {
         title: 'Certifications',
-        subtitle: 'Validation of technical skills and competencies'
+        subtitle: 'Validation of technical skills and competencies',
+        languages_title: 'Languages',
+        more_title: 'More Courses & Certifications',
+        view_credential: 'View credential',
+        badge: 'Certificate'
     },
     services: {
         title: 'My Services',
@@ -234,7 +243,8 @@ export const translations = {
     case_study: {
       back: 'Back to Portfolio',
       solution_title: 'The Technology Solution',
-      results: 'Results & Impact'
+      results: 'Results & Impact',
+      gallery: 'Project Gallery'
     }
   }
 };

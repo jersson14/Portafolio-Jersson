@@ -58,6 +58,7 @@ export const techStackData = {
       { name: "Power BI", icon: FaChartBar, color: "#F2C811" },
       { name: "Tableau", icon: SiTableau, color: "#E97627" },
       { name: "SQL", icon: FaDatabase, color: "#CC2927" },
+      { name: "SSIS", icon: FaMicrosoft, color: "#0078D4" },
     ]
   },
   ai: {

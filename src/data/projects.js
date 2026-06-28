@@ -5,6 +5,7 @@ export const projectsData = [
     id: 9,
     topProject: true,
     featured: false,
+    hasCaseStudy: true,
     title: {
       es: "DereJ-IA Perú 🏛️ — Asistente Legal Inteligente",
       en: "DereJ-IA Peru 🏛️ — Intelligent Legal Assistant"
@@ -14,11 +15,11 @@ export const projectsData = [
       en: "Legal SaaS platform with Artificial Intelligence combining semantic search over Peruvian legislation (RAG), legal document generation, and procedural analysis tools. Designed for Law students and practicing lawyers in Peru. Includes RAG legal chat, case analyzer, procedural document generator, contracts, resolutions, viability dictator, AI procedural flow, and over 20 specialized modules."
     },
     technologies: ["Next.js", "Node.js", "Express.js", "MySQL", "OpenAI API", "Pinecone", "TypeScript", "Tailwind CSS", "Railway", "JWT", "Google OAuth", "RAG"],
-    demoUrl: "#",
+    demoUrl: "https://derejia.com/",
     githubUrl: "#",
     status: "private",
     category: "LegalTech / SaaS",
-    image: null,
+    image: "/derejia.png",
     gradient: "linear-gradient(135deg, #1e0340 0%, #2d0a6e 30%, #0f0225 60%, #02040f 100%)",
     metrics: [
       { value: "20+", label: "Módulos IA" },
@@ -30,7 +31,8 @@ export const projectsData = [
   // ── FEATURED PROJECTS (grilla 2 columnas) ──────────────────────────────────
   {
     id: 2,
-    featured: false,
+    featured: true,
+    hasCaseStudy: true,
     title: {
       es: "Sistema Web de Trámite Documentario",
       en: "Web Document Tracking System"
@@ -41,8 +43,8 @@ export const projectsData = [
     },
     technologies: ["PHP", "MySQL", "Bootstrap", "AJAX", "API RENIEC", "RAG", "IA"],
     demoUrl: "https://rosybrown-panther-444340.hostingersite.com/",
-    githubUrl: "#",
-    status: "private",
+    githubUrl: "https://github.com/jersson14/TRAMITE_DOC",
+    status: "public",
     category: "Full Stack",
     image: "/tramite_documentario.png",
     metrics: [
@@ -56,6 +58,7 @@ export const projectsData = [
   {
     id: 6,
     featured: true,
+    hasCaseStudy: true,
     title: {
       es: "Sistema Web de Facturación Electrónica — Transporte",
       en: "Web Electronic Invoicing System — Transport"
@@ -65,48 +68,51 @@ export const projectsData = [
       en: "Web platform for issuing electronic receipts in Cusco–Abancay transport services, integrated with RENIEC and SUNAT, complying with current electronic invoicing regulations."
     },
     technologies: ["PHP", "MySQL", "API SUNAT", "API RENIEC", "Facturación Electrónica"],
-    demoUrl: "https://micaela-tours.com/",
-    githubUrl: "#",
-    status: "private",
+    demoUrl: "https://sisfacturacion.jcm-abc.com/",
+    githubUrl: "https://github.com/jersson14/sistema_micaela",
+    status: "public",
     category: "FinTech",
     image: "/facturacion.png"
   },
   {
     id: 1,
+    hasCaseStudy: true,
     title: {
-      es: "Sistema de Gestión de Historias Clínicas Odontológicas",
-      en: "Dental Medical Records Management System"
+      es: "Sistema Odontológico — Gestión Clínica y Odontograma Digital",
+      en: "Dental System — Clinical Management & Digital Odontogram"
     },
     description: {
-      es: "Aplicación web para el registro, control y seguimiento de historias clínicas en clínicas dentales, optimizando la atención al paciente y la gestión médica.",
-      en: "Web application for the registration, control, and tracking of medical records in dental clinics, optimizing patient care and medical management."
+      es: "Sistema web que centraliza pacientes, doctores, citas, historias clínicas, odontogramas, tratamientos, pagos e ingresos/gastos de un consultorio dental en una sola plataforma.",
+      en: "Web system that centralizes patients, doctors, appointments, medical records, odontograms, treatments, payments and income/expenses of a dental practice in a single platform."
     },
-    technologies: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3"],
+    technologies: ["PHP", "MySQL", "AdminLTE", "jQuery", "AJAX", "mPDF/FPDI"],
     demoUrl: "#",
-    githubUrl: "#",
-    status: "private",
+    githubUrl: "https://github.com/jersson14/Sistema_Odontologico",
+    status: "public",
     category: "Full Stack",
     image: "/odontologia.png"
   },
   {
     id: 3,
+    hasCaseStudy: true,
     title: {
-      es: "Sistema de Gestión de Recuperos Hospitalarios",
-      en: "Hospital Recovery Management System"
+      es: "SISRECUPEROS — Gestión de Recuperos Médicos",
+      en: "SISRECUPEROS — Medical Recoupment Management"
     },
     description: {
-      es: "Aplicación web para la administración y control de recuperos en un hospital de Argentina, optimizando procesos financieros y administrativos.",
-      en: "Web application for the administration and control of recoveries in a hospital in Argentina, optimizing financial and administrative processes."
+      es: "Sistema web de gestión de recuperos médicos que administra pacientes, obras sociales, prácticas y facturación, vinculando cada práctica con su paciente y su factura correspondiente.",
+      en: "Web system for medical recoupment management that handles patients, health insurance providers, medical procedures, and invoicing, linking each procedure to its patient and corresponding invoice."
     },
-    technologies: ["PHP", "CodeIgniter", "MySQL", "Bootstrap"],
+    technologies: ["PHP", "MySQL", "PDO", "JavaScript", "MVC"],
     demoUrl: "#",
-    githubUrl: "#",
-    status: "private",
+    githubUrl: "https://github.com/jersson14/sistema_recuperos",
+    status: "public",
     category: "Full Stack",
     image: "/recuperos.png"
   },
   {
     id: 4,
+    hasCaseStudy: true,
     title: {
       es: "Sistema Web de Gestión Educativa",
       en: "Educational Management Web System"
@@ -116,116 +122,125 @@ export const projectsData = [
       en: "Web platform for the academic and administrative management of schools, including control of students, teachers, and educational processes."
     },
     technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap"],
-    demoUrl: "https://colegioo.site/",
-    githubUrl: "#",
-    status: "private",
+    demoUrl: "https://colegioo.site/landing.html",
+    githubUrl: "https://github.com/jersson14/colegio_sedes_sapientae",
+    status: "public",
+    featured: true,
     category: "EdTech",
     image: "/colegio.png"
   },
   {
     id: 5,
+    hasCaseStudy: true,
     title: {
-      es: "Sistema Web para el Saneamiento de Títulos de Propiedad",
-      en: "Web System for Property Title Sanitation"
+      es: "INCOCAT — Sistema de Gestión Documentaria y Trámites",
+      en: "INCOCAT — Document Management & Procedures System"
     },
     description: {
-      es: "Aplicación web para la gestión y seguimiento de procesos de saneamiento físico-legal de títulos de propiedad, con trazabilidad documental y visualización en mapas.",
-      en: "Web application for managing and tracking physical-legal sanitation processes of property titles, with documentary traceability and map visualization."
+      es: "Sistema web de administración interna para una empresa de gestoría/tramitología, con seguimiento de clientes, expedientes, pagos, ingresos/gastos, indicadores y notificaciones automáticas de expedientes atrasados.",
+      en: "Internal management web system for a procedures/gestoría company, tracking clients, case files, payments, income/expenses, KPIs, and automatic notifications for delayed cases."
     },
-    technologies: ["PHP", "PostgreSQL", "JavaScript", "Leaflet Maps"],
-    demoUrl: "https://incocat.shop/",
-    githubUrl: "#",
-    status: "private",
-    category: "LegalTech",
+    technologies: ["PHP", "MySQL", "AdminLTE", "PHPMailer", "mPDF", "DataTables"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/jersson14/incocat_abancay",
+    status: "public",
+    category: "Gestoría",
     image: "/saneamiento_titulos.png"
   },
   {
     id: 7,
+    hasCaseStudy: true,
     title: {
-      es: "Sistema Básico de Gestión de Grifos y Lecturas",
-      en: "Basic Gas Station Management System"
+      es: "Sistema de Gestión de Grifo — Turnos y Créditos",
+      en: "Gas Station Management System — Shifts & Credit"
     },
     description: {
-      es: "Aplicación web para el control básico de ventas y operaciones en estaciones de servicio, integrada con la API de RENIEC para la validación de clientes.",
-      en: "Web application for basic control of sales and operations in service stations, integrated with RENIEC API for client validation."
+      es: "Sistema web completo para la administración de un grifo: turnos con lectura automática de surtidores, ventas con múltiples métodos de pago, créditos a clientes y reportes gerenciales en tiempo real.",
+      en: "Complete web system for gas station management: shifts with automatic pump readings, sales with multiple payment methods, customer credit, and real-time management reports."
     },
-    technologies: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
-    demoUrl: "https://estaciongoyo.com/index.php",
-    githubUrl: "#",
-    status: "private",
+    technologies: ["PHP", "MySQL", "AdminLTE", "Chart.js", "mPDF", "Docker"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/jersson14/grifo_grau",
+    status: "public",
     category: "Retail",
     image: "/grifo.png"
   },
   {
     id: 8,
-    featured: true,
+    hasCaseStudy: true,
     title: {
-      es: "Sistema Web para la Emisión de Diplomas de Grados y Títulos",
-      en: "Web System for the Issuance of Degree Diplomas"
+      es: "Sistema de Grados y Títulos — UTEA (con reporte SUNEDU)",
+      en: "Degrees & Diplomas System — UTEA (SUNEDU Reporting)"
     },
     description: {
-      es: "Plataforma web desarrollada para la UTEA, orientada a la emisión, validación y control de diplomas académicos de grados y títulos universitarios.",
-      en: "Web platform developed for UTEA, oriented to the issuance, validation, and control of academic degree diplomas."
+      es: "Sistema institucional para la UTEA que gestiona el ciclo completo de grados y títulos de pregrado y posgrado: expediente, validación documental, diploma, colación y reporte regulatorio a la SUNEDU.",
+      en: "Institutional system for UTEA managing the full undergraduate and graduate degree lifecycle: case file, document validation, diploma issuance, graduation ceremony, and SUNEDU regulatory reporting."
     },
-    technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "FPDF"],
-    demoUrl: "https://gradosapp.fun/index.php",
-    githubUrl: "#",
-    status: "private",
+    technologies: ["PHP", "MySQL", "AdminLTE", "mPDF", "PHPMailer", "DSpace"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/jersson14/Sistema_grado_titulos",
+    status: "public",
     category: "EdTech",
     image: "/grados_y_titulos.png"
   },
   {
     id: 10,
+    hasCaseStudy: true,
     title: {
-      es: "NutriDiabetes — Plataforma de Salud y Nutrición",
-      en: "NutriDiabetes — Health & Nutrition Platform"
+      es: "NutriDiabetes — Recomendaciones Nutricionales con IA (RAG)",
+      en: "NutriDiabetes — AI Nutrition Recommendations (RAG)"
     },
     description: {
-      es: "Plataforma web orientada al seguimiento nutricional y control glicémico para pacientes con diabetes, con registro de dietas, alertas personalizadas y reportes para el profesional de salud.",
-      en: "Web platform oriented to nutritional monitoring and glycemic control for diabetic patients, with diet logging, personalized alerts, and reports for health professionals."
+      es: "Sistema inteligente de recomendaciones nutricionales para pacientes con Diabetes Mellitus Tipo 2, basado en la Tabla Peruana de Composición de Alimentos (CENAN/INS) y arquitectura RAG. Proyecto de tesis de Maestría con métricas de precisión validadas.",
+      en: "Intelligent nutrition recommendation system for Type 2 Diabetes patients, based on the Peruvian Food Composition Table (CENAN/INS) and a RAG architecture. Master's thesis project with validated accuracy metrics."
     },
-    technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "Chart.js"],
-    demoUrl: "#",
-    githubUrl: "#",
-    status: "private",
+    technologies: ["Next.js", "Node.js", "FastAPI", "PostgreSQL", "Pinecone", "OpenAI GPT-4", "RAG"],
+    demoUrl: "https://nutri-diabetes.vercel.app/",
+    githubUrl: "https://github.com/jersson14/NutriDiabetes",
+    status: "public",
+    featured: true,
     category: "HealthTech",
-    image: null,
+    image: "/nutridiabetes.png",
     gradient: "linear-gradient(135deg, #052e16 0%, #064e3b 40%, #02040f 100%)"
   },
   {
     id: 11,
+    hasCaseStudy: true,
     title: {
-      es: "Sistema de Farmacia — Gestión y Ventas",
-      en: "Pharmacy System — Management & Sales"
+      es: "ITVentas — Sistema de Punto de Venta para Farmacia",
+      en: "ITVentas — Pharmacy Point of Sale System"
     },
     description: {
-      es: "Sistema web para farmacias que cubre el control de inventario de medicamentos, gestión de ventas, alertas de stock mínimo, vencimiento de productos y emisión de reportes administrativos.",
-      en: "Web system for pharmacies covering medicine inventory control, sales management, minimum stock alerts, product expiration tracking, and administrative report generation."
+      es: "Sistema de punto de venta, inventario, compras y reportes para farmacias independientes, con trazabilidad de lotes, control de vencimientos (FEFO), recetas médicas y registro de medicamentos de control especial.",
+      en: "Point of sale, inventory, purchasing, and reporting system for independent pharmacies, with batch traceability, expiration control (FEFO), medical prescriptions, and special-control medicine tracking."
     },
-    technologies: ["PHP", "MySQL", "Bootstrap", "JavaScript", "FPDF"],
-    demoUrl: "#",
-    githubUrl: "#",
-    status: "private",
+    technologies: ["PHP", "MySQL", "AdminLTE", "Bootstrap", "Chart.js", "FPDF", "jQuery"],
+    demoUrl: "https://demo.farmasuyana.shop/",
+    githubUrl: "https://github.com/jersson14/sistema_farmacia",
+    status: "public",
+    featured: true,
     category: "HealthTech",
-    image: null,
+    image: "/farmacia.png",
     gradient: "linear-gradient(135deg, #0c1a4e 0%, #1e3a8a 40%, #02040f 100%)"
   },
   {
     id: 12,
+    hasCaseStudy: true,
     title: {
-      es: "Sistema de Inventario — PernoCentro",
-      en: "Inventory System — PernoCentro"
+      es: "Sistema de Gestión Comercial — PernoCentro",
+      en: "Commercial Management System — PernoCentro"
     },
     description: {
-      es: "Sistema web de control de inventario para PernoCentro, con gestión de stock de productos ferreteros, registro de entradas y salidas, alertas de reposición y reportes de movimientos.",
-      en: "Web inventory control system for PernoCentro, with hardware product stock management, entry/exit logging, replenishment alerts, and movement reports."
+      es: "Sistema de gestión comercial (inventario, compras, ventas y reportes) para PernoCentro, con cuentas por cobrar/pagar, permisos por módulo y dashboard de ventas en tiempo real.",
+      en: "Commercial management system (inventory, purchasing, sales, and reporting) for PernoCentro, with accounts receivable/payable, module-level permissions, and a real-time sales dashboard."
     },
-    technologies: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
-    demoUrl: "#",
-    githubUrl: "#",
-    status: "private",
+    technologies: ["PHP", "MySQL", "AdminLTE", "Bootstrap", "Chart.js", "FPDF"],
+    demoUrl: "https://colegioo.site/pernos/vistas/login.html",
+    githubUrl: "https://github.com/jersson14/Sis_Inventario",
+    status: "public",
+    featured: true,
     category: "Inventario",
-    image: null,
+    image: "/inventario.png",
     gradient: "linear-gradient(135deg, #431407 0%, #7c2d12 40%, #02040f 100%)"
   }
 ];

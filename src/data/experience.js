@@ -1,210 +1,222 @@
 export const experienceData = [
   {
     id: 1,
-    company: "2Cloud – Tecnología y Consultoría",
+    company: "DereJ-IA - Perú",
     position: {
-      es: "Software Engineer / Cloud Developer",
-      en: "Software Engineer / Cloud Developer"
+      es: "Solo Founder & Lead Architect",
+      en: "Solo Founder & Lead Architect"
     },
     period: {
-      es: "Marzo 2024 – Actualidad",
-      en: "March 2024 – Present"
+      es: "Mar. 2026 – Actualmente",
+      en: "Mar. 2026 – Present"
     },
     current: true,
     responsibilities: {
       es: [
-        "Desarrollo de software a medida para empresas nacionales e internacionales.",
-        "Manejo de infraestructura en la nube AWS y AZURE.",
-        "Manejo de Herramientas de Análisis de datos Quicksight y Power BI.",
-        "Desarrollo de soluciones de IA para empresas privadas."
+        "Concebir y desarrollar la arquitectura integral de la plataforma SaaS, aplicando Inteligencia Artificial con estructuras RAG para reducir el tiempo de análisis legal en un 70%.",
+        "Programar e implementar flujos automatizados de Web Scraping en servidores cloud para la recopilación diaria de normativas oficiales.",
+        "Impulsar el ciclo de producto y el modelo de monetización basado en créditos, escalando la infraestructura según las demandas de clientes en producción."
       ],
       en: [
-        "Custom software development for national and international companies.",
-        "Management of cloud infrastructure on AWS and AZURE.",
-        "Management of data analysis tools like Quicksight and Power BI.",
-        "Development of AI solutions for private companies."
+        "Conceive and develop the platform's full SaaS architecture, applying Artificial Intelligence with RAG structures to reduce legal analysis time by 70%.",
+        "Code and implement automated Web Scraping pipelines on cloud servers for the daily collection of official regulations.",
+        "Drive the product lifecycle and the credit-based monetization model, scaling infrastructure according to production client demand."
       ]
     },
-    technologies: ["AWS", "Azure", "Python", "PHP", "Power BI", "React", "Docker"]
+    technologies: ["Next.js", "Node.js", "OpenAI API", "Pinecone", "RAG", "Python", "Railway"]
   },
   {
     id: 2,
-    company: "INAPCE PERÚ - CECAP PERÚ",
+    company: "2CLOUD - Lima, Perú",
     position: {
-      es: "Instructor de Tecnologías",
-      en: "Technology Instructor"
+      es: "Full Stack & Cloud Infrastructure Engineer",
+      en: "Full Stack & Cloud Infrastructure Engineer"
     },
     period: {
-      es: "Diciembre 2023 – Junio 2025",
-      en: "December 2023 – June 2025"
+      es: "Mar. 2024 – Actualmente",
+      en: "Mar. 2024 – Present"
+    },
+    current: true,
+    responsibilities: {
+      es: [
+        "Optimicé e implementé arquitecturas elásticas en la nube utilizando AWS, reduciendo los costos de infraestructura en un 25% y garantizando alta disponibilidad y escalabilidad de los sistemas.",
+        "Construir y automatizar pipelines de datos masivos (ETL) mediante scripts avanzados en Python, incrementando la eficiencia operativa del procesamiento de datos en un 40%.",
+        "Desarrollar modelos analíticos e inteligencia de negocios interactiva utilizando Power BI y Amazon QuickSight para la visualización de métricas estratégicas gerenciales.",
+        "Programar y desplegar aplicaciones completas (Full Stack), integrando interfaces dinámicas (Frontend) y la lógica de servidores y APIs de alta concurrencia (Backend) con Node.js y PHP."
+      ],
+      en: [
+        "Optimized and implemented elastic cloud architectures using AWS, reducing infrastructure costs by 25% and ensuring high availability and system scalability.",
+        "Built and automated large-scale data pipelines (ETL) through advanced Python scripts, increasing data processing operational efficiency by 40%.",
+        "Developed analytical models and interactive business intelligence using Power BI and Amazon QuickSight to visualize strategic management metrics.",
+        "Coded and deployed complete Full Stack applications, integrating dynamic interfaces (Frontend) and high-concurrency server/API logic (Backend) with Node.js and PHP."
+      ]
+    },
+    technologies: ["AWS", "Python", "ETL", "Power BI", "Amazon QuickSight", "Node.js", "PHP"]
+  },
+  {
+    id: 3,
+    company: "INAPCE PERÚ - CECAP PERÚ - Abancay, Perú",
+    position: {
+      es: "Instructor de Tecnologías e Inteligencia de Negocios",
+      en: "Technology & Business Intelligence Instructor"
+    },
+    period: {
+      es: "Dic. 2023 – Jun. 2025",
+      en: "Dec. 2023 – Jun. 2025"
     },
     current: false,
     responsibilities: {
       es: [
-        "Instructor en cursos virtuales de tecnologías y herramientas digitales.",
-        "Experiencia en Ofimática, Power BI, Python, SQL Server y Diseño Gráfico.",
-        "Capacitación en empresas con enfoque práctico y resultados medibles."
+        "Diseñar e impartir programas de capacitación técnica especializados en Power BI, Python y modelado de bases de datos con SQL Server.",
+        "Desarrollar metodologías de aprendizaje prácticas orientadas a la optimización de procesos corporativos y analítica de datos aplicada a empresas."
       ],
       en: [
-        "Instructor in virtual courses on technologies and digital tools.",
-        "Experience in Office Automation, Power BI, Python, SQL Server, and Graphic Design.",
-        "Training in companies with a practical approach and measurable results."
+        "Design and deliver specialized technical training programs in Power BI, Python, and database modeling with SQL Server.",
+        "Develop practical learning methodologies focused on corporate process optimization and applied business data analytics."
       ]
     },
-    technologies: ["Python", "Power BI", "SQL Server", "Excel", "Docencia"]
+    technologies: ["Power BI", "Python", "SQL Server", "Docencia"]
   },
   {
-    id: 3,
-    company: "Servicios de Call Center del Perú S.A.",
+    id: 4,
+    company: "SERVICIOS DE CALL CENTER DEL PERÚ S.A. - Lima, Perú",
     position: {
       es: "Analista de Soporte Técnico",
       en: "Technical Support Analyst"
     },
     period: {
-      es: "Abril 2023 – Diciembre 2023",
-      en: "April 2023 – December 2023"
+      es: "Abr. 2023 – Dic. 2023",
+      en: "Apr. 2023 – Dec. 2023"
     },
     current: false,
     responsibilities: {
       es: [
-        "Analista de Soporte Técnico especializado.",
-        "Solución de problemas de clientes en servicio 3play.",
-        "Gestión de software de registro de incidencias y soluciones vía virtual."
+        "Resolver y diagnosticar incidencias técnicas complejas de conectividad y aprovisionamiento de servicios de red en infraestructura 3play.",
+        "Administrar y gestionar plataformas corporativas de registro de incidencias y sistemas virtuales de gestión de soluciones técnicas."
       ],
       en: [
-        "Specialized Technical Support Analyst.",
-        "Troubleshooting client issues in 3play service.",
-        "Management of incident logging software and solutions via virtual channels."
+        "Resolve and diagnose complex technical incidents related to connectivity and network service provisioning on 3play infrastructure.",
+        "Administer and manage corporate incident-logging platforms and virtual systems for technical solution management."
       ]
     },
     technologies: ["Soporte Técnico", "Networking", "Gestión de Incidencias", "CRM"]
   },
   {
-    id: 4,
-    company: "Universidad Nacional Micaela Bastidas de Apurímac (UNAMBA)",
+    id: 5,
+    company: "UNIVERSIDAD NACIONAL MICAELA BASTIDAS DE APURÍMAC - Abancay, Perú",
     position: {
-      es: "Gestión de Sistemas de Biblioteca",
-      en: "Library Systems Management"
+      es: "Administrador de Sistemas y Desarrollo Web",
+      en: "Systems Administrator & Web Development"
     },
     period: {
-      es: "Enero 2022 – Marzo 2023",
-      en: "January 2022 – March 2023"
+      es: "Ene. 2022 – Mar. 2023",
+      en: "Jan. 2022 – Mar. 2023"
     },
     current: false,
     responsibilities: {
       es: [
-        "Manejo y Gestión del Sistema de Gestión de Bibliotecas KOHA.",
-        "Gestión de Página Web de la Biblioteca Central.",
-        "Apoyo con Sistemas Gubernamentales."
+        "Administrar y optimizar la base de datos MySQL y la infraestructura del Sistema KOHA, incrementando la velocidad de consulta de datos en un 35% para la Biblioteca Central.",
+        "Desarrollar y mantener portales web institucionales bajo estándares de seguridad, mejorando la accesibilidad del usuario en un 50% y reduciendo errores de carga."
       ],
       en: [
-        "Handling and Management of the KOHA Library Management System.",
-        "Management of the Central Library Website.",
-        "Support with Government Systems."
+        "Administer and optimize the MySQL database and KOHA System infrastructure, increasing data query speed by 35% for the Central Library.",
+        "Develop and maintain institutional web portals under security standards, improving user accessibility by 50% and reducing load errors."
       ]
     },
-    technologies: ["KOHA", "CMS", "Sistemas Gubernamentales", "Linux"]
+    technologies: ["KOHA", "MySQL", "Sistemas Gubernamentales", "Linux"]
   },
   {
-    id: 5,
-    company: "Universidad Nacional Micaela Bastidas de Apurímac (UNAMBA)",
+    id: 6,
+    company: "UNIVERSIDAD NACIONAL MICAELA BASTIDAS DE APURÍMAC - Abancay, Perú",
     position: {
-      es: "Soporte Técnico y Desarrollo Web",
-      en: "Technical Support and Web Development"
+      es: "Desarrollador Web y Soporte TI",
+      en: "Web Developer & IT Support"
     },
     period: {
-      es: "Agosto 2021 – Octubre 2021",
-      en: "August 2021 – October 2021"
+      es: "Ago. 2021 – Oct. 2021",
+      en: "Aug. 2021 – Oct. 2021"
     },
     current: false,
     responsibilities: {
       es: [
-        "Servicio de Soporte Técnico en la Biblioteca Central.",
-        "Remodelación de la página web de la Biblioteca Central - Pagina Web UNAMBA.",
-        "Modificación del Gestor de Bibliotecas KOHA."
+        "Rediseñar y reestructurar la arquitectura del sitio web de la Biblioteca Central, elevando la retención de usuarios en un 30% mediante interfaces optimizadas.",
+        "Programar modificaciones lógicas en el gestor open-source KOHA utilizando bases de datos relacionales para estabilizar el sistema."
       ],
       en: [
-        "Technical Support Service in the Central Library.",
-        "Remodeling of the Central Library website - UNAMBA Website.",
-        "Modification of the KOHA Library Manager."
+        "Redesign and restructure the Central Library website architecture, increasing user retention by 30% through optimized interfaces.",
+        "Code logical modifications in the open-source KOHA manager using relational databases to stabilize the system."
       ]
     },
     technologies: ["Soporte TI", "Desarrollo Web", "KOHA", "HTML/CSS"]
   },
   {
-    id: 6,
-    company: "Universidad Nacional Micaela Bastidas de Apurímac (UNAMBA)",
+    id: 7,
+    company: "UNIVERSIDAD NACIONAL MICAELA BASTIDAS DE APURÍMAC - Abancay, Perú",
     position: {
-      es: "Apoyo DTI y Gestión Web",
-      en: "IT Support and Web Management"
+      es: "Técnico de Sistemas e Infraestructura",
+      en: "Systems & Infrastructure Technician"
     },
     period: {
-      es: "Agosto 2020 – Julio 2021",
-      en: "August 2020 – July 2021"
+      es: "Ago. 2020 – Jul. 2021",
+      en: "Aug. 2020 – Jul. 2021"
     },
     current: false,
     responsibilities: {
       es: [
-        "Apoyo y Mantenimiento en la Dirección de Tecnologías de la Información - DTI.",
-        "Gestión de Paginas Web UNAMBA.",
-        "Manejo de SIGA - SIAF a nivel usuario."
+        "Asegurar el mantenimiento operativo de servicios críticos en la DTI, reduciendo el tiempo de inactividad de la red en un 20%.",
+        "Desplegar actualizaciones web y gestionar flujos en sistemas internos gubernamentales de administración financiera (SIGA/SIAF)."
       ],
       en: [
-        "Support and Maintenance in the Information Technologies Directorate - ITD.",
-        "Management of UNAMBA Web Pages.",
-        "Handling of SIGA - SIAF at user level."
+        "Ensure the operational maintenance of critical services at the ITD, reducing network downtime by 20%.",
+        "Deploy web updates and manage workflows in internal government financial administration systems (SIGA/SIAF)."
       ]
     },
     technologies: ["Gestión IT", "Webmaster", "SIGA", "SIAF"]
   },
   {
-    id: 7,
-    company: "UGEL ABANCAY",
+    id: 8,
+    company: "UGEL ABANCAY - Abancay, Perú",
     position: {
-      es: "Practicante de Sistemas",
-      en: "Systems Intern"
+      es: "Practicante de Ingeniería de Sistemas",
+      en: "Systems Engineering Intern"
     },
     period: {
-      es: "Setiembre 2019 – Diciembre 2019",
-      en: "September 2019 – December 2019"
+      es: "Sep. 2019 – Dic. 2019",
+      en: "Sep. 2019 – Dec. 2019"
     },
     current: false,
     responsibilities: {
       es: [
-        "Apoyo en la Administración del personal en la oficina de Control de Asistencia.",
-        "Apoyo en registro en el sistema SIAGIE.",
-        "Desarrollo del Sistema de Gestión de Documentos."
+        "Diseñar y desarrollar un sistema automatizado de gestión documental, disminuyendo el tiempo de trámite interno en un 40%.",
+        "Administrar registros operativos y de control de asistencia mediante el uso y optimización de consultas estructuradas en la plataforma SIAGIE."
       ],
       en: [
-        "Support in Personnel Administration in the Attendance Control office.",
-        "Support in registration in the SIAGIE system.",
-        "Development of the Document Management System."
+        "Design and develop an automated document management system, reducing internal procedure time by 40%.",
+        "Administer operational and attendance control records through the use and optimization of structured queries on the SIAGIE platform."
       ]
     },
     technologies: ["SIAGIE", "Desarrollo de Software", "Gestión Documental", "Soporte"]
   },
   {
-    id: 8,
-    company: "Universidad Nacional Micaela Bastidas de Apurímac (UNAMBA)",
+    id: 9,
+    company: "UNIVERSIDAD NACIONAL MICAELA BASTIDAS DE APURÍMAC - Abancay, Perú",
     position: {
-      es: "Soporte y Catalogación",
-      en: "Support and Cataloging"
+      es: "Soporte Técnico y Catalogador",
+      en: "Technical Support & Cataloger"
     },
     period: {
-      es: "Enero 2019 – Marzo 2019",
-      en: "January 2019 – March 2019"
+      es: "Ene. 2019 – Mar. 2019",
+      en: "Jan. 2019 – Mar. 2019"
     },
     current: false,
     responsibilities: {
       es: [
-        "Catalogador en el Sistema Integral de Bibliotecas KOHA.",
-        "Soporte Técnico en la Biblioteca Central.",
-        "Edición de Imagenes en Photoshop."
+        "Estructurar e indexar registros bibliográficos complejos dentro del sistema automatizado KOHA.",
+        "Garantizar la operatividad del hardware y los laboratorios informáticos centrales de la Biblioteca de la universidad."
       ],
       en: [
-        "Cataloger in the KOHA Integrated Library System.",
-        "Technical Support in the Central Library.",
-        "Image Editing in Photoshop."
+        "Structure and index complex bibliographic records within the automated KOHA system.",
+        "Ensure the operability of the hardware and central computer labs of the university's library."
       ]
     },
     technologies: ["KOHA", "Photoshop", "Soporte Hardware"]

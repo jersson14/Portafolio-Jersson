@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { certificationsData } from '../data/certifications';
+import { certificationsData, moreCertifications, languagesData } from '../data/certifications';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -26,8 +26,37 @@ const Certifications = () => {
                     </p>
                 </motion.div>
 
+                {/* Languages */}
+                <div className="mb-16">
+                    <h3 className="text-xl font-bold text-white mb-6 text-center">{t('certifications.languages_title')}</h3>
+                    <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        {languagesData.map((lang, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            >
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className="text-white font-semibold text-sm">{lang.name[language]}</span>
+                                    <span className="text-dark-400 text-xs">{lang.level[language]}</span>
+                                </div>
+                                <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                                    <motion.div
+                                        className="h-full rounded-full"
+                                        style={{ background: 'linear-gradient(90deg, #06b6d4, #8b5cf6)' }}
+                                        initial={{ width: 0 }}
+                                        animate={isInView ? { width: `${lang.percent}%` } : {}}
+                                        transition={{ duration: 0.8, delay: 0.2 + idx * 0.1 }}
+                                    />
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
                 {/* Certifications Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                     {certificationsData.map((cert, index) => (
                         <motion.div
                             key={cert.id}
@@ -60,11 +89,6 @@ const Certifications = () => {
                                 <p className="text-dark-400 text-sm mb-2">
                                     {cert.issuer[language]}
                                 </p>
-                                {cert.description && (
-                                    <p className="text-dark-500 text-xs mb-3 italic">
-                                        {cert.description[language]}
-                                    </p>
-                                )}
                             </div>
 
                             {/* Footer */}
@@ -79,18 +103,46 @@ const Certifications = () => {
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-2 text-sm text-dark-400 hover:text-primary-400 transition-colors duration-300"
                                     >
-                                        Ver credencial
+                                        {t('certifications.view_credential')}
                                         <FaExternalLinkAlt className="text-xs" />
                                     </a>
                                 ) : (
                                     <span className="text-xs text-dark-600">
-                                        Certificado
+                                        {t('certifications.badge')}
                                     </span>
                                 )}
                             </div>
                         </motion.div>
                     ))}
                 </div>
+
+                {/* More courses — compact chips grouped by issuer */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                    <h3 className="text-xl font-bold text-white mb-6 text-center">{t('certifications.more_title')}</h3>
+                    <div className="space-y-6 max-w-5xl mx-auto">
+                        {moreCertifications.map((group, gIdx) => (
+                            <div key={gIdx}>
+                                <h4 className="text-xs font-mono uppercase tracking-widest mb-3" style={{ color: '#22d3ee' }}>
+                                    {group.issuer}
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {group.courses.map((course, cIdx) => (
+                                        <span
+                                            key={cIdx}
+                                            className="px-3 py-1.5 rounded-full text-xs text-dark-300 border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-300"
+                                        >
+                                            {course.title[language]} <span className="text-dark-500">· {course.year}</span>
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

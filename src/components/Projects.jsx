@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { projectsData } from '../data/projects';
-import { FaExternalLinkAlt, FaGithub, FaLock, FaStar, FaCrown, FaRocket } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaLock, FaStar, FaCrown } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 
 /* ── Image or gradient fallback ── */
@@ -195,35 +195,50 @@ const Projects = () => {
 
                   {/* Buttons */}
                   <div className="flex flex-wrap gap-2">
-                    <ProjectButtons project={topProject} t={t} showCaseStudy={false} />
+                    <ProjectButtons project={topProject} t={t} showCaseStudy={!!topProject.hasCaseStudy} />
                   </div>
                 </div>
 
-                {/* Right: decorative panel (2/5) */}
+                {/* Right: project screenshot (2/5) */}
                 <div className="hidden lg:flex lg:col-span-2 items-center justify-center p-8 relative overflow-hidden">
                   {/* Glow orb */}
                   <div className="absolute inset-0"
                     style={{ background: 'radial-gradient(circle at 50% 50%, rgba(168,85,247,0.12) 0%, transparent 70%)' }} />
 
-                  {/* Icon grid decoration */}
-                  <div className="relative z-10 flex flex-col items-center gap-6">
-                    <motion.div
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                      className="w-32 h-32 rounded-full flex items-center justify-center"
-                      style={{
-                        border: '1px solid rgba(168,85,247,0.3)',
-                        boxShadow: '0 0 40px rgba(168,85,247,0.15), inset 0 0 40px rgba(168,85,247,0.05)',
-                      }}
-                    >
-                      <motion.div
-                        animate={{ rotate: [0, -360] }}
-                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                        className="text-5xl"
+                  <div className="relative z-10 w-full flex flex-col items-center gap-4">
+                    {topProject.image ? (
+                      <div
+                        className="w-full rounded-xl overflow-hidden"
+                        style={{
+                          border: '1px solid rgba(168,85,247,0.3)',
+                          boxShadow: '0 0 40px rgba(168,85,247,0.15)',
+                        }}
                       >
-                        🏛️
+                        <img
+                          src={topProject.image}
+                          alt={topProject.title[language]}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                        className="w-32 h-32 rounded-full flex items-center justify-center"
+                        style={{
+                          border: '1px solid rgba(168,85,247,0.3)',
+                          boxShadow: '0 0 40px rgba(168,85,247,0.15), inset 0 0 40px rgba(168,85,247,0.05)',
+                        }}
+                      >
+                        <motion.div
+                          animate={{ rotate: [0, -360] }}
+                          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                          className="text-5xl"
+                        >
+                          🏛️
+                        </motion.div>
                       </motion.div>
-                    </motion.div>
+                    )}
 
                     <div className="text-center">
                       <div className="text-xs font-mono uppercase tracking-widest mb-1" style={{ color: '#64748b' }}>powered by</div>
@@ -235,22 +250,6 @@ const Projects = () => {
                           </span>
                         ))}
                       </div>
-                    </div>
-
-                    {/* Stat pills */}
-                    <div className="flex flex-col gap-2 w-full">
-                      {[
-                        { label: 'Búsqueda Semántica', color: '#c084fc' },
-                        { label: 'Generación de Docs', color: '#fbbf24' },
-                        { label: 'SaaS — 4 Planes', color: '#22d3ee' },
-                      ].map(({ label, color }) => (
-                        <div key={label}
-                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono"
-                          style={{ background: 'rgba(2,4,15,0.4)', border: `1px solid ${color}20`, color }}>
-                          <FaRocket size={9} />
-                          {label}
-                        </div>
-                      ))}
                     </div>
                   </div>
                 </div>
@@ -355,7 +354,7 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    <ProjectButtons project={project} t={t} showCaseStudy={project.id === 2} />
+                    <ProjectButtons project={project} t={t} showCaseStudy={!!project.hasCaseStudy} />
                   </div>
                 </motion.div>
               ))}
@@ -430,7 +429,7 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    <ProjectButtons project={project} t={t} showCaseStudy={project.id === 2} />
+                    <ProjectButtons project={project} t={t} showCaseStudy={!!project.hasCaseStudy} />
                   </div>
                 </motion.div>
               ))}
