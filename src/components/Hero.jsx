@@ -290,8 +290,10 @@ const Hero = () => {
             <div className="relative z-10 w-full max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
               <PhotoPanel>
                 <motion.img
-                  src="/jersson.png"
+                  src="/jersson.webp"
                   alt="Jersson Corilla — Full Stack Developer"
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-full h-auto object-cover block"
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.6 }}

@@ -39,11 +39,12 @@ function App() {
     { id: 'contact', label: t('nav.contact') },
   ];
 
-  /* Custom cursor */
+  /* Custom cursor — desktop only (skip on touch/coarse-pointer devices) */
   useEffect(() => {
     const cursor = cursorRef.current;
     const ring = cursorRingRef.current;
     if (!cursor || !ring) return;
+    if (!window.matchMedia('(pointer: fine)').matches) return;
 
     const move = (e) => {
       cursor.style.left = `${e.clientX}px`;
@@ -73,13 +74,18 @@ function App() {
     };
 
     window.addEventListener('mousemove', move);
-    document.querySelectorAll('a, button, [role="button"]').forEach((el) => {
+    const interactiveEls = document.querySelectorAll('a, button, [role="button"]');
+    interactiveEls.forEach((el) => {
       el.addEventListener('mouseenter', onEnter);
       el.addEventListener('mouseleave', onLeave);
     });
 
     return () => {
       window.removeEventListener('mousemove', move);
+      interactiveEls.forEach((el) => {
+        el.removeEventListener('mouseenter', onEnter);
+        el.removeEventListener('mouseleave', onLeave);
+      });
     };
   }, []);
 
@@ -168,12 +174,11 @@ function App() {
       <nav className="fixed top-2 md:top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pointer-events-none">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            className="pointer-events-auto rounded-2xl transition-all duration-500"
+            className="nav-blur pointer-events-auto rounded-2xl transition-all duration-500"
             style={{
               background: scrolled
                 ? 'rgba(2, 4, 15, 0.85)'
                 : 'rgba(2, 4, 15, 0.6)',
-              backdropFilter: 'blur(20px)',
               border: '1px solid rgba(6,182,212,0.15)',
               boxShadow: scrolled
                 ? '0 4px 30px rgba(0,0,0,0.5), 0 0 20px rgba(6,182,212,0.08)'
@@ -280,7 +285,6 @@ function App() {
                 className="rounded-2xl overflow-hidden p-2"
                 style={{
                   background: 'rgba(2,4,15,0.95)',
-                  backdropFilter: 'blur(20px)',
                   border: '1px solid rgba(6,182,212,0.15)',
                   boxShadow: '0 8px 30px rgba(0,0,0,0.5)',
                 }}

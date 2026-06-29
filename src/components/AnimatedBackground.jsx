@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 /* ─── Circuit traces (PCB-style paths) ─── */
 const traces = [
@@ -41,6 +41,32 @@ const chips = [
 ];
 
 const AnimatedBackground = () => {
+  const [isLite, setIsLite] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px), (prefers-reduced-motion: reduce)');
+    setIsLite(mq.matches);
+    const onChange = (e) => setIsLite(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  if (isLite) {
+    /* Mobile / reduced-motion: static gradient only, no SVG animation, no blur filters */
+    return (
+      <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(circle at 85% -10%, rgba(6,182,212,0.10) 0%, transparent 45%), radial-gradient(circle at -5% 100%, rgba(168,85,247,0.08) 0%, transparent 45%), #02040f',
+          }}
+        />
+        <div className="absolute inset-x-0 top-0 h-24" style={{ background: 'linear-gradient(to bottom, #02040f, transparent)' }} />
+        <div className="absolute inset-x-0 bottom-0 h-24" style={{ background: 'linear-gradient(to top, #02040f, transparent)' }} />
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
 

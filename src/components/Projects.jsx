@@ -12,6 +12,8 @@ const ProjectVisual = ({ project, language, className = '' }) => {
       <img
         src={project.image}
         alt={project.title[language]}
+        loading="lazy"
+        decoding="async"
         className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${className}`}
       />
     );
@@ -217,6 +219,8 @@ const Projects = () => {
                         <img
                           src={topProject.image}
                           alt={topProject.title[language]}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover"
                         />
                       </div>

@@ -426,9 +426,26 @@ body::after {
   transition: left 0.12s ease-out, top 0.12s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
 }
 
+.nav-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
 @media (max-width: 768px) {
   .custom-cursor,
   .custom-cursor-ring { display: none; }
+
+  /* Cheaper GPU compositing on mobile: lighter blur instead of backdrop-blur-xl (24px) */
+  .glass-card,
+  .glass-card-hover {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .nav-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }
 
 /* ─── KEYFRAMES ─── */

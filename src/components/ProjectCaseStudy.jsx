@@ -61,7 +61,7 @@ const caseStudiesData = {
             { value: "4", title: "Planes SaaS", desc: "Freemium, PRO, PREMIUM y ELITE con cuotas y módulos diferenciados." },
             { value: "60+", title: "Endpoints API", desc: "Backend modular con autenticación JWT y control de cuotas por plan." }
         ],
-        gallery: ["/derejia.png"]
+        gallery: ["/derejia.webp"]
     },
     2: { // Trámite Documentario
         title: "Transformación Digital en",
@@ -239,7 +239,7 @@ const caseStudiesData = {
             { value: "+93%", title: "Mejor Coherencia Semántica", desc: "Similitud coseno superior frente a GPT-4o-mini usado sin RAG (0.276 vs 0.143)." },
             { value: "888", title: "Alimentos Vectorizados", desc: "Base de conocimiento oficial CENAN/INS indexada en Pinecone para RAG." }
         ],
-        gallery: ["/nutridiabetes.png"]
+        gallery: ["/nutridiabetes.webp"]
     },
     11: { // Sistema Farmacia / ITVentas
         title: "Digitalizando la Operación de una",
@@ -299,7 +299,7 @@ const caseStudiesData = {
             { value: "-90%", title: "Errores de Inventario", desc: "Stock actualizado en tiempo real por triggers en lugar de conteo físico periódico." },
             { value: "-60%", title: "Mermas por Vencimiento", desc: "Alertas automáticas y despacho FEFO frente a la detección manual al vender." }
         ],
-        gallery: ["/farmacia.png"]
+        gallery: ["/farmacia.webp"]
     },
     12: { // Sis_Inventario - PernoCentro
         title: "Control Total de Stock para",
@@ -359,7 +359,7 @@ const caseStudiesData = {
             { value: "95%", title: "Madurez en Ventas", desc: "Boleta, factura, ticket y series de comprobante con flujo completo." },
             { value: "~9,430", title: "Líneas de Código PHP", desc: "Código propio medido directamente del repositorio, sin librerías de terceros." }
         ],
-        gallery: ["/inventario.png"]
+        gallery: ["/inventario.webp"]
     },
     1: { // Odontológico
         title: "Gestión Clínica Integral para un",
@@ -419,7 +419,7 @@ const caseStudiesData = {
             { value: "70%", title: "Más Rapidez en Historiales", desc: "Acceso digital inmediato a antecedentes, diagnósticos y controles." },
             { value: "65%", title: "Más Control Financiero", desc: "Saldos, montos pactados y pagos registrados por paciente." }
         ],
-        gallery: ["/odontologia.png"]
+        gallery: ["/odontologia.webp"]
     },
     3: { // SISRECUPEROS
         title: "Conciliación de Recuperos Médicos con",
@@ -479,7 +479,7 @@ const caseStudiesData = {
             { value: "90%", title: "Acceso Más Rápido a Adjuntos", desc: "Historias clínicas y recetas en PDF disponibles en segundos." },
             { value: "40%", title: "Menos Tiempo de Conciliación", desc: "Vinculación directa paciente-práctica-factura frente al cruce manual de planillas." }
         ],
-        gallery: ["/recuperos.png"]
+        gallery: ["/recuperos.webp"]
     },
     5: { // Saneamiento de Títulos
         title: "Digitalizando el Seguimiento de Expedientes en",
@@ -539,7 +539,7 @@ const caseStudiesData = {
             { value: "80%", title: "Menos Expedientes Atrasados", desc: "Detección sin notificar a tiempo, gracias a las alertas automáticas por cron." },
             { value: "90%", title: "Menos Tiempo en Reportes", desc: "Generación de PDF automática frente a la elaboración manual de informes." }
         ],
-        gallery: ["/saneamiento_titulos.png"]
+        gallery: ["/saneamiento_titulos.webp"]
     },
     7: { // Grifo Grau
         title: "Cuadre de Caja en Minutos para una",
@@ -599,7 +599,7 @@ const caseStudiesData = {
             { value: "↓90%", title: "Errores de Cuadre", desc: "Validación automática de faltante/sobrante en tiempo real." },
             { value: "↓95%", title: "Tiempo de Reportes", desc: "Exportación a PDF/Excel con un clic frente a 20-30 min armando el reporte a mano." }
         ],
-        gallery: ["/grifo.png"]
+        gallery: ["/grifo.webp"]
     },
     8: { // Grados y Títulos - UTEA
         title: "Del Expediente al Diploma para la",
@@ -659,7 +659,7 @@ const caseStudiesData = {
             { value: "↓95%", title: "Tiempo de Reporte SUNEDU", desc: "Exportación automática frente a días de consolidación manual en Excel." },
             { value: "100%", title: "Expedientes con Seguimiento Digital", desc: "Portal público de seguimiento en tiempo real, sin visitas presenciales." }
         ],
-        gallery: ["/grados_y_titulos.png"]
+        gallery: ["/grados_y_titulos.webp"]
     },
     6: { // Facturación Electrónica
         title: "Optimización Operativa en",

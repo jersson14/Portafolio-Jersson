@@ -1,11 +1,11 @@
-import { 
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs, FaBootstrap, 
+import {
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs, FaBootstrap,
   FaPhp, FaNodeJs, FaPython, FaJava,
-  FaDatabase, FaAws, FaDocker, FaGitAlt, FaGithub, FaGitlab, FaCloud, FaChartBar, FaMicrosoft
+  FaDatabase, FaAws, FaDocker, FaGitAlt, FaGithub, FaGitlab, FaCloud, FaChartBar, FaMicrosoft, FaBrain
 } from 'react-icons/fa';
-import { 
-  SiTailwindcss, SiMysql, SiPostgresql, SiMongodb, 
-  SiTableau, SiMariadb, SiSqlite, SiTypescript
+import {
+  SiTailwindcss, SiMysql, SiPostgresql, SiMongodb,
+  SiTableau, SiMariadb, SiSqlite, SiTypescript, SiVercel, SiRailway, SiSupabase, SiOracle
 } from 'react-icons/si';
 
 export const techStackData = {
@@ -39,6 +39,8 @@ export const techStackData = {
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "MariaDB", icon: SiMariadb, color: "#C0765A" },
       { name: "SQLite", icon: SiSqlite, color: "#003B57" },
+      { name: "Oracle", icon: SiOracle, color: "#F80000" },
+      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
     ]
   },
   cloud: {
@@ -46,6 +48,8 @@ export const techStackData = {
     technologies: [
       { name: "AWS", icon: FaAws, color: "#FF9900" },
       { name: "Azure", icon: FaCloud, color: "#0078D4" },
+      { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
+      { name: "Railway", icon: SiRailway, color: "#A0A0A0" },
       { name: "Docker", icon: FaDocker, color: "#2496ED" },
       { name: "Git", icon: FaGitAlt, color: "#F05032" },
       { name: "GitHub", icon: FaGithub, color: "#FFFFFF" },
@@ -66,6 +70,8 @@ export const techStackData = {
     technologies: [
       { name: "Python", icon: FaPython, color: "#3776AB" },
       { name: "Power Automate", icon: FaMicrosoft, color: "#0066FF" },
+      { name: "RAG", icon: FaBrain, color: "#a855f7" },
+      { name: "Pinecone", icon: FaDatabase, color: "#1BA17D" },
     ]
   }
 };

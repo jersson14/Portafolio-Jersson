@@ -19,7 +19,7 @@ export const projectsData = [
     githubUrl: "#",
     status: "private",
     category: "LegalTech / SaaS",
-    image: "/derejia.png",
+    image: "/derejia.webp",
     gradient: "linear-gradient(135deg, #1e0340 0%, #2d0a6e 30%, #0f0225 60%, #02040f 100%)",
     metrics: [
       { value: "20+", label: "Módulos IA" },
@@ -46,7 +46,7 @@ export const projectsData = [
     githubUrl: "https://github.com/jersson14/TRAMITE_DOC",
     status: "public",
     category: "Full Stack",
-    image: "/tramite_documentario.png",
+    image: "/tramite_documentario.webp",
     metrics: [
       { value: "60%", label: "Reducción de Tiempo" },
       { value: "500+", label: "Consultas/Mes Auto." },
@@ -67,12 +67,17 @@ export const projectsData = [
       es: "Plataforma web para la emisión de comprobantes electrónicos en servicios de transporte Cusco–Abancay, integrada con RENIEC y SUNAT, cumpliendo la normativa de facturación electrónica vigente.",
       en: "Web platform for issuing electronic receipts in Cusco–Abancay transport services, integrated with RENIEC and SUNAT, complying with current electronic invoicing regulations."
     },
-    technologies: ["PHP", "MySQL", "API SUNAT", "API RENIEC", "Facturación Electrónica"],
+    technologies: ["PHP", "MySQL", "Greenter", "API SUNAT", "API RENIEC", "Docker"],
     demoUrl: "https://sisfacturacion.jcm-abc.com/",
     githubUrl: "https://github.com/jersson14/sistema_micaela",
     status: "public",
     category: "FinTech",
-    image: "/facturacion.png"
+    image: "/facturacion.webp",
+    metrics: [
+      { value: "+10k", label: "Facturas/Mes" },
+      { value: "0%", label: "Duplicidad" },
+      { value: "100%", label: "Visibilidad Gerencial" }
+    ]
   },
   {
     id: 1,
@@ -90,7 +95,7 @@ export const projectsData = [
     githubUrl: "https://github.com/jersson14/Sistema_Odontologico",
     status: "public",
     category: "Full Stack",
-    image: "/odontologia.png"
+    image: "/odontologia.webp"
   },
   {
     id: 3,
@@ -108,7 +113,7 @@ export const projectsData = [
     githubUrl: "https://github.com/jersson14/sistema_recuperos",
     status: "public",
     category: "Full Stack",
-    image: "/recuperos.png"
+    image: "/recuperos.webp"
   },
   {
     id: 4,
@@ -121,13 +126,18 @@ export const projectsData = [
       es: "Plataforma web para la gestión académica y administrativa de colegios, incluyendo control de estudiantes, docentes y procesos educativos.",
       en: "Web platform for the academic and administrative management of schools, including control of students, teachers, and educational processes."
     },
-    technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap"],
+    technologies: ["PHP", "MySQL", "AdminLTE", "jQuery", "mPDF", "DataTables"],
     demoUrl: "https://colegioo.site/landing.html",
     githubUrl: "https://github.com/jersson14/colegio_sedes_sapientae",
     status: "public",
     featured: true,
     category: "EdTech",
-    image: "/colegio.png"
+    image: "/colegio.webp",
+    metrics: [
+      { value: "12+", label: "Módulos Funcionales" },
+      { value: "36", label: "Tablas en BD" },
+      { value: "263", label: "Controladores PHP" }
+    ]
   },
   {
     id: 5,
@@ -145,7 +155,7 @@ export const projectsData = [
     githubUrl: "https://github.com/jersson14/incocat_abancay",
     status: "public",
     category: "Gestoría",
-    image: "/saneamiento_titulos.png"
+    image: "/saneamiento_titulos.webp"
   },
   {
     id: 7,
@@ -163,7 +173,7 @@ export const projectsData = [
     githubUrl: "https://github.com/jersson14/grifo_grau",
     status: "public",
     category: "Retail",
-    image: "/grifo.png"
+    image: "/grifo.webp"
   },
   {
     id: 8,
@@ -181,7 +191,7 @@ export const projectsData = [
     githubUrl: "https://github.com/jersson14/Sistema_grado_titulos",
     status: "public",
     category: "EdTech",
-    image: "/grados_y_titulos.png"
+    image: "/grados_y_titulos.webp"
   },
   {
     id: 10,
@@ -194,14 +204,19 @@ export const projectsData = [
       es: "Sistema inteligente de recomendaciones nutricionales para pacientes con Diabetes Mellitus Tipo 2, basado en la Tabla Peruana de Composición de Alimentos (CENAN/INS) y arquitectura RAG. Proyecto de tesis de Maestría con métricas de precisión validadas.",
       en: "Intelligent nutrition recommendation system for Type 2 Diabetes patients, based on the Peruvian Food Composition Table (CENAN/INS) and a RAG architecture. Master's thesis project with validated accuracy metrics."
     },
-    technologies: ["Next.js", "Node.js", "FastAPI", "PostgreSQL", "Pinecone", "OpenAI GPT-4", "RAG"],
+    technologies: ["Next.js", "Node.js", "FastAPI", "PostgreSQL", "Pinecone", "OpenAI GPT-4", "RAG", "Vercel"],
     demoUrl: "https://nutri-diabetes.vercel.app/",
     githubUrl: "https://github.com/jersson14/NutriDiabetes",
     status: "public",
     featured: true,
     category: "HealthTech",
-    image: "/nutridiabetes.png",
-    gradient: "linear-gradient(135deg, #052e16 0%, #064e3b 40%, #02040f 100%)"
+    image: "/nutridiabetes.webp",
+    gradient: "linear-gradient(135deg, #052e16 0%, #064e3b 40%, #02040f 100%)",
+    metrics: [
+      { value: "73.3%", label: "Precisión Excelente/Buena" },
+      { value: "+93%", label: "Coherencia Semántica" },
+      { value: "888", label: "Alimentos Vectorizados" }
+    ]
   },
   {
     id: 11,
@@ -220,8 +235,13 @@ export const projectsData = [
     status: "public",
     featured: true,
     category: "HealthTech",
-    image: "/farmacia.png",
-    gradient: "linear-gradient(135deg, #0c1a4e 0%, #1e3a8a 40%, #02040f 100%)"
+    image: "/farmacia.webp",
+    gradient: "linear-gradient(135deg, #0c1a4e 0%, #1e3a8a 40%, #02040f 100%)",
+    metrics: [
+      { value: "-80%", label: "Tiempo por Venta" },
+      { value: "-90%", label: "Errores de Inventario" },
+      { value: "-60%", label: "Mermas por Vencimiento" }
+    ]
   },
   {
     id: 12,
@@ -240,7 +260,12 @@ export const projectsData = [
     status: "public",
     featured: true,
     category: "Inventario",
-    image: "/inventario.png",
-    gradient: "linear-gradient(135deg, #431407 0%, #7c2d12 40%, #02040f 100%)"
+    image: "/inventario.webp",
+    gradient: "linear-gradient(135deg, #431407 0%, #7c2d12 40%, #02040f 100%)",
+    metrics: [
+      { value: "13", label: "Módulos Funcionales" },
+      { value: "95%", label: "Madurez en Ventas" },
+      { value: "~9,430", label: "Líneas de Código" }
+    ]
   }
 ];
