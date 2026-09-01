@@ -75,7 +75,7 @@ const PhotoPanel = ({ children }) => (
       {/* Status bar */}
       <div className="photo-status-bar">
         <span className="status-dot" />
-        <span>DEVELOPER</span>
+        <span>CLOUD ARCHITECT</span>
         <span className="status-sep">|</span>
         <span>PERU</span>
         <span className="status-sep">|</span>
@@ -180,8 +180,8 @@ const Hero = () => {
               className="mb-8 flex items-center gap-3"
             >
               <span
-                className="font-mono text-lg md:text-xl lg:text-2xl font-medium"
-                style={{ color: '#64748b', letterSpacing: '0.06em' }}
+                className="font-mono text-base md:text-lg lg:text-xl font-medium"
+                style={{ color: '#64748b', letterSpacing: '0.04em' }}
               >
                 {t('hero.role')}
               </span>

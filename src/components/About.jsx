@@ -91,7 +91,33 @@ const About = () => {
             <div className="space-y-5 text-base md:text-lg text-dark-300 leading-relaxed">
               <p>{t('about.description_1')}</p>
               <p>{t('about.description_2')}</p>
-              <p>{t('about.description_3')}</p>
+            </div>
+
+            {/* Areas of Specialization */}
+            <div
+              className="mt-10 pt-10 text-left"
+              style={{ borderTop: '1px solid rgba(6,182,212,0.15)' }}
+            >
+              <h4 className="text-xl font-bold font-display text-white mb-6 text-center">
+                {t('about.specialties.title')}
+              </h4>
+              <div className="grid sm:grid-cols-2 gap-5">
+                {t('about.specialties.items').map((item, i) => (
+                  <div
+                    key={item.label}
+                    className={`rounded-xl p-5 ${i === 3 ? 'sm:col-span-2' : ''}`}
+                    style={{
+                      background: 'rgba(6,182,212,0.05)',
+                      border: '1px solid rgba(6,182,212,0.15)',
+                    }}
+                  >
+                    <div className="font-semibold font-mono text-sm mb-2" style={{ color: '#22d3ee' }}>
+                      {item.label}
+                    </div>
+                    <p className="text-dark-400 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div

@@ -12,12 +12,12 @@ export const translations = {
     },
     hero: {
       greeting: '👋 Hola, bienvenido a mi portafolio',
-      role: 'Software Engineer | Full Stack | Cloud Solutions',
-      description_prefix: 'Especialista en',
-      description_highlight_1: 'Ingeniería y Desarrollo de Software',
+      role: 'Cloud Solutions Architect (AWS/Azure) | AI & RAG Engineering | Full Stack & Data Analytics',
+      description_prefix: 'Ingeniero de Sistemas certificado como',
+      description_highlight_1: 'AWS Cloud Practitioner',
       description_connector: 'con',
-      description_highlight_2: 'más de 5 años de experiencia',
-      description_suffix: 'en el diseño, desarrollo y despliegue de aplicaciones web empresariales de nivel enterprise. Combino ingeniería de software avanzada con inteligencia artificial y cloud computing.',
+      description_highlight_2: 'Maestría en Ingeniería de Software,',
+      description_suffix: 'especializado en Arquitectura Cloud (AWS/Azure), Ingeniería de Datos e Inteligencia Artificial Aplicada (RAG). Enfocado en la automatización de flujos complejos, la optimización de infraestructura en la nube y el diseño de pipelines de datos para la toma de decisiones estratégicas.',
       buttons: {
         projects: 'Ver Proyectos',
         contact: 'Contactar',
@@ -28,9 +28,17 @@ export const translations = {
       title: 'Sobre Mí',
       subtitle: 'Ingeniero de Software con pasión por crear soluciones tecnológicas de alto impacto',
       card_title: 'Ingeniero de Sistemas e Informática',
-      description_1: 'Ingeniero de Sistemas con estudios de Maestría en Ingeniería de Software y experiencia en Arquitectura Cloud (AWS/Azure) e Inteligencia Artificial Aplicada mediante estructuras RAG (Generación Recuperada por Aumentación para optimización de datos).',
-      description_2: 'Destacado por un fuerte pensamiento crítico orientado al análisis complejo, gestión de proyectos y el liderazgo en entornos de alta exigencia tecnológica. Trayectoria como Solo Founder de una plataforma SaaS en el sector LegalTech con tracción comercial, y como desarrollador principal de infraestructura central universitaria coordinando con equipos bajo metodologías ágiles.',
-      description_3: 'Experto en la automatización de procesos mediante Python y la implementación de inteligencia de negocios con Power BI para optimizar la toma de decisiones estratégicas.',
+      description_1: 'Ingeniero de Sistemas certificado como AWS Cloud Practitioner con Maestría en Ingeniería de Software, especializado en Arquitectura Cloud (AWS/Azure), Ingeniería de Datos e Inteligencia Artificial Aplicada (RAG). Mi enfoque está en la automatización de flujos complejos, optimización de infraestructura en la nube y el diseño de pipelines de datos para la toma de decisiones estratégicas.',
+      description_2: 'Como Fundador y Arquitecto Principal de la plataforma SaaS DEREJ-IA, lidero el despliegue de soluciones en LegalTech basadas en modelos generativos y Web Scraping. Cuento con trayectoria diseñando arquitecturas elásticas en la nube y co-diseñando sistemas de gestión institucional reconocidos formalmente por optimizar procesos administrativos.',
+      specialties: {
+        title: 'Áreas de Especialización',
+        items: [
+          { label: 'Cloud & DevOps', desc: 'AWS, Azure, Docker, Arquitecturas Elásticas, CI/CD.' },
+          { label: 'Data Engineering & IA', desc: 'Inteligencia Artificial (RAG), Web Scraping, Pipelines ETL, Power BI, QuickSight.' },
+          { label: 'Core Development', desc: 'Python, Node.js, PHP, TypeScript, SQL Server, PostgreSQL, MySQL y NoSQL.' },
+          { label: 'AI-Assisted Development', desc: 'Dominio amplio del ecosistema de herramientas de IA generativa, incluyendo Claude Code, OpenAI Codex, Gemini, Antigravity y otros agentes de IA aplicados a flujos de desarrollo, prototipado y automatización de código. Manejo de MCP (Model Context Protocol), Skills y orquestación de agentes para integrar IA en sistemas y flujos de trabajo productivos.' }
+        ]
+      },
       mentorship_title: 'Docencia y Mentoria',
       mentorship_desc: 'Docente e instructor en tecnologías de programación, Python, Power BI y SQL, compartiendo conocimiento y formando a la próxima generación de profesionales tech.',
       skills: {
@@ -136,12 +144,12 @@ export const translations = {
     },
     hero: {
       greeting: '👋 Hello, welcome to my portfolio',
-      role: 'Software Engineer | Full Stack | Cloud Solutions',
-      description_prefix: 'Specialist in',
-      description_highlight_1: 'Software Engineering & Development',
-      description_connector: 'with',
-      description_highlight_2: 'over 5 years of experience',
-      description_suffix: 'in designing, developing, and deploying enterprise-level web applications. I combine advanced software engineering with artificial intelligence and cloud computing.',
+      role: 'Cloud Solutions Architect (AWS/Azure) | AI & RAG Engineering | Full Stack & Data Analytics',
+      description_prefix: 'Systems Engineer certified as',
+      description_highlight_1: 'AWS Cloud Practitioner',
+      description_connector: 'with a',
+      description_highlight_2: 'Master\'s in Software Engineering,',
+      description_suffix: 'specialized in Cloud Architecture (AWS/Azure), Data Engineering, and Applied Artificial Intelligence (RAG). Focused on automating complex workflows, optimizing cloud infrastructure, and designing data pipelines for strategic decision-making.',
       buttons: {
         projects: 'View Projects',
         contact: 'Contact Me',
@@ -152,9 +160,17 @@ export const translations = {
       title: 'About Me',
       subtitle: 'Software Engineer with a passion for creating high-impact technological solutions',
       card_title: 'Systems & Informatics Engineer',
-      description_1: 'Systems Engineer with a Master\'s in Software Engineering and experience in Cloud Architecture (AWS/Azure) and Applied Artificial Intelligence through RAG (Retrieval-Augmented Generation) structures for data optimization.',
-      description_2: 'Distinguished by strong critical thinking oriented toward complex analysis, project management, and leadership in high-demand technological environments. Track record as Solo Founder of a SaaS platform in the LegalTech sector with commercial traction, and as lead developer of core university infrastructure coordinating with teams under agile methodologies.',
-      description_3: 'Expert in process automation through Python and the implementation of business intelligence with Power BI to optimize strategic decision-making.',
+      description_1: 'Systems Engineer certified as AWS Cloud Practitioner with a Master\'s in Software Engineering, specialized in Cloud Architecture (AWS/Azure), Data Engineering, and Applied Artificial Intelligence (RAG). My focus is on automating complex workflows, optimizing cloud infrastructure, and designing data pipelines for strategic decision-making.',
+      description_2: 'As Founder and Lead Architect of the DEREJ-IA SaaS platform, I lead the deployment of LegalTech solutions based on generative models and Web Scraping. I have a proven track record designing elastic cloud architectures and co-designing institutional management systems formally recognized for optimizing administrative processes.',
+      specialties: {
+        title: 'Areas of Specialization',
+        items: [
+          { label: 'Cloud & DevOps', desc: 'AWS, Azure, Docker, Elastic Architectures, CI/CD.' },
+          { label: 'Data Engineering & AI', desc: 'Artificial Intelligence (RAG), Web Scraping, ETL Pipelines, Power BI, QuickSight.' },
+          { label: 'Core Development', desc: 'Python, Node.js, PHP, TypeScript, SQL Server, PostgreSQL, MySQL, and NoSQL.' },
+          { label: 'AI-Assisted Development', desc: 'Extensive mastery of the generative AI tooling ecosystem, including Claude Code, OpenAI Codex, Gemini, Antigravity, and other AI agents applied to development workflows, prototyping, and code automation. Proficient with MCP (Model Context Protocol), Skills, and agent orchestration to integrate AI into production systems and workflows.' }
+        ]
+      },
       mentorship_title: 'Teaching & Mentorship',
       mentorship_desc: 'Professor and instructor in programming technologies, Python, Power BI, and SQL, sharing knowledge and training the next generation of tech professionals.',
       skills: {
