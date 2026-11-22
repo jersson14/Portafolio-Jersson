@@ -61,8 +61,8 @@ export const experienceData = [
       en: "Technology & Business Intelligence Instructor"
     },
     period: {
-      es: "Dic. 2023 – Jun. 2025",
-      en: "Dec. 2023 – Jun. 2025"
+      es: "Dic. 2023 – Jul. 2025",
+      en: "Dec. 2023 – Jul. 2025"
     },
     current: false,
     responsibilities: {

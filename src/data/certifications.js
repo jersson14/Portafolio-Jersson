@@ -215,6 +215,6 @@ export const moreCertifications = [
 
 export const languagesData = [
   { name: { es: "Español", en: "Spanish" }, level: { es: "Nativo", en: "Native" }, percent: 100 },
-  { name: { es: "Inglés", en: "English" }, level: { es: "Básico", en: "Basic" }, percent: 20 },
+  { name: { es: "Inglés", en: "English" }, level: { es: "Intermedio (B1)", en: "Intermediate (B1)" }, percent: 50 },
   { name: { es: "Italiano", en: "Italian" }, level: { es: "Básico", en: "Basic" }, percent: 15 }
 ];
