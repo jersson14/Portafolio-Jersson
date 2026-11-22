@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { certificationsData, moreCertifications, languagesData } from '../data/certifications';
+import { certificationsData, moreCertifications, languagesData, certDate } from '../data/certifications';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -94,7 +94,7 @@ const Certifications = () => {
                             {/* Footer */}
                             <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/10">
                                 <span className="text-primary-400 font-semibold text-sm">
-                                    {cert.year}
+                                    {certDate(cert.year, language)}
                                 </span>
                                 {cert.credentialUrl ? (
                                     <a
@@ -107,8 +107,8 @@ const Certifications = () => {
                                         <FaExternalLinkAlt className="text-xs" />
                                     </a>
                                 ) : (
-                                    <span className="text-xs text-dark-600">
-                                        {t('certifications.badge')}
+                                    <span className={`text-xs ${cert.validUntil ? 'text-dark-400' : 'text-dark-600'}`}>
+                                        {cert.validUntil ? `${t('certifications.valid_until')} ${cert.validUntil}` : t('certifications.badge')}
                                     </span>
                                 )}
                             </div>
@@ -135,7 +135,7 @@ const Certifications = () => {
                                             key={cIdx}
                                             className="px-3 py-1.5 rounded-full text-xs text-dark-300 border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-300"
                                         >
-                                            {course.title[language]} <span className="text-dark-500">· {course.year}</span>
+                                            {course.title[language]} <span className="text-dark-500">· {certDate(course.year, language)}</span>
                                         </span>
                                     ))}
                                 </div>

@@ -149,6 +149,7 @@ export const translations = {
         languages_title: 'Idiomas',
         more_title: 'Más Cursos y Certificaciones',
         view_credential: 'Ver credencial',
+        valid_until: 'Vigente hasta',
         badge: 'Certificado'
     },
     services: {
@@ -344,6 +345,7 @@ export const translations = {
         languages_title: 'Languages',
         more_title: 'More Courses & Certifications',
         view_credential: 'View credential',
+        valid_until: 'Valid until',
         badge: 'Certificate'
     },
     services: {

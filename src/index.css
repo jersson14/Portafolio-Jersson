@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=JetBrains+Mono:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -434,18 +432,31 @@ body::after {
 @media (max-width: 768px) {
   .custom-cursor,
   .custom-cursor-ring { display: none; }
+}
 
-  /* Cheaper GPU compositing on mobile: lighter blur instead of backdrop-blur-xl (24px) */
+/* ─── MODO LIGERO (celular y tablet): sin efectos que obligan a repintar la pantalla ─── */
+@media (max-width: 768px), (pointer: coarse) {
+  body::after { display: none; }
+
   .glass-card,
-  .glass-card-hover {
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+  .glass-card-hover,
+  .nav-blur,
+  .badge-neon,
+  main [class*='backdrop-blur'] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
-  .nav-blur {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
+  .glass-card,
+  .glass-card-hover { background: rgba(5, 11, 25, 0.94); }
+
+  .nav-blur { background: rgba(2, 4, 15, 0.96) !important; }
+
+  .shimmer-text { animation: none; background-position: 20% center; }
+  .glow-effect::before { display: none; }
+  #tech-stack svg { filter: none !important; }
+
+  .photo-scan-line { --scan: 400px; }
 }
 
 /* ─── KEYFRAMES ─── */
@@ -460,10 +471,10 @@ body::after {
 }
 
 @keyframes scanDown {
-  0%   { top: -2px;   opacity: 0; }
+  0%   { transform: translateY(0); opacity: 0; }
   8%   { opacity: 1; }
   92%  { opacity: 1; }
-  100% { top: 100%;  opacity: 0; }
+  100% { transform: translateY(var(--scan, 570px)); opacity: 0; }
 }
 
 /* ─── DEMOS EN VIVO ─── */
@@ -578,8 +589,8 @@ main { overflow-x: clip; }
 /* ─── AGENTE ─── */
 /* Robot */
 .rb { display: block; overflow: visible; }
-.rb-pupils { transform: translate(var(--lx, 0), var(--ly, 0)); }
-.rb-eyes { transform-origin: 60px 53px; animation: rbBlink 4.6s infinite; }
+.rb-eyes { transform-origin: 60px 53px; }
+.rb.is-blink .rb-eyes { transform: scaleY(0.08); }
 .rb-eyes-happy, .rb-eyes-dizzy, .rb-dots, .rb-mouth, .rb-waves { display: none; }
 .rb[data-mood='talk'] .rb-smile { display: none; }
 .rb[data-mood='talk'] .rb-mouth, .rb[data-mood='listen'] .rb-waves { display: block; }
@@ -597,9 +608,8 @@ main { overflow-x: clip; }
 .rb-arm-l { transform-origin: 43px 101px; animation: rbArm 2.6s ease-in-out infinite; }
 .rb-arm-r { transform-origin: 77px 101px; animation: rbArm 2.6s ease-in-out infinite reverse; }
 .rb[data-mood='happy'] .rb-arm-r { animation: rbWave 0.5s ease-in-out infinite alternate; }
-.rb-flame { transform-origin: 60px 133px; transform: scaleY(var(--thrust, 1)); }
-.rb-flame path { transform-origin: 60px 133px; animation: rbFlame 0.16s ease-in-out infinite alternate; }
-@keyframes rbBlink { 0%, 93%, 100% { transform: scaleY(1); } 96.5% { transform: scaleY(0.08); } }
+/* Caras pequeñas y robot en celular: sin animación interna en reposo */
+.agent-face:not([data-mood='think']):not([data-mood='talk']) *, .is-calm[data-mood='idle'] *, .is-calm .rb-arm-l, .is-calm .rb-core, .is-calm .rb-beacon { animation: none; }
 @keyframes rbPulse { 0%, 100% { opacity: 0.6; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.18); } }
 @keyframes rbArm { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(9deg); } }
 @keyframes rbWave { from { transform: rotate(-105deg); } to { transform: rotate(-145deg); } }
@@ -609,9 +619,12 @@ main { overflow-x: clip; }
 .agent-face { flex: none; width: 40px; height: 35px; }
 
 .buddy-layer { position: fixed; inset: 0; z-index: 44; pointer-events: none; overflow: hidden; }
-.buddy { position: absolute; left: 0; top: 0; width: 92px; height: 129px; will-change: transform; }
+.buddy { position: absolute; left: 0; top: 0; width: 92px; height: 129px; will-change: transform; contain: layout style; }
 .buddy-hit { display: block; width: 100%; height: 100%; pointer-events: auto; touch-action: none; user-select: none; -webkit-tap-highlight-color: transparent; }
-.buddy-tilt { display: block; width: 100%; height: 100%; transform-origin: 50% 45%; will-change: transform; }
+.buddy-tilt { position: relative; display: block; width: 100%; height: 100%; transform-origin: 50% 45%; will-change: transform; }
+.buddy-tilt .rb { position: relative; width: 100%; height: 100%; }
+.buddy-flame { position: absolute; left: 42%; top: 78%; width: 16%; height: 26%; transform-origin: 50% 0; will-change: transform; }
+.buddy-flame i { display: block; width: 100%; height: 100%; border-radius: 45% 45% 50% 50% / 12% 12% 88% 88%; background: linear-gradient(#eafffd, #36e6d8 35%, rgba(168, 85, 247, 0)); transform-origin: 50% 0; animation: rbFlame 0.16s ease-in-out infinite alternate; }
 .buddy-dot {
   position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 50%; opacity: 0;
   background: radial-gradient(circle, rgba(94, 234, 220, 0.9), rgba(168, 85, 247, 0.35) 55%, transparent 72%);

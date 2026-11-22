@@ -7,7 +7,7 @@
 import { detectLang, norm } from './text';
 import {
   CONTACT, waLink, findProjects, liveProjects, aiProjects, evidence, findTerms, search, docCount,
-  experienceData, servicesData, certificationsData, projectsData,
+  experienceData, servicesData, certificationsData, certDate, projectsData,
 } from './knowledge';
 
 const L = (lang, es, en) => (lang === 'es' ? es : en);
@@ -269,7 +269,7 @@ export const ask = (raw, { uiLang, lastProjectId, awaiting } = {}) => {
   /* ── Perfil ── */
   if (/certifica/.test(t)) {
     return out(
-      [text(L(lang, 'Certificaciones principales:', 'Main certifications:')), list(certificationsData.slice(0, 6).map((c) => `${c.title[lang]} · ${c.issuer[lang]}, ${c.year}`))],
+      [text(L(lang, 'Certificaciones principales:', 'Main certifications:')), list(certificationsData.slice(0, 6).map((c) => `${c.title[lang]} · ${c.issuer[lang]}, ${certDate(c.year, lang)}`))],
       [['listar_certificaciones', '', `${certificationsData.length}`]],
     );
   }

@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa';
 import { SiTypescript, SiPostgresql } from 'react-icons/si';
 import { useLanguage } from '../context/LanguageContext';
+import { useLite } from '../hooks/useLite';
 import RobotFace from './RobotFace';
 
 /* Floating tech icon */
@@ -90,6 +91,7 @@ const PhotoPanel = ({ children }) => (
 const Hero = () => {
   const { t } = useLanguage();
   const [question, setQuestion] = useState('');
+  const lite = useLite();
 
   const askAgent = (e) => {
     e.preventDefault();
@@ -107,9 +109,9 @@ const Hero = () => {
           style={{
             width: 550, height: 550, top: '-8%', right: '-4%',
             background: 'radial-gradient(circle, rgba(6,182,212,0.14) 0%, transparent 70%)',
-            filter: 'blur(70px)',
+            filter: lite ? 'none' : 'blur(70px)',
           }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
+          animate={lite ? undefined : { scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 8, repeat: Infinity }}
         />
         <motion.div
@@ -117,9 +119,9 @@ const Hero = () => {
           style={{
             width: 450, height: 450, bottom: '-8%', left: '-4%',
             background: 'radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%)',
-            filter: 'blur(70px)',
+            filter: lite ? 'none' : 'blur(70px)',
           }}
-          animate={{ scale: [1.1, 1, 1.1], opacity: [0.5, 0.8, 0.5] }}
+          animate={lite ? undefined : { scale: [1.1, 1, 1.1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 10, repeat: Infinity, delay: 2 }}
         />
       </div>
@@ -291,7 +293,7 @@ const Hero = () => {
             className="relative order-1 md:order-2 flex justify-center items-center py-8 md:py-0"
           >
             {/* Floating tech icons */}
-            <div className="hidden sm:block absolute inset-0 w-full h-full z-20">
+            {!lite && <div className="absolute inset-0 w-full h-full z-20">
               <FloatingIcon icon={FaReact}      x="2%"   y="22%" delay={0}   duration={4.5} size={50} glowColor="#61dafb" />
               <FloatingIcon icon={FaPython}     x="86%"  y="8%"  delay={1.5} duration={5.5} size={56} glowColor="#3776ab" />
               <FloatingIcon icon={FaAws}        x="3%"   y="72%" delay={2}   duration={5}   size={50} glowColor="#ff9900" />
@@ -299,7 +301,7 @@ const Hero = () => {
               <FloatingIcon icon={SiTypescript} x="44%"  y="-5%" delay={1}   duration={4.2} size={38} glowColor="#3178c6" />
               <FloatingIcon icon={FaNodeJs}     x="88%"  y="38%" delay={3}   duration={5.2} size={42} glowColor="#339933" />
               <FloatingIcon icon={SiPostgresql} x="2%"   y="48%" delay={2.5} duration={4.6} size={36} glowColor="#4169e1" />
-            </div>
+            </div>}
 
             {/* Soft glow behind panel */}
             <motion.div
@@ -307,9 +309,9 @@ const Hero = () => {
               style={{
                 width: '70%', height: '70%',
                 background: 'radial-gradient(circle, rgba(6,182,212,0.2) 0%, rgba(168,85,247,0.08) 60%, transparent 80%)',
-                filter: 'blur(40px)',
+                filter: lite ? 'none' : 'blur(40px)',
               }}
-              animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.5, 0.8, 0.5] }}
+              animate={lite ? undefined : { scale: [0.9, 1.1, 0.9], opacity: [0.5, 0.8, 0.5] }}
               transition={{ duration: 5, repeat: Infinity }}
             />
 

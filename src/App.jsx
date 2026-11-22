@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, Suspense, lazy, useRef } from 'react';
+import { useState, useEffect, useCallback, memo, Suspense, lazy, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp, FaBars, FaTimes, FaDownload } from 'react-icons/fa';
 import AnimatedBackground from './components/AnimatedBackground';
@@ -17,6 +17,31 @@ const ProjectCaseStudy = lazy(() => import('./components/ProjectCaseStudy'));
 
 import { useLanguage } from './context/LanguageContext';
 
+const SECTION_IDS = ['home', 'about', 'tech-stack', 'projects', 'experience', 'certifications', 'services', 'contact'];
+
+/* Memorizado: el scroll cambia el menú activo, pero no debe volver a renderizar toda la página */
+const Sections = memo(() => (
+  <Suspense
+    fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div
+          className="w-12 h-12 rounded-full border-2 border-t-transparent animate-spin"
+          style={{ borderColor: 'rgba(6,182,212,0.3)', borderTopColor: '#06b6d4' }}
+        />
+      </div>
+    }
+  >
+    <Hero />
+    <About />
+    <TechStack />
+    <Projects />
+    <Experience />
+    <Certifications />
+    <Services />
+    <Contact />
+  </Suspense>
+));
+
 function App() {
   const { t, language, toggleLanguage } = useLanguage();
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -25,6 +50,7 @@ function App() {
   const [showCaseStudy, setShowCaseStudy] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [scrolled, setScrolled] = useState(false);
+  const [agent, setAgent] = useState(null);
 
   const cursorRef = useRef(null);
   const cursorRingRef = useRef(null);
@@ -87,27 +113,37 @@ function App() {
 
   /* Scroll handler */
   useEffect(() => {
-    const handleScroll = () => {
+    let queued = 0;
+    const update = () => {
+      queued = 0;
       const y = window.scrollY;
       setShowScrollTop(y > 500);
       setScrolled(y > 20);
-
-      const sections = navLinks.map((l) => l.id);
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
+      const current = SECTION_IDS.find((id) => {
+        const rect = document.getElementById(id)?.getBoundingClientRect();
+        return rect && rect.top <= 100 && rect.bottom >= 100;
+      });
+      if (current) setActiveSection(current);
     };
+    /* Como máximo una vez por cuadro */
+    const handleScroll = () => { queued ||= requestAnimationFrame(update); };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [navLinks]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => { cancelAnimationFrame(queued); window.removeEventListener('scroll', handleScroll); };
+  }, []);
+
+  /* El agente carga cuando la página ya está lista, o antes si alguien pregunta desde la portada */
+  useEffect(() => {
+    if (agent) return undefined;
+    const start = () => setAgent((a) => a || {});
+    const onAsk = (e) => setAgent((a) => a || { query: e.detail?.query || '', asked: true });
+    const idle = window.requestIdleCallback ? requestIdleCallback(start, { timeout: 3000 }) : setTimeout(start, 1500);
+    window.addEventListener('openAgent', onAsk);
+    return () => {
+      if (window.cancelIdleCallback) cancelIdleCallback(idle); else clearTimeout(idle);
+      window.removeEventListener('openAgent', onAsk);
+    };
+  }, [agent]);
 
   const closeCaseStudy = useCallback(() => setShowCaseStudy(false), []);
 
@@ -170,9 +206,11 @@ function App() {
         </AnimatePresence>
       </Suspense>
 
-      <Suspense fallback={null}>
-        <Agent />
-      </Suspense>
+      {agent && (
+        <Suspense fallback={null}>
+          <Agent asked={agent.asked} initialQuery={agent.query} />
+        </Suspense>
+      )}
 
       {/* ── NAV ── */}
       <nav className="fixed top-2 md:top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pointer-events-none">
@@ -315,25 +353,7 @@ function App() {
 
       {/* ── MAIN CONTENT ── */}
       <main className="pt-16 relative z-10">
-        <Suspense
-          fallback={
-            <div className="min-h-screen flex items-center justify-center">
-              <div
-                className="w-12 h-12 rounded-full border-2 border-t-transparent animate-spin"
-                style={{ borderColor: 'rgba(6,182,212,0.3)', borderTopColor: '#06b6d4' }}
-              />
-            </div>
-          }
-        >
-          <Hero />
-          <About />
-          <TechStack />
-          <Projects />
-          <Experience />
-          <Certifications />
-          <Services />
-          <Contact />
-        </Suspense>
+        <Sections />
       </main>
 
       <Footer />

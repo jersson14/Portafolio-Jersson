@@ -34,19 +34,10 @@ const RobotFace = ({ full = false, mood = 'idle', className = '' }) => {
           <stop offset="0.45" stopColor="#2fe0d0" />
           <stop offset="1" stopColor="#0b8f8a" />
         </radialGradient>
-        <linearGradient id={`flame${id}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#eafffd" />
-          <stop offset="0.35" stopColor="#36e6d8" />
-          <stop offset="1" stopColor="#a855f7" stopOpacity="0" />
-        </linearGradient>
       </defs>
 
       {full && (
         <g>
-          <g className="rb-flame">
-            <path d="M51 133 Q60 176 69 133 Z" fill={u('flame')} />
-            <path d="M55.5 133 Q60 154 64.5 133 Z" fill="#f2fffe" opacity="0.85" />
-          </g>
           {/* Brazos */}
           <g className="rb-arm rb-arm-l">
             <path d="M42 101 Q26 104 24 118" fill="none" stroke={u('shell')} strokeWidth="9" strokeLinecap="round" />

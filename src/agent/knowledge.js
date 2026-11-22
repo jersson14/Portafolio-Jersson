@@ -3,7 +3,7 @@ import { projectsData } from '../data/projects';
 import { experienceData } from '../data/experience';
 import { servicesData } from '../data/services';
 import { techStackData } from '../data/techStack';
-import { certificationsData } from '../data/certifications';
+import { certificationsData, certDate } from '../data/certifications';
 import { translations } from '../data/translations';
 import { buildIndex, norm } from './text';
 
@@ -113,4 +113,4 @@ const docs = [
 
 export const docCount = docs.length;
 export const search = buildIndex(docs);
-export { projectsData, experienceData, servicesData, certificationsData };
+export { projectsData, experienceData, servicesData, certificationsData, certDate };

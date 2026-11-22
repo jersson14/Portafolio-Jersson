@@ -188,10 +188,10 @@ const Tour = ({ onEnd, sound, onTalk }) => {
   );
 };
 
-const Agent = () => {
+const Agent = ({ asked, initialQuery }) => {
   const { language, setLanguage, t } = useLanguage();
   const reduced = useReducedMotion();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(Boolean(asked));
   const [touring, setTouring] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [buddy, setBuddy] = useState(() => {
@@ -456,7 +456,7 @@ const Agent = () => {
         else { setOpen(true); greet(); }
       }
     };
-    const onScroll = () => setAtTop(window.scrollY < 300);
+    const onScroll = () => setAtTop(window.scrollY < 300); /* React ignora valores repetidos */
     window.addEventListener('openAgent', onOpen);
     window.addEventListener('keydown', onKey);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -466,6 +466,14 @@ const Agent = () => {
       window.removeEventListener('scroll', onScroll);
     };
   }, [close, greet, open, send]);
+
+  /* Pregunta hecha en la portada antes de que el agente cargara */
+  const pending = useRef(initialQuery);
+  useEffect(() => {
+    const q = pending.current;
+    pending.current = '';
+    if (q) send(q);
+  }, [send]);
 
   useEffect(() => { if (open) field.current?.focus({ preventScroll: true }); }, [open]);
 

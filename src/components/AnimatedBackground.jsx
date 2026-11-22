@@ -40,12 +40,13 @@ const chips = [
   { x: 892, y: 496, w: 36, h: 14 },
 ];
 
+const LITE = '(max-width: 768px), (pointer: coarse), (prefers-reduced-motion: reduce)';
+
 const AnimatedBackground = () => {
-  const [isLite, setIsLite] = useState(false);
+  const [isLite, setIsLite] = useState(() => window.matchMedia(LITE).matches);
 
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 768px), (prefers-reduced-motion: reduce)');
-    setIsLite(mq.matches);
+    const mq = window.matchMedia(LITE);
     const onChange = (e) => setIsLite(e.matches);
     mq.addEventListener('change', onChange);
     return () => mq.removeEventListener('change', onChange);

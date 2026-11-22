@@ -34,7 +34,7 @@ EXPERIENCIA
 ${experienceData.map((e) => `${e.position.es} en ${e.company} (${e.period.es}): ${e.responsibilities.es.join(' ')} [${e.technologies.join(', ')}]`).join('\n')}
 
 CERTIFICACIONES
-${certificationsData.map((c) => `${c.title.es}, ${c.issuer.es}, ${c.year}`).join('\n')}
+${certificationsData.map((c) => `${c.title.es}, ${c.issuer.es}, ${c.year}${c.validUntil ? `, vigente hasta ${c.validUntil}` : ''}`).join('\n')}
 
 SERVICIOS
 ${servicesData.map((s) => `${s.title.es}: ${s.description.es}`).join('\n')}
