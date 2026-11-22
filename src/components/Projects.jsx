@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { projectsData } from '../data/projects';
 import { FaExternalLinkAlt, FaGithub, FaLock, FaStar, FaCrown } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
+import LiveSystems from './LiveSystems';
 
 /* ── Image or gradient fallback ── */
 const ProjectVisual = ({ project, language, className = '' }) => {
@@ -86,8 +87,8 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const topProject    = projectsData.find(p => p.topProject);
-  const featuredProjects = projectsData.filter(p => p.featured && !p.topProject);
-  const regularProjects  = projectsData.filter(p => !p.featured && !p.topProject);
+  const featuredProjects = projectsData.filter(p => p.featured && !p.topProject && !p.live);
+  const regularProjects  = projectsData.filter(p => !p.featured && !p.topProject && !p.live);
 
   return (
     <section id="projects" className="section-container" ref={ref}>
@@ -261,6 +262,9 @@ const Projects = () => {
             </div>
           </motion.div>
         )}
+
+        {/* ── DEMOS EN VIVO ── */}
+        <LiveSystems />
 
         {/* ── FEATURED PROJECTS ── */}
         {featuredProjects.length > 0 && (

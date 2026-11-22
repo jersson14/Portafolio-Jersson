@@ -31,41 +31,58 @@ export const projectsData = [
   // ── FEATURED PROJECTS (grilla 2 columnas) ──────────────────────────────────
   {
     id: 2,
-    featured: true,
     hasCaseStudy: true,
     title: {
-      es: "Sistema Web de Trámite Documentario",
-      en: "Web Document Tracking System"
+      es: "Sistema de Trámite Documentario con IA",
+      en: "AI Document Tracking System"
     },
     description: {
-      es: "Plataforma web para la gestión, seguimiento y control de documentos administrativos con chatbot inteligente basado en RAG para consultas en tiempo real. Integrada con la API de RENIEC para validación de identidad, mejorando la trazabilidad y seguridad de los procesos.",
-      en: "Web platform for the management, tracking, and control of administrative documents with an intelligent RAG-based chatbot for real-time inquiries. Integrated with RENIEC API for identity validation, improving process traceability and security."
+      es: "Reemplaza el expediente en papel: registra, deriva, controla plazos en días hábiles y firma digitalmente con QR. Un agente de IA responde preguntas sobre los trámites y oculta los datos personales antes de consultar al modelo.",
+      en: "Replaces paper files: registers, routes, tracks deadlines in business days and signs digitally with QR. An AI agent answers questions about cases and masks personal data before querying the model."
     },
     technologies: ["PHP", "MySQL", "Bootstrap", "AJAX", "API RENIEC", "RAG", "IA"],
-    demoUrl: "https://rosybrown-panther-444340.hostingersite.com/",
+    demoUrl: "https://tramitedoc.jcm-abc.com/",
     githubUrl: "https://github.com/jersson14/TRAMITE_DOC",
     status: "public",
     category: "Full Stack",
-    image: "/tramite_documentario.webp",
+    image: "/live/tramite-1.webp",
     metrics: [
       { value: "60%", label: "Reducción de Tiempo" },
       { value: "500+", label: "Consultas/Mes Auto." },
       { value: "4.8/5", label: "Satisfacción Usuario" }
-    ]
+    ],
+    live: {
+      order: 4,
+      short: { es: "Trámite documentario", en: "Document tracking" },
+      ai: true,
+      trialLogin: true,
+      docUrl: "https://drive.google.com/file/d/1-Lm8RL1Moup2rIO7GgohGOY7X8Muk5bU/view?usp=sharing",
+      shots: ["/live/tramite-1.webp", "/live/tramite-2.webp", "/live/tramite-3.webp"],
+      facts: [
+        { value: "5", label: { es: "Roles con bitácora de auditoría", en: "Roles with audit log" } },
+        { value: "QR", label: { es: "Firma digital verificable", en: "Verifiable digital signature" } },
+        { value: "Solo lee", label: { es: "La IA no modifica ni borra datos", en: "The AI never edits or deletes" } }
+      ],
+      features: [
+        { es: "Agente de IA (ChatGPT o Gemini) que respeta lo que cada área puede ver", en: "AI agent (ChatGPT or Gemini) that respects what each department may see" },
+        { es: "Mesa de partes virtual y consulta con expediente y DNI", en: "Virtual front desk and lookup by case and ID number" },
+        { es: "Semáforo de plazos en días hábiles y feriados nacionales", en: "Deadline traffic light in business days and national holidays" },
+        { es: "Recorrido de cada expediente como diagrama de flujo", en: "Each case route drawn as a flow diagram" }
+      ]
+    }
   },
 
   // ── REGULAR PROJECTS (grilla 3 columnas) ──────────────────────────────────
   {
     id: 6,
-    featured: true,
     hasCaseStudy: true,
     title: {
-      es: "Sistema Web de Facturación Electrónica — Transporte",
-      en: "Web Electronic Invoicing System — Transport"
+      es: "Sistema de Transportes y Facturación Electrónica",
+      en: "Transport & Electronic Invoicing System"
     },
     description: {
-      es: "Plataforma web para la emisión de comprobantes electrónicos en servicios de transporte Cusco–Abancay, integrada con RENIEC y SUNAT, cumpliendo la normativa de facturación electrónica vigente.",
-      en: "Web platform for issuing electronic receipts in Cusco–Abancay transport services, integrated with RENIEC and SUNAT, complying with current electronic invoicing regulations."
+      es: "Venta de pasajes, salidas diarias, encomiendas y comprobantes electrónicos SUNAT en un solo sistema web para empresas de transporte interprovincial. Si SUNAT se cae, el ticket se entrega igual y el comprobante se regulariza solo.",
+      en: "Ticket sales, daily departures, parcels and SUNAT electronic receipts in a single web system for intercity transport companies. If SUNAT goes down, the ticket is still issued and the receipt is reconciled automatically."
     },
     technologies: ["PHP", "MySQL", "Greenter", "API SUNAT", "API RENIEC", "Docker"],
     demoUrl: "https://sisfacturacion.jcm-abc.com/",
@@ -77,7 +94,26 @@ export const projectsData = [
       { value: "+10k", label: "Facturas/Mes" },
       { value: "0%", label: "Duplicidad" },
       { value: "100%", label: "Visibilidad Gerencial" }
-    ]
+    ],
+    live: {
+      order: 1,
+      short: { es: "Transportes", en: "Transport" },
+      ai: false,
+      trialLogin: true,
+      docUrl: "https://drive.google.com/file/d/1WPtm0mYC0_u-Ri5DBfebKo6L7wNRdpCP/view?usp=sharing",
+      shots: ["/facturacion.webp", "/live/transporte-1.webp", "/live/transporte-2.webp"],
+      facts: [
+        { value: "< 1 min", label: { es: "Emitir un comprobante", en: "Issue a receipt" } },
+        { value: "5 min", label: { es: "Cierre de caja del día", en: "Daily cash closing" } },
+        { value: "~1,600", label: { es: "Comprobantes al mes", en: "Receipts per month" } }
+      ],
+      features: [
+        { es: "El DNI o RUC completa los datos del cliente desde RENIEC y SUNAT", en: "ID or tax number fills in customer data from RENIEC and SUNAT" },
+        { es: "Facturas, boletas y notas con ticket, PDF, XML y CDR", en: "Invoices, receipts and credit notes with ticket, PDF, XML and CDR" },
+        { es: "Manifiesto de pasajeros y seguimiento de encomiendas en línea", en: "Passenger manifest and online parcel tracking" },
+        { es: "Reenvío automático cuando SUNAT no responde", en: "Automatic resend when SUNAT is unavailable" }
+      ]
+    }
   },
   {
     id: 1,
@@ -119,25 +155,43 @@ export const projectsData = [
     id: 4,
     hasCaseStudy: true,
     title: {
-      es: "Sistema Web de Gestión Educativa",
-      en: "Educational Management Web System"
+      es: "Sistema de Gestión Educativa con IA",
+      en: "AI School Management System"
     },
     description: {
-      es: "Plataforma web para la gestión académica y administrativa de colegios, incluyendo control de estudiantes, docentes y procesos educativos.",
-      en: "Web platform for the academic and administrative management of schools, including control of students, teachers, and educational processes."
+      es: "Matrícula, notas, asistencia, aula virtual, pensiones, caja y planilla en un solo lugar para colegios de inicial, primaria y secundaria. Cada perfil, de dirección a familias, tiene su propio espacio, también en el celular.",
+      en: "Enrollment, grades, attendance, virtual classroom, tuition, cash and payroll in one place for preschool, primary and secondary schools. Every profile, from principal to family, has its own space, on mobile too."
     },
     technologies: ["PHP", "MySQL", "AdminLTE", "jQuery", "mPDF", "DataTables"],
-    demoUrl: "https://colegioo.site/landing.html",
+    demoUrl: "https://colegio.jcm-abc.com/index.php",
     githubUrl: "https://github.com/jersson14/colegio_sedes_sapientae",
     status: "public",
-    featured: true,
     category: "EdTech",
-    image: "/colegio.webp",
+    image: "/live/colegio-1.webp",
     metrics: [
       { value: "12+", label: "Módulos Funcionales" },
       { value: "36", label: "Tablas en BD" },
       { value: "263", label: "Controladores PHP" }
-    ]
+    ],
+    live: {
+      order: 6,
+      short: { es: "Gestión educativa", en: "School management" },
+      ai: true,
+      trialLogin: true,
+      docUrl: "https://drive.google.com/file/d/1JccLmIPCN2n7puSDJy8bmBA5LSQjXGih/view?usp=sharing",
+      shots: ["/live/colegio-1.webp", "/live/colegio-2.webp", "/live/colegio-3.webp"],
+      facts: [
+        { value: "12", label: { es: "Módulos en un solo sistema", en: "Modules in one system" } },
+        { value: "7", label: { es: "Espacios según el perfil", en: "Profile-specific spaces" } },
+        { value: "PDF", label: { es: "Libretas por bimestre", en: "Term report cards" } }
+      ],
+      features: [
+        { es: "Aula virtual con tareas, exámenes, entrega y calificación", en: "Virtual classroom with assignments, exams, delivery and grading" },
+        { es: "Pensiones con mora automática y varias formas de pago", en: "Tuition with automatic late fees and several payment methods" },
+        { es: "Comunicados con confirmación de lectura y aviso por WhatsApp", en: "Announcements with read receipts and WhatsApp notices" },
+        { es: "Auditoría de cambios, copias de seguridad y permisos por rol", en: "Change audit, backups and role permissions" }
+      ]
+    }
   },
   {
     id: 5,
@@ -161,19 +215,38 @@ export const projectsData = [
     id: 7,
     hasCaseStudy: true,
     title: {
-      es: "Sistema de Gestión de Grifo — Turnos y Créditos",
-      en: "Gas Station Management System — Shifts & Credit"
+      es: "Sistema de Grifo con IA",
+      en: "AI Gas Station System"
     },
     description: {
-      es: "Sistema web completo para la administración de un grifo: turnos con lectura automática de surtidores, ventas con múltiples métodos de pago, créditos a clientes y reportes gerenciales en tiempo real.",
-      en: "Complete web system for gas station management: shifts with automatic pump readings, sales with multiple payment methods, customer credit, and real-time management reports."
+      es: "Turnos, caja, créditos, flotas, inventario y facturación electrónica para estaciones de servicio, con un asistente de IA. El grifero cierra el turno desde el celular y el dueño ve la rentabilidad por combustible.",
+      en: "Shifts, cash, credit, fleets, inventory and electronic invoicing for gas stations, with an AI assistant. Attendants close shifts from their phone and owners see profitability by fuel type."
     },
     technologies: ["PHP", "MySQL", "AdminLTE", "Chart.js", "mPDF", "Docker"],
-    demoUrl: "#",
+    demoUrl: "https://sistemagrifo.jcm-abc.com/",
     githubUrl: "https://github.com/jersson14/grifo_grau",
     status: "public",
     category: "Retail",
-    image: "/grifo.webp"
+    image: "/live/grifo-1.webp",
+    live: {
+      order: 3,
+      short: { es: "Grifo", en: "Gas station" },
+      ai: true,
+      trialLogin: false,
+      docUrl: "https://drive.google.com/file/d/1I3f4fFaAeN7M3d7Nj2RDfrjzCcQLgrGz/view?usp=sharing",
+      shots: ["/live/grifo-1.webp", "/live/grifo-2.webp", "/live/grifo-3.webp"],
+      facts: [
+        { value: "5–10 min", label: { es: "Cierre de turno (antes 30–45)", en: "Shift closing (was 30–45)" } },
+        { value: "Al día", label: { es: "Deuda de cada flota", en: "Debt of each fleet" } },
+        { value: "PDF · Excel", label: { es: "Informes para el contador", en: "Accountant reports" } }
+      ],
+      features: [
+        { es: "Asistente con IA sobre ventas, stock y créditos vencidos", en: "AI assistant for sales, stock and overdue credit" },
+        { es: "Galones, totales y cuadre de caja calculados por surtidor", en: "Gallons, totals and cash reconciliation computed per pump" },
+        { es: "Flotas con línea de crédito, placas autorizadas y alertas", en: "Fleets with credit lines, authorized plates and alerts" },
+        { es: "Página web propia con los precios del día en vivo", en: "Own website with live daily prices" }
+      ]
+    }
   },
   {
     id: 8,
@@ -222,26 +295,44 @@ export const projectsData = [
     id: 11,
     hasCaseStudy: true,
     title: {
-      es: "ITVentas — Sistema de Punto de Venta para Farmacia",
-      en: "ITVentas — Pharmacy Point of Sale System"
+      es: "Sistema de Farmacia con IA",
+      en: "AI Pharmacy System"
     },
     description: {
-      es: "Sistema de punto de venta, inventario, compras y reportes para farmacias independientes, con trazabilidad de lotes, control de vencimientos (FEFO), recetas médicas y registro de medicamentos de control especial.",
-      en: "Point of sale, inventory, purchasing, and reporting system for independent pharmacies, with batch traceability, expiration control (FEFO), medical prescriptions, and special-control medicine tracking."
+      es: "Punto de venta, caja, inventario por lotes y vencimientos, recetas y tienda online para farmacias y boticas. El dueño pregunta en español, por la web o por WhatsApp, y la IA responde con sus ventas y su stock.",
+      en: "Point of sale, cash register, batch and expiry inventory, prescriptions and online store for pharmacies. Owners ask in plain language, on the web or WhatsApp, and the AI answers from their own sales and stock."
     },
     technologies: ["PHP", "MySQL", "AdminLTE", "Bootstrap", "Chart.js", "FPDF", "jQuery"],
-    demoUrl: "https://demo.farmasuyana.shop/",
+    demoUrl: "https://farmacia.jcm-abc.com/",
     githubUrl: "https://github.com/jersson14/sistema_farmacia",
     status: "public",
-    featured: true,
     category: "HealthTech",
-    image: "/farmacia.webp",
+    image: "/live/farmacia-1.webp",
     gradient: "linear-gradient(135deg, #0c1a4e 0%, #1e3a8a 40%, #02040f 100%)",
     metrics: [
       { value: "-80%", label: "Tiempo por Venta" },
       { value: "-90%", label: "Errores de Inventario" },
       { value: "-60%", label: "Mermas por Vencimiento" }
-    ]
+    ],
+    live: {
+      order: 2,
+      short: { es: "Farmacia", en: "Pharmacy" },
+      ai: true,
+      trialLogin: false,
+      docUrl: "https://drive.google.com/file/d/1AyI06i-IJOTksNyFhgZH2YwtRE60HIOq/view?usp=sharing",
+      shots: ["/live/farmacia-1.webp", "/live/farmacia-2.webp", "/live/farmacia-3.webp"],
+      facts: [
+        { value: "FEFO", label: { es: "Primero sale lo que vence antes", en: "First to expire, first out" } },
+        { value: "30/90/180", label: { es: "Días de alerta antes de vencer", en: "Days of expiry alerts" } },
+        { value: "Web + WA", label: { es: "Canales para consultar a la IA", en: "Channels to query the AI" } }
+      ],
+      features: [
+        { es: "Consultas en lenguaje natural: ¿qué productos vencen este mes?", en: "Natural-language queries: which products expire this month?" },
+        { es: "Reportes explicados por IA y enviados por correo", en: "AI-explained reports delivered by email" },
+        { es: "Recetas médicas y libro digital de psicotrópicos", en: "Prescriptions and digital controlled-substances log" },
+        { es: "Tienda online con pedidos que llegan directo al sistema", en: "Online store with orders flowing straight into the system" }
+      ]
+    }
   },
   {
     id: 12,
@@ -267,5 +358,42 @@ export const projectsData = [
       { value: "95%", label: "Madurez en Ventas" },
       { value: "~9,430", label: "Líneas de Código" }
     ]
+  },
+  {
+    id: 13,
+    hasCaseStudy: true,
+    title: {
+      es: "Mi Tienda — Sistema Multinegocio con IA",
+      en: "Mi Tienda — AI Multi-Business System"
+    },
+    description: {
+      es: "Ventas, inventario, caja, compras y reportes en un sistema que se adapta a 14 rubros: restaurante, farmacia, ropa, ferretería, bodega, veterinaria y más. Incluye un asistente con IA (Claude) que respeta los permisos de cada usuario.",
+      en: "Sales, inventory, cash, purchasing and reporting in a system that adapts to 14 business types: restaurant, pharmacy, clothing, hardware, grocery, vet and more. Includes an AI assistant (Claude) that respects each user's permissions."
+    },
+    technologies: ["PHP", "Claude API", "Nubefact"],
+    demoUrl: "https://tienda.jcm-abc.com/",
+    githubUrl: "#",
+    status: "private",
+    category: "Retail / PyME",
+    image: "/live/tienda-1.webp",
+    live: {
+      order: 5,
+      short: { es: "Multinegocio", en: "Multi-business" },
+      ai: true,
+      trialLogin: false,
+      docUrl: "https://drive.google.com/file/d/1IawrnhLpShlp3JucxQmGIjE4gqw8Lcdm/view?usp=sharing",
+      shots: ["/live/tienda-1.webp", "/live/tienda-2.webp", "/live/tienda-3.webp"],
+      facts: [
+        { value: "14", label: { es: "Rubros listos para usar", en: "Business types ready to use" } },
+        { value: "3 s", label: { es: "Registrar una venta con lector", en: "Record a sale with a scanner" } },
+        { value: "7", label: { es: "Roles con permisos", en: "Roles with permissions" } }
+      ],
+      features: [
+        { es: "Asistente con IA sobre ventas, utilidad, stock y cobranzas", en: "AI assistant for sales, profit, stock and receivables" },
+        { es: "Mesas, tallas, lotes o venta por peso según el rubro", en: "Tables, sizes, batches or weight sales by business type" },
+        { es: "Boletas y facturas a SUNAT mediante Nubefact", en: "SUNAT receipts and invoices through Nubefact" },
+        { es: "Varios locales con caja, series y stock propios", en: "Multiple branches with their own cash, series and stock" }
+      ]
+    }
   }
 ];

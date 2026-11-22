@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaArrowLeft, FaServer, FaDatabase, FaRobot, FaIdCard, FaFileSignature, FaDocker, FaFileInvoiceDollar, FaChartLine, FaBalanceScale, FaFileAlt, FaSearch, FaPills, FaCashRegister, FaBoxes, FaUsersCog, FaTooth, FaCalendarCheck, FaClock, FaEnvelope, FaGasPump, FaGraduationCap } from 'react-icons/fa';
+import { projectsData } from '../data/projects';
+import { FaArrowLeft, FaServer, FaDatabase, FaRobot, FaIdCard, FaFileSignature, FaDocker, FaFileInvoiceDollar, FaChartLine, FaBalanceScale, FaFileAlt, FaSearch, FaPills, FaCashRegister, FaBoxes, FaUsersCog, FaTooth, FaCalendarCheck, FaClock, FaEnvelope, FaGasPump, FaGraduationCap, FaExternalLinkAlt, FaStore } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 
 const caseStudiesData = {
@@ -661,6 +663,65 @@ const caseStudiesData = {
         ],
         gallery: ["/grados_y_titulos.webp"]
     },
+    13: { // Mi Tienda - Multinegocio
+        title: "Un Solo Sistema para",
+        highlight: "14 Tipos de Negocio",
+        badges: ["Retail", "PyME", "IA"],
+        description: "Mi Tienda reúne ventas, inventario, caja, compras y reportes, y activa solo lo que cada rubro necesita: mesas en un restaurante, lotes en una farmacia o tallas y colores en una tienda de ropa.",
+        challenge: {
+            title: "El Desafío",
+            text: "Muchas PyMEs peruanas trabajan con cuaderno, Excel y calculadora, y cada rubro necesita funciones distintas:",
+            points: [
+                "Stock a Ciegas: El producto se acaba o vence sin que nadie lo note.",
+                "Caja que no Cuadra: Faltantes sin explicación y créditos que se olvidan.",
+                "Utilidad Desconocida: No se sabe qué producto deja más ganancia."
+            ],
+            questions: [
+                "¿Cómo atender 14 rubros con un solo sistema, sin pantallas que no se usan?",
+                "¿Cómo controlar inventario, caja y créditos de varios locales en un mismo lugar?",
+                "¿Cómo responder preguntas del negocio en lenguaje natural respetando los permisos de cada usuario?"
+            ]
+        },
+        solution: {
+            features: [
+                {
+                    icon: FaStore,
+                    color: "text-primary-400",
+                    bg: "bg-primary-500/20",
+                    title: "Se Adapta al Rubro",
+                    desc: "El negocio elige su giro y el sistema activa lo necesario: comandas y recetas, lotes y vencimientos, variantes, venta por peso o historia clínica de mascotas."
+                },
+                {
+                    icon: FaRobot,
+                    color: "text-purple-400",
+                    bg: "bg-purple-500/20",
+                    title: "Asistente con IA (Claude)",
+                    desc: "Responde sobre ventas, utilidad, stock y cobranzas. Solo consulta, respeta los permisos de cada usuario y tiene un tope mensual para controlar el gasto."
+                },
+                {
+                    icon: FaFileInvoiceDollar,
+                    color: "text-emerald-400",
+                    bg: "bg-emerald-500/20",
+                    title: "Facturación Electrónica",
+                    desc: "Boletas, facturas, notas y guías enviadas a SUNAT mediante Nubefact, con reenvío automático si se cae el internet."
+                }
+            ]
+        },
+        architecture: {
+            title: "Arquitectura del Sistema",
+            frontend: { label: "WEB", text: "Frontend", sub: "PC, tablet y celular desde el navegador" },
+            backend: { label: "PHP", text: "Backend Logic", sub: "PHP, 7 roles con permisos y auditoría" },
+            services: [
+                { icon: FaRobot, color: "text-purple-400", title: "Claude API", sub: "Asistente de solo consulta" },
+                { icon: FaFileInvoiceDollar, color: "text-green-400", title: "Nubefact + SUNAT", sub: "Comprobantes electrónicos" }
+            ]
+        },
+        results: [
+            { value: "14", title: "Rubros Listos", desc: "Del restaurante a la veterinaria, con un mismo sistema." },
+            { value: "3 s", title: "Por Venta", desc: "Registro de una venta con lector de código de barras." },
+            { value: "7", title: "Roles", desc: "Administrador, encargado, vendedor, almacenero, compras, mozo y cajero." }
+        ]
+    },
     6: { // Facturación Electrónica
         title: "Optimización Operativa en",
         highlight: "Tours Micaela",
@@ -725,15 +786,30 @@ const caseStudiesData = {
 const ProjectCaseStudy = ({ projectId, onClose }) => {
     const { t } = useLanguage();
     const data = caseStudiesData[projectId];
+    const project = projectsData.find((p) => p.id === projectId);
+    const gallery = project?.live?.shots || data?.gallery || [];
+
+    /* Esc cierra y la página de fondo no se desplaza */
+    useEffect(() => {
+        const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+        const previous = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        window.addEventListener('keydown', onKey);
+        return () => {
+            document.body.style.overflow = previous;
+            window.removeEventListener('keydown', onKey);
+        };
+    }, [onClose]);
 
     if (!data) return null;
 
     return (
         <motion.div
+            data-case-study
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 overflow-y-auto bg-dark-950/95 backdrop-blur-md"
+            className="fixed inset-0 z-[80] overflow-y-auto bg-dark-950/95 backdrop-blur-md"
         >
             <div className="min-h-screen">
                 {/* Navigation Header */}
@@ -770,6 +846,18 @@ const ProjectCaseStudy = ({ projectId, onClose }) => {
                         <p className="max-w-3xl mx-auto text-xl text-dark-200 leading-relaxed font-light">
                             {data.description}
                         </p>
+                        <div className="flex flex-wrap justify-center gap-3 mt-8">
+                            {project?.demoUrl && project.demoUrl !== '#' && (
+                                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="live-btn live-btn-main !flex-none">
+                                    <FaExternalLinkAlt size={12} /> {t('live.enter')}
+                                </a>
+                            )}
+                            {project?.live && (
+                                <a href={project.live.docUrl} target="_blank" rel="noopener noreferrer" className="live-btn !flex-none">
+                                    <FaFileAlt size={13} /> {t('live.docs')}
+                                </a>
+                            )}
+                        </div>
                     </motion.div>
                 </header>
 
@@ -888,14 +976,15 @@ const ProjectCaseStudy = ({ projectId, onClose }) => {
                     </section>
 
                     {/* Gallery */}
-                    {data.gallery && data.gallery.length > 0 && (
+                    {gallery.length > 0 && (
                         <section>
                             <h2 className="text-3xl font-bold text-white mb-10 text-center">{t('case_study.gallery')}</h2>
                             <div className="grid gap-8">
-                                {data.gallery.map((src, idx) => (
+                                {gallery.map((src, idx) => (
                                     <img
                                         key={idx}
                                         src={src}
+                                        loading="lazy"
                                         alt={`${data.highlight} - ${idx + 1}`}
                                         className="w-full rounded-2xl border border-white/10 shadow-2xl"
                                     />

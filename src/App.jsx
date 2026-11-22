@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense, lazy, useRef } from 'react';
+import { useState, useEffect, useCallback, Suspense, lazy, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp, FaBars, FaTimes, FaDownload } from 'react-icons/fa';
 import AnimatedBackground from './components/AnimatedBackground';
@@ -12,6 +12,7 @@ const Experience = lazy(() => import('./components/Experience'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Services = lazy(() => import('./components/Services'));
 const Contact = lazy(() => import('./components/Contact'));
+const Agent = lazy(() => import('./components/Agent'));
 const ProjectCaseStudy = lazy(() => import('./components/ProjectCaseStudy'));
 
 import { useLanguage } from './context/LanguageContext';
@@ -74,18 +75,13 @@ function App() {
     };
 
     window.addEventListener('mousemove', move);
-    const interactiveEls = document.querySelectorAll('a, button, [role="button"]');
-    interactiveEls.forEach((el) => {
-      el.addEventListener('mouseenter', onEnter);
-      el.addEventListener('mouseleave', onLeave);
-    });
+    /* Delegado: también cubre secciones lazy, el agente y modales */
+    const over = (e) => (e.target.closest?.('a, button, [role="button"]') ? onEnter() : onLeave());
+    document.addEventListener('mouseover', over);
 
     return () => {
       window.removeEventListener('mousemove', move);
-      interactiveEls.forEach((el) => {
-        el.removeEventListener('mouseenter', onEnter);
-        el.removeEventListener('mouseleave', onLeave);
-      });
+      document.removeEventListener('mouseover', over);
     };
   }, []);
 
@@ -112,6 +108,8 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navLinks]);
+
+  const closeCaseStudy = useCallback(() => setShowCaseStudy(false), []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -164,11 +162,17 @@ function App() {
 
       <AnimatedBackground />
 
-      <AnimatePresence>
-        {showCaseStudy && (
-          <ProjectCaseStudy projectId={selectedProjectId} onClose={() => setShowCaseStudy(false)} />
-        )}
-      </AnimatePresence>
+      <Suspense fallback={null}>
+        <AnimatePresence>
+          {showCaseStudy && (
+            <ProjectCaseStudy projectId={selectedProjectId} onClose={closeCaseStudy} />
+          )}
+        </AnimatePresence>
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <Agent />
+      </Suspense>
 
       {/* ── NAV ── */}
       <nav className="fixed top-2 md:top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pointer-events-none">
@@ -342,7 +346,8 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.7 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 p-4 rounded-2xl text-white z-40"
+            className="fixed bottom-5 left-4 md:left-auto md:bottom-24 md:right-6 p-3.5 rounded-2xl text-white z-40"
+            aria-label="Volver arriba"
             style={{
               background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
               boxShadow: '0 0 20px rgba(6,182,212,0.4)',

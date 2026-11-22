@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   FaGithub, FaLinkedin, FaWhatsapp,
   FaReact, FaPython, FaNodeJs, FaAws, FaDocker,
-  FaFileDownload, FaProjectDiagram, FaEnvelope,
+  FaFileDownload, FaProjectDiagram, FaEnvelope, FaArrowRight,
 } from 'react-icons/fa';
 import { SiTypescript, SiPostgresql } from 'react-icons/si';
 import { useLanguage } from '../context/LanguageContext';
+import RobotFace from './RobotFace';
 
 /* Floating tech icon */
 const FloatingIcon = ({ icon: Icon, delay, x, y, duration = 5, size = 48, glowColor }) => (
@@ -87,6 +89,13 @@ const PhotoPanel = ({ children }) => (
 
 const Hero = () => {
   const { t } = useLanguage();
+  const [question, setQuestion] = useState('');
+
+  const askAgent = (e) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent('openAgent', { detail: { query: question.trim() } }));
+    setQuestion('');
+  };
 
   return (
     <section id="home" className="min-h-screen flex items-center relative overflow-hidden gradient-bg pt-20 md:pt-0">
@@ -177,16 +186,16 @@ const Hero = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="mb-8 flex items-center gap-3"
+              className="mb-6"
             >
               <span
                 className="font-mono text-base md:text-lg lg:text-xl font-medium"
-                style={{ color: '#64748b', letterSpacing: '0.04em' }}
+                style={{ color: '#94a3b8', letterSpacing: '0.02em' }}
               >
                 {t('hero.role')}
               </span>
               <span
-                className="inline-block w-0.5 h-6 rounded-full"
+                className="inline-block w-0.5 h-5 ml-2 rounded-full align-middle"
                 style={{ background: '#22d3ee', boxShadow: '0 0 8px #22d3ee', animation: 'blinkCursor 1.2s step-end infinite' }}
               />
             </motion.div>
@@ -196,7 +205,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="text-base md:text-lg text-dark-300 max-w-xl mb-10 leading-relaxed"
+              className="text-base md:text-lg text-dark-300 max-w-xl mb-7 leading-relaxed"
             >
               {t('hero.description_prefix')}{' '}
               <span className="neon-text font-semibold">{t('hero.description_highlight_1')}</span>{' '}
@@ -205,16 +214,34 @@ const Hero = () => {
               {t('hero.description_suffix')}
             </motion.p>
 
+            {/* Pregunta al agente */}
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.55 }}
+              onSubmit={askAgent}
+              className="hero-ask mb-6"
+            >
+              <RobotFace className="agent-face" />
+              <input
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+                placeholder={t('agent.hero_placeholder')}
+                aria-label={t('agent.hero_placeholder')}
+              />
+              <button type="submit" aria-label={t('agent.send')}><FaArrowRight size={14} /></button>
+            </motion.form>
+
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="flex flex-wrap gap-4 mb-10"
+              className="flex flex-wrap gap-3 mb-8"
             >
               <motion.a
                 href="#projects"
-                className="btn-primary flex items-center gap-2 text-sm font-mono"
+                className="btn-primary !px-5 flex items-center gap-2 text-sm font-mono"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -223,7 +250,7 @@ const Hero = () => {
               </motion.a>
               <motion.a
                 href="#contact"
-                className="btn-secondary flex items-center gap-2 text-sm font-mono"
+                className="btn-secondary !px-5 flex items-center gap-2 text-sm font-mono"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -233,7 +260,7 @@ const Hero = () => {
               <motion.a
                 href="/CV_jersson_corilla_miranda.pdf"
                 download="CV_Jersson_Corilla.pdf"
-                className="flex items-center gap-2 px-8 py-3 rounded-xl text-white font-semibold text-sm font-mono"
+                className="flex items-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm font-mono"
                 style={{ background: 'linear-gradient(135deg, #059669, #047857)', boxShadow: '0 0 20px rgba(5,150,105,0.3)' }}
                 whileHover={{ scale: 1.04, boxShadow: '0 0 35px rgba(5,150,105,0.6)' }}
                 whileTap={{ scale: 0.97 }}
