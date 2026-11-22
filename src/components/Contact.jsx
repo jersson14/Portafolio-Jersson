@@ -17,7 +17,7 @@ const Contact = () => {
     });
 
     const handleCopyEmail = () => {
-        navigator.clipboard.writeText("jersson1407miranda@gmail.com");
+        navigator.clipboard.writeText("jersson14071996@gmail.com");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -49,8 +49,8 @@ const Contact = () => {
         {
             icon: FaEnvelope,
             label: "Email",
-            value: "jersson1407miranda@gmail.com",
-            link: "mailto:jersson1407miranda@gmail.com"
+            value: "jersson14071996@gmail.com",
+            link: "mailto:jersson14071996@gmail.com"
         },
         {
             icon: FaPhone,
@@ -76,7 +76,7 @@ const Contact = () => {
         {
             icon: FaLinkedin,
             label: "LinkedIn",
-            url: "https://www.linkedin.com/in/jersson-corilla-miranda-3020bb200/",
+            url: "https://www.linkedin.com/in/jersson-corilla-miranda/",
             color: "#0A66C2"
         },
         {

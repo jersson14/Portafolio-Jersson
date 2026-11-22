@@ -278,7 +278,7 @@ const Hero = () => {
               className="flex gap-3"
             >
               <SocialLink href="https://github.com/jersson14" icon={FaGithub} label="GitHub" color="#e2e8f0" />
-              <SocialLink href="https://www.linkedin.com/in/jersson-corilla-miranda-3020bb200/" icon={FaLinkedin} label="LinkedIn" color="#22d3ee" />
+              <SocialLink href="https://www.linkedin.com/in/jersson-corilla-miranda/" icon={FaLinkedin} label="LinkedIn" color="#22d3ee" />
               <SocialLink href="https://wa.me/51974031318" icon={FaWhatsapp} label="WhatsApp" color="#4ade80" />
             </motion.div>
           </div>

@@ -9,8 +9,8 @@ import { buildIndex, norm } from './text';
 
 export const CONTACT = {
   whatsapp: '51974031318',
-  email: 'jersson1407miranda@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/jersson-corilla-miranda-3020bb200/',
+  email: 'jersson14071996@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/jersson-corilla-miranda/',
   github: 'https://github.com/jersson14',
   cv: '/CV_jersson_corilla_miranda.pdf',
 };

@@ -225,9 +225,9 @@ npm run deploy
 > 5+ años de experiencia en diseño, desarrollo y despliegue de aplicaciones web empresariales.
 > Especialidad en AWS/Azure, Business Intelligence y automatización con IA.
 
-- LinkedIn: [linkedin.com/in/jersson-corilla](https://linkedin.com/in/jersson-corilla)
+- LinkedIn: [linkedin.com/in/jersson-corilla-miranda](https://www.linkedin.com/in/jersson-corilla-miranda/)
 - GitHub: [@jersson14](https://github.com/jersson14)
-- Email: jersson1407miranda@gmail.com
+- Email: jersson14071996@gmail.com
 
 ---
 

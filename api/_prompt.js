@@ -43,7 +43,7 @@ PRECIOS
 No hay precios publicados. Se conversan según el tamaño del negocio y las adaptaciones. Modalidades habituales: mensual, anual o compra completa. La facturación electrónica con SUNAT se contrata aparte.
 
 CONTACTO
-WhatsApp +51 974 031 318, jersson1407miranda@gmail.com, LinkedIn y GitHub (jersson14).
+WhatsApp +51 974 031 318, jersson14071996@gmail.com, LinkedIn y GitHub (jersson14).
 `.trim();
 
 export const SYSTEM = `
