@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaWhatsapp, FaHeart } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
+import VisitCounter from './VisitCounter';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -66,6 +67,8 @@ const Footer = () => {
               </motion.a>
             ))}
           </div>
+
+          <VisitCounter />
 
           {/* Divider */}
           <div

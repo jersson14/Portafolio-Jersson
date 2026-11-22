@@ -186,6 +186,9 @@ export const translations = {
     },
     footer: {
         rights: 'Todos los derechos reservados.',
+        visit: 'visita',
+        visits: 'visitas',
+        today: 'hoy',
         developed_by: 'Desarrollado con React, Tailwind CSS y Framer Motion'
     },
     case_study: {
@@ -382,6 +385,9 @@ export const translations = {
     },
     footer: {
         rights: 'All rights reserved.',
+        visit: 'visit',
+        visits: 'visits',
+        today: 'today',
         developed_by: 'Developed with React, Tailwind CSS and Framer Motion'
     },
     case_study: {

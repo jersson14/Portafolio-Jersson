@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { Readable } from 'node:stream'
 
 /* En desarrollo sirve /api/* con las mismas funciones que corren en Vercel. */
-const ROUTES = ['chat', 'speak', 'transcribe']
+const ROUTES = ['chat', 'speak', 'transcribe', 'visits']
 
 const localApi = () => ({
   name: 'local-api',

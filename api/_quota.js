@@ -5,6 +5,7 @@
  * La IP nunca se guarda en claro, solo un hash con clave.
  */
 import { createHmac, timingSafeEqual } from 'node:crypto';
+import { redis, redisConfig } from './_redis.js';
 
 const COOKIE = 'jcm_q';
 
@@ -45,26 +46,6 @@ const memoryStore = {
     memory.set(key, next);
     return next;
   },
-};
-
-const redisConfig = () => {
-  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
-  return url && token ? { url, token } : null;
-};
-
-const redis = async ({ url, token }, commands) => {
-  const res = await fetch(`${url}/pipeline`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(commands),
-    signal: AbortSignal.timeout(2500),
-  });
-  if (!res.ok) throw new Error(`redis ${res.status}`);
-  return (await res.json()).map((r) => {
-    if (r.error) throw new Error(r.error);
-    return r.result;
-  });
 };
 
 const redisStore = (cfg) => ({
